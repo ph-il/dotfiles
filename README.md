@@ -61,7 +61,7 @@ Please correct the problems brew doctor will give you. It might be different for
 
 * Execute
 ```sh
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent
+brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight
 ```
 
 ## Install Redis
@@ -384,6 +384,15 @@ Include /private/etc/apache2/other/*.conf
 
 * Create the vhost files for the projects you’ll work on. There’s example in this project.
 * If you're using thos example. Replace every occurrence of "username" with your own login by executing
+
+
+## Setup Hosts
+
+* To update your .hosts file, execute:
+```sh
+cfghosts
+```
+
 
 
 

@@ -8,11 +8,10 @@ export PRJ_DIR='~/projects'
 export PHP_AUTOCONF=/usr/local/Cellar/autoconf/2.69/bin/autoconf
 export EDITOR="/usr/local/bin/mate -w"
 
-export PATH="$(brew --prefix)/bin:$PATH"
-export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH:/Users/$(whoami)/bin"
 
-#export JAVA_HOME=$(/usr/libexec/java_home) 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home" 
+export JAVA_HOME=$(/usr/libexec/java_home) 
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home" 
 export NEO4J_HOME="/Users/philippe/projects/tools/exakat/neo4j"
 
  
@@ -194,11 +193,7 @@ alias hidehide='defaults write com.apple.finder AppleShowAllFiles FALSE'
 # svn
 alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
-  
-# see default project
-alias dspdefault='ls /etc/apache2/other/*.default'
-alias dspdef='dspdefault'
- 
+   
 # symfony 1+ project command (need to use the go function before)
 alias sf='$SF_PROG'
 alias sfcc='sf cache:clear'
@@ -209,7 +204,6 @@ alias sfcxh='sudo find ${SF_LOG}xhprof/ -type f -delete'
 # symfony 1 only project command (need to use the go function before)
 alias sfpi='sf plugin:install'
 alias sfpibeta='sf plugin:install --stability=beta'
-alias sfschema='~/Scripts/sfschema.sh'
   
 # Symfony 2+ project only command (need to use the go function before)
 alias sfddd='sf doctrine:database:drop --force'
@@ -231,9 +225,9 @@ toolsupdate() {
     composer selfupdate
     composer global update
 	symfony self-update
-    sudo pear upgrade PEAR
-    sudo pear upgrade-all
-    sudo pecl upgrade-all
+#    sudo pear upgrade PEAR
+#    sudo pear upgrade-all
+#    sudo pecl upgrade-all
     sudo gem update
 }
  
@@ -261,17 +255,22 @@ gosf() {
     export SF_PROG
     export SF_CACHE
     export SF_LOG
- 
+
     if [[ "$3" != "" && "$3" != "none" ]]
     then
-        for i in /etc/apache2/other/*.default
-        do
-            sudo mv $i ${i%default}conf
-        done
-        sudo cp /etc/apache2/other/"${3}".conf /etc/apache2/other/000.default.conf
-        sudo mv /etc/apache2/other/"${3}".conf /etc/apache2/other/"${3}".default
-        apachectl restart
+		sphp ${3}
     fi
+ 
+    # if [[ "$3" != "" && "$3" != "none" ]]
+    # then
+    #     for i in /etc/apache2/other/*.default
+    #     do
+    #         sudo mv $i ${i%default}conf
+    #     done
+    #     sudo cp /etc/apache2/other/"${3}".conf /etc/apache2/other/000.default.conf
+    #     sudo mv /etc/apache2/other/"${3}".conf /etc/apache2/other/"${3}".default
+    #     apachectl restart
+    # fi
 }
 # This is use for symfony 1.x projects.
 # If you are using many schema files, it will add a list of all files to your schema.yml
@@ -286,6 +285,45 @@ sfschema() {
         echo
     done >> schema.yml
 }
+
+# Switch between PHP version. Will restart Apache
+# base on : https://github.com/sgotre/sphp-osx/blob/master/sphp
+# Usage: sphp [phpversion]
+sphp() {
+		
+	if [ $# -ne 1 ]; then
+		echo "Usage: sphp [phpversion]"
+		exit 1
+	fi
+
+	currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
+	newversion="$1"
+	shortOld="`php -r \"error_reporting(0); echo substr(phpversion(), 0, 1);\"`"
+	shortNew="`php -r \"error_reporting(0); echo substr('$1', 0, 1);\"`"
+	brew list php$newversion 2> /dev/null > /dev/null
+	if [ $? -eq 0 ]; then
+		echo "PHP version $newversion found"
+		echo "Unlinking old binaries..."
+		brew unlink php$currentversion 2> /dev/null > /dev/null
+		echo "Linking new binaries..."
+		brew link php$newversion
+		echo "Linking new modphp addon..."
+		sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${shortNew}.so
+		echo "Fixing LoadModule..."
+		apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+		sudo sed -i -e "/LoadModule php${shortOld}_module/s/^#*/#/" $apacheConf
+		sudo sed -i -e "/LoadModule php${shortNew}_module/s/^#//" $apacheConf
+		echo "Updating version file..."
+		echo "Restarting system Apache..."
+		apachectl -k restart > /dev/null 2>&1
+		echo "Done."
+	else
+		echo "PHP version $newversion was not found."
+		exit 1
+	fi
+}
+
+
 
 # Include ~/.bashrc for personal aliases
 if [ -f $HOME/.bashrc ]; then
