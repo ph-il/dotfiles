@@ -58,6 +58,11 @@ function vcs_info() {
   done
 }
  
+#  if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+#    GIT_PROMPT_THEME=Default
+#    source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+#  fi
+ 
 # Couleurs
         RED="\[\033[0;31m\]"
      YELLOW="\[\033[0;33m\]"
@@ -138,8 +143,8 @@ alias l.='ls -FhlGtrd .*'
 alias dir="lt"
 alias dot="l."
  
-# Memcache
-alias memstart='memcached -d'
+# Memcached
+alias memstart='/usr/local/opt/memcached/bin/memcached -d'
 alias memstop='sudo killall -TERM memcached'
 alias memreset="echo 'flush_all' | nc localhost 11211"
 alias memstats="echo 'stats' | nc localhost 11211"
@@ -166,10 +171,13 @@ alias cfgphp='mate /usr/local/php5/'
 # php Code Sniffer
 alias cs='phpcs --ignore=*/SCCS/*,*/vendor/*,*/.svn/*,*/base/*,*/templates/* --standard=PSR2'
 alias csf='php-cs-fixer fix --level=all'
+
+# redis
+alias redisstart='redis-server /usr/local/etc/redis.conf'
  
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
- 
+
 # sed - Better use RegEx in sed
 alias sed='sed -E'
  
@@ -210,6 +218,8 @@ alias sfload='sf doctrine:fixtures:load'
 toolsupdate() {
     brew update
     brew upgrade
+#if you run memcached as a service uncomment next line	
+#    brew services restart memcached	
     composer selfupdate
     composer global update
 	symfony self-update
