@@ -15,7 +15,7 @@ You'll need to determine a directory for all projects.
 I recommend ~/projects, so it's the one I'll use on all examples. Please fell free to change it.
      
 * Execute
-```
+```console
 cd
 mkdir -pv projects
 ```
@@ -25,12 +25,12 @@ mkdir -pv projects
 * Check with `ls ~/.profile`, if you have a .profile file
 * If you have one, rename it (i.e. profile.txt ), then you’ll be able to your .bashrc file. We use .bashrc for your own configuration, and .profile for this install and any updates of installation and alias.
 * Copy .profile in your home directory
-```
+```console
 cp profile.txt ~/.profile
 ```
 	
 * Execute
-```
+```console
 source ~/.profile
 ```
 
@@ -44,7 +44,7 @@ source ~/.profile
 
 * Execute
       
-```
+```sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 brew tap homebrew/dupes
@@ -59,7 +59,7 @@ Please correct the problems brew doctor will give you. It might be different for
 ## Install tools, git & newer version of autoconf
 
 * Execute
-```
+```console
 brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt
 ```
 
@@ -68,12 +68,12 @@ brew install autoconf git ack wget curl redis memcached libmemcached colordiff i
 As redis is more an more usefull and will be used in some of our tools, it's already installed. But : 
 
 * To have launchd start redis now and restart at login:
-```
+```sh
 brew services start redis
 ```
 
 * Or, if you don't want/need a background service you can just run:
-```
+```sh
 redisstart
 ```
 
@@ -82,19 +82,19 @@ redisstart
 As memcached is  usefull and will be used in some of our tools, it's already installed. But : 
 
 * To restart memcached after an upgrade:
-```
+```console
 brew services restart memcached
 ```
 
 * Or, if you don't want/need a background service you can just run:
-```
+```console
 memstart
 ```
 
 ## Install MySQL
 * Execute
 
-```
+```console
 brew install mysql
 mkdir -p ~/Library/LaunchAgents
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
