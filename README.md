@@ -156,7 +156,7 @@ brew install php55
 
 * Execute
 ```sh
-brew install php55-igbinary php55-memcached php55-memcache php55-mcrypt php55-apcu php55-intl php55-xdebug php55-twig php55-mongo php55-oauth php55-solr php55-tidy php55-xhprof blackfire-php55
+brew install php55-igbinary php55-memcached php55-memcache php55-opcache php55-mcrypt php55-apcu php55-intl php55-xdebug php55-twig php55-mongo php55-oauth php55-solr php55-tidy php55-xhprof blackfire-php55 php55-redis php55-yaml
 ```
 
 ### Test PHP 5.5
@@ -188,7 +188,7 @@ brew install php56
 
 * Execute
 ```sh
-brew install php56-igbinary php56-memcached php56-memcache php56-apcu php56-intl php56-mcrypt php56-xdebug php56-twig php56-mongo php56-oauth php56-solr php56-tidy php56-xhprof blackfire-php56
+brew install php56-igbinary php56-memcached php56-memcache php56-opcache php56-apcu php56-intl php56-mcrypt php56-xdebug php56-twig php56-mongo php56-oauth php56-solr php56-tidy php56-xhprof blackfire-php56 php56-redis php56-yaml
 ```
 
 ### Test PHP 5.6
@@ -219,8 +219,8 @@ brew install php70
 
 * Execute
 ```sh
-brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached
-brew install php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70
+brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached --HEAD homebrew/php/php70-redis --HEAD homebrew/php/php70-yaml
+brew install php70-opcache php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70
 ```
 
 ### Test PHP 7.0
@@ -304,6 +304,86 @@ sudo gem install compass
 sudo gem install css_parser
 sudo gem install breakpoint
 ```
+
+## Setup Apache
+
+* Execute
+```sh
+cfgapache
+```
+
+```sh
+COMM='s/username/'$(whoami)'/g'
+for i in /etc/apache2/other/*.conf ; do sudo sed -i '' $COMM "$i" ; done
+```
+
+* Edit the `/etc/apache2/httpd.conf` file
+* Search for `#LoadModule php5_module`. 
+	* You will notice that this is line is commented out. 
+	* Remove it. 
+* Below the other LoadModule lines, add this:
+
+```sh
+	# Brew PHP LoadModule for `sphp` switcher
+	LoadModule php5_module /usr/local/lib/libphp5.so
+	#LoadModule php7_module /usr/local/lib/libphp7.so
+```
+
+* Uncomment the `mod_rewrite.so` module definition
+
+* Remplace `<Directory />` block in the file `httpd.conf` by:
+
+```sh
+	Options FollowSymLinks Multiviews Indexes
+	<Directory />
+	    Options FollowSymLinks Multiviews Indexes
+	    AllowOverride All
+	    Require all granted
+	</Directory>
+```
+
+* Find `User _www`
+* Remplace User and Group
+```sh
+User your_username
+Group staff
+```
+
+* Search for this block:
+```sh
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
+```
+* Replace it with this:
+```sh
+<IfModule dir_module>
+    DirectoryIndex index.php index.html
+</IfModule>
+```
+
+* Find someting like:
+```sh
+<FilesMatch "^\.([Hh][Tt]|[Dd][Ss]_[Ss])">
+    Require all denied
+</FilesMatch>
+```
+
+* Below, paste the following:
+```sh
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
+```
+
+* At the end be sure there is this line available : 
+
+```sh
+Include /private/etc/apache2/other/*.conf
+```
+
+* Create the vhost files for the projects you’ll work on. There’s example in this project.
+* If you're using thos example. Replace every occurrence of "username" with your own login by executing
 
 
 
