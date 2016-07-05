@@ -15,7 +15,7 @@ You'll need to determine a directory for all projects.
 I recommend ~/projects, so it's the one I'll use on all examples. Please fell free to change it.
      
 * Execute
-```console
+```sh
 cd
 mkdir -pv projects
 ```
@@ -25,12 +25,12 @@ mkdir -pv projects
 * Check with `ls ~/.profile`, if you have a .profile file
 * If you have one, rename it (i.e. profile.txt ), then you’ll be able to your .bashrc file. We use .bashrc for your own configuration, and .profile for this install and any updates of installation and alias.
 * Copy .profile in your home directory
-```console
+```sh
 cp profile.txt ~/.profile
 ```
 	
 * Execute
-```console
+```sh
 source ~/.profile
 ```
 
@@ -50,6 +50,7 @@ brew doctor
 brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap homebrew/php
+brew tap blackfireio/homebrew-blackfire
 brew update
 brew upgrade
 ```
@@ -59,8 +60,8 @@ Please correct the problems brew doctor will give you. It might be different for
 ## Install tools, git & newer version of autoconf
 
 * Execute
-```console
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt
+```sh
+brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent
 ```
 
 ## Install Redis
@@ -76,38 +77,233 @@ brew services start redis
 ```sh
 redisstart
 ```
+## Install Blackfire 
+
+* Configure your Blackfire credentials:
+```sh
+sudo blackfire-agent -register
+```
+
+* Register the blackfire-agent service:
+```sh
+ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
+```
+
+* Then load it for the first time:
+```sh
+bfstart
+```
+
+* In order to restart the service, and whenever you modify its configuration, unload it:
+```sh
+bfstop
+```
+
+* Then load it again:
+```sh
+bfstart
+```
 
 ## Install Memcached
 
 As memcached is  usefull and will be used in some of our tools, it's already installed. But : 
 
 * To restart memcached after an upgrade:
-```console
+```sh
 brew services restart memcached
 ```
 
 * Or, if you don't want/need a background service you can just run:
-```console
+```sh
 memstart
 ```
 
 ## Install MySQL
-* Execute
 
-```console
+* Execute
+```ql
 brew install mysql
-mkdir -p ~/Library/LaunchAgents
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
-mysqladmin -u root password pwroot
-mysqladmin -u root -ppwroot -h localhost password pwroot
-mysqladmin -u root -ppwroot reload
-history -c
+mysql_secure_installation
 sudo mkdir /var/mysql
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 ```
 
+* To restart MySql after an upgrade:
+```sh
+brew services restart mysql
+```
 
+* Or, if you don't want/need a background service you can just run:
+```sh
+mysqlstart
+```
+
+* To connect run:
+```sh
+mysql -uroot
+```
+
+## Install PHP 5.5
+
+We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
+
+* Execute
+```sh
+brew install php55
+```
+
+### Install Extensions
+
+* Execute
+```sh
+brew install php55-igbinary php55-memcached php55-memcache php55-mcrypt php55-apcu php55-intl php55-xdebug php55-twig php55-mongo php55-oauth php55-solr php55-tidy php55-xhprof blackfire-php55
+```
+
+### Test PHP 5.5
+
+* Execute
+```sh
+$(brew --prefix homebrew/php/php55)/bin/php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+### Unlink PHP 55
+
+* Execute
+```sh
+brew unlink php55
+```
+
+## Install PHP 5.6
+
+We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
+
+* Execute
+```sh
+brew install php56
+```
+
+###Install Extensions
+
+* Execute
+```sh
+brew install php56-igbinary php56-memcached php56-memcache php56-apcu php56-intl php56-mcrypt php56-xdebug php56-twig php56-mongo php56-oauth php56-solr php56-tidy php56-xhprof blackfire-php56
+```
+
+### Test PHP 5.6
+
+* Execute
+```sh
+$(brew --prefix homebrew/php/php56)/bin/php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+### Unlink PHP 5.6
+
+* Execute
+```sh
+brew unlink php56
+```
+
+## Install PHP 7.0
+
+We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
+
+* Execute
+```sh
+brew install php70
+```
+###Install Extensions
+
+* Execute
+```sh
+brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached
+brew install php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70
+```
+
+### Test PHP 7.0
+
+* Execute
+```sh
+php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+
+## Configure PHP
+
+* Execute
+```sh
+cfgphp
+```
+
+* Update PHP Init files
+```sh
+date.timezone = America/Toronto
+date.default_latitude  = 45.54545
+date.default_longitude = -73.63908
+
+error_reporting  =  E_ALL
+
+display_errors = On
+
+[xdebug]
+xdebug.var_display_max_children = 999
+xdebug.var_display_max_data = 999
+xdebug.var_display_max_depth = 100
+
+```
+
+### Test PHP
+
+* Execute
+```sh
+php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+## Run PostgreSql
+
+* To have launchd start postgresql now and restart at login:
+
+```sh
+brew services start postgresql
+```
+
+* Or, if you don't want/need a background service you can just run:
+
+```sh
+pgstart
+```
+
+## Install Composer
+
+* Execute
+```sh
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+```
+
+## Install Symfony Installer
+
+* Execute
+```sh
+sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+sudo chmod a+x /usr/local/bin/symfony
+```
+
+## Install SASS and Compass
+
+* Execute
+```sh
+sudo gem install compass
+sudo gem install css_parser
+sudo gem install breakpoint
+```
 
 
 
