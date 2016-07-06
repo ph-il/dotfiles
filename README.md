@@ -220,7 +220,7 @@ brew install php70
 * Execute
 ```sh
 brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached --HEAD homebrew/php/php70-redis --HEAD homebrew/php/php70-yaml
-brew install php70-opcache php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70
+brew install php70-opcache php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70 php70-ast
 ```
 
 ### Test PHP 7.0
@@ -397,7 +397,7 @@ cfghosts
 
 * Execute:
 ```sh
-brew install php70-ast php-cs-fixer pdepend php-code-sniffer phpunit phpunit-skeleton-generator phpmd phpmetrics phploc phpcpd composer symfony-installer phan
+brew install php-cs-fixer pdepend php-code-sniffer phpunit phpunit-skeleton-generator phpmd phpmetrics phploc phpcpd composer symfony-installer phan
 ```
 
 ## Update Tools 
