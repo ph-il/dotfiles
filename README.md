@@ -393,6 +393,21 @@ Include /private/etc/apache2/other/*.conf
 cfghosts
 ```
 
+## Install PHP Coding Standards Fixer, PHP_CodeSniffer, PHPUnit, Composer, Symfony Installer, ...
+
+* Execute:
+```sh
+brew install php70-ast php-cs-fixer pdepend php-code-sniffer phpunit phpunit-skeleton-generator phpmd phpmetrics phploc phpcpd composer symfony-installer phan
+```
+
+## Update Tools 
+
+* Execute:
+```sh
+toolsupdate
+```
+
+This will updates all tools.
 
 
 

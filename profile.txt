@@ -216,18 +216,20 @@ alias sfload='sf doctrine:fixtures:load'
 # This is use to upgrade many of the command line tools we'll add.
 # Usage: toolsupdate
 toolsupdate() {
+    echo "Updating brew installs..."
     brew update
     brew upgrade
-#if you run memcached as a service uncomment next line	
-#    brew services restart memcached	
-#if you run mysql as a service uncomment next line	
-#    brew services restart mysql	
-    composer selfupdate
+#if you run memcached as a service uncomment next line  
+#    brew services restart memcached    
+#if you run mysql as a service uncomment next line  
+#    brew services restart mysql
+    echo "Updating composer..."
     composer global update
-	symfony self-update
+#    echo "Updating PEAR and PECL..."
 #    sudo pear upgrade PEAR
 #    sudo pear upgrade-all
 #    sudo pecl upgrade-all
+    echo "Updating Gems..."
     sudo gem update
 }
  
@@ -242,7 +244,7 @@ gosf() {
         SF_PROG="php $PRJ_SF/bin/console"
         SF_CACHE="$PRJ_SF/var/cache/"
         SF_LOG="$PRJ_SF/var/log/"
-	elif [ "$2" == 2 ]
+    elif [ "$2" == 2 ]
     then
         SF_PROG="php $PRJ_SF/app/console"
         SF_CACHE="$PRJ_SF/app/cache/"
@@ -258,7 +260,7 @@ gosf() {
 
     if [[ "$3" != "" && "$3" != "none" ]]
     then
-		sphp ${3}
+        sphp ${3}
     fi
  
     # if [[ "$3" != "" && "$3" != "none" ]]
@@ -290,37 +292,37 @@ sfschema() {
 # base on : https://github.com/sgotre/sphp-osx/blob/master/sphp
 # Usage: sphp [phpversion]
 sphp() {
-		
-	if [ $# -ne 1 ]; then
-		echo "Usage: sphp [phpversion]"
-		exit 1
-	fi
+        
+    if [ $# -ne 1 ]; then
+        echo "Usage: sphp [phpversion]"
+        exit 1
+    fi
 
-	currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
-	newversion="$1"
-	shortOld="`php -r \"error_reporting(0); echo substr(phpversion(), 0, 1);\"`"
-	shortNew="`php -r \"error_reporting(0); echo substr('$1', 0, 1);\"`"
-	brew list php$newversion 2> /dev/null > /dev/null
-	if [ $? -eq 0 ]; then
-		echo "PHP version $newversion found"
-		echo "Unlinking old binaries..."
-		brew unlink php$currentversion 2> /dev/null > /dev/null
-		echo "Linking new binaries..."
-		brew link php$newversion
-		echo "Linking new modphp addon..."
-		sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${shortNew}.so
-		echo "Fixing LoadModule..."
-		apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
-		sudo sed -i -e "/LoadModule php${shortOld}_module/s/^#*/#/" $apacheConf
-		sudo sed -i -e "/LoadModule php${shortNew}_module/s/^#//" $apacheConf
-		echo "Updating version file..."
-		echo "Restarting system Apache..."
-		apachectl -k restart > /dev/null 2>&1
-		echo "Done."
-	else
-		echo "PHP version $newversion was not found."
-		exit 1
-	fi
+    currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
+    newversion="$1"
+    shortOld="`php -r \"error_reporting(0); echo substr(phpversion(), 0, 1);\"`"
+    shortNew="`php -r \"error_reporting(0); echo substr('$1', 0, 1);\"`"
+    brew list php$newversion 2> /dev/null > /dev/null
+    if [ $? -eq 0 ]; then
+        echo "PHP version $newversion found"
+        echo "Unlinking old binaries..."
+        brew unlink php$currentversion 2> /dev/null > /dev/null
+        echo "Linking new binaries..."
+        brew link php$newversion
+        echo "Linking new modphp addon..."
+        sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${shortNew}.so
+        echo "Fixing LoadModule..."
+        apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+        sudo sed -i -e "/LoadModule php${shortOld}_module/s/^#*/#/" $apacheConf
+        sudo sed -i -e "/LoadModule php${shortNew}_module/s/^#//" $apacheConf
+        echo "Updating version file..."
+        echo "Restarting system Apache..."
+        apachectl -k restart > /dev/null 2>&1
+        echo "Done."
+    else
+        echo "PHP version $newversion was not found."
+        exit 1
+    fi
 }
 
 
