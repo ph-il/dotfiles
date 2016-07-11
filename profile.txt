@@ -1,7 +1,7 @@
 ##### local variable #####
  
 # Please change if you're using an other directory for Projects
-export PRJ_DIR='~/projects'
+export PRJ_DIR="${HOME}/projects"
 
 ##### Environment variables #####
  
@@ -12,7 +12,7 @@ export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH:/Users/$(whoami)/b
 
 export JAVA_HOME=$(/usr/libexec/java_home) 
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home" 
-export NEO4J_HOME="/Users/philippe/projects/tools/exakat/neo4j"
+export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
 
  
 # configuring GIT
@@ -111,13 +111,16 @@ alias csvn='find . -name .svn -print0 | xargs -0 sudo rm -rf '
 alias ctdb='find . -name Thumbs.db -print0 | xargs -0 sudo rm -rf '
 
 # Composer
-alias cup='composer update --prefer-dist'
-alias ci='composer install --prefer-dist'
+alias cup='composer update --prefer-dist --no-plugins'
+alias ci='composer install --prefer-dist --no-plugins'
  
 # df - Better display free disk space with "Human-readable" output.
 alias df="df -h"
  
-#git
+# Exakat
+alias goexakat='cd "${PRJ_DIR}/tools/exakat"'
+ 
+# git
 alias gb='git branch'
 alias gba='git branch -a'
 alias gc='git commit -v'
@@ -166,7 +169,7 @@ alias neostop='$NEO4J_HOME/bin/neo4j stop'
 # php
 alias cfgphp='mate /usr/local/etc/php/'
 # Load xdebug Zend extension with php command
-#alias php='php -dzend_extension=xdebug.so'
+# alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
 #alias phpunit='php $(which phpunit)'
 
@@ -176,6 +179,9 @@ alias csf='php-cs-fixer fix --level=all'
 
 # postgreSql
 alias pgstart='postgres -D /usr/local/var/postgres'
+
+# Project Directory
+alias goprj='cd "${PRJ_DIR}"'
 
 # redis
 alias redisstart='redis-server /usr/local/etc/redis.conf'
@@ -225,6 +231,7 @@ toolsupdate() {
 #    brew services restart mysql
     echo "Updating composer..."
     composer global update
+    
 #    echo "Updating PEAR and PECL..."
 #    sudo pear upgrade PEAR
 #    sudo pear upgrade-all
@@ -234,17 +241,23 @@ toolsupdate() {
 }
  
 # Defining a default project
-# Usage: gosf 'project directory' 'symfony version' 'project configuration name in apache'
+# Usage: gosf 'project directory' 'php version' 'symfony version' 'project configuration name in apache'
 gosf() {
     cd "${1}"
     PRJ_SF="${1}"
     export PRJ_SF
-    if [ "$2" == 3 ]
+
+    if [[ "$2" != "" && "$2" != "none" ]]
+    then
+        sphp ${2}
+    fi
+
+    if [ "$3" == 3 ]
     then
         SF_PROG="php $PRJ_SF/bin/console"
         SF_CACHE="$PRJ_SF/var/cache/"
         SF_LOG="$PRJ_SF/var/log/"
-    elif [ "$2" == 2 ]
+    elif [ "$3" == 2 ]
     then
         SF_PROG="php $PRJ_SF/app/console"
         SF_CACHE="$PRJ_SF/app/cache/"
@@ -258,10 +271,6 @@ gosf() {
     export SF_CACHE
     export SF_LOG
 
-    if [[ "$3" != "" && "$3" != "none" ]]
-    then
-        sphp ${3}
-    fi
  
     # if [[ "$3" != "" && "$3" != "none" ]]
     # then

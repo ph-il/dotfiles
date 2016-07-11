@@ -61,7 +61,7 @@ Please correct the problems brew doctor will give you. It might be different for
 
 * Execute
 ```sh
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight
+brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven
 ```
 
 ## Install Redis
@@ -409,5 +409,102 @@ toolsupdate
 
 This will updates all tools.
 
+## Intall Exakat
+
+* Create the directory for Exakat by executing 
+```sh
+    goprj
+    mkd tools/exakat
+```
+
+### Install Java
+
+Install Java(TM) JDK 1.8. Neo4j recommends using Java 1.7, but is currently reported to work correctly with Java 1.8. Some variable are already set in our `.profile` file.
+
+* Go to [Java Se Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) and follow the instructions
+* Check with `java -version`
+* `echo $JAVA_HOME` (Should be set to the path of Java 1.8)
+
+### Install Neo4j
+
+We need Neo4j 2.3.\* (tested with 2.3.5)
+
+* Execute: 
+```sh
+    goexakat
+    curl -O http://neo4j.com/artifact.php?name=neo4j-community-2.3.5-unix.tar.gz 
+    tar -xf artifact.php\?name=neo4j-community-2.3.5-unix.tar.gz
+    mv neo4j-community-2.3.5 neo4j
+    rm artifact.php\?name=neo4j-community-2.3.5-unix.tar.gz
+    neostart
+    neostop
+    mate $NEO4J_HOME/conf/neo4j-server.properties
+```    
+
+* Register the Gremlin plugin in the `$NEO4J_HOME/conf/neo4j-server.properties` file. To do so, add this line:
+
+```
+    org.neo4j.server.thirdparty_jaxrs_classes=com.thinkaurelius.neo4j.plugins=/tp
+```
+
+#### Gremlin plug-in
+
+This install [gremlin plug-in](https://github.com/thinkaurelius/neo4j-gremlin-plugin) for Neo4j.
+  
+* First, in command line : 
+
+```sh
+    git clone https://github.com/thinkaurelius/neo4j-gremlin-plugin.git gremlin-plugin
+    cd gremlin-plugin
+    mate pom.xml
+```
+
+* Now, check the `pom.xml` file, add this in the `pom.xml`, below contributors section.) : 
+```xml
+    <repositories>
+       <repository>
+         <id>snapshots-repo</id>
+         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+         <releases><enabled>false</enabled></releases>
+         <snapshots><enabled>true</enabled></snapshots>
+       </repository>
+     </repositories>
+```
+
+* Then, finish the compilation and move the files: 
+```sh
+    mvn clean package -Dtp.version=3
+    unzip target/neo4j-gremlin-plugin-tp3-2.3.1-server-plugin.zip -d $NEO4J_HOME/plugins/gremlin-plugin
+    mate neo4j/conf/neo4j-server.properties
+```
+
+* Replace `dbms.security.auth_enabled=true` to `dbms.security.auth_enabled=false`
+
+* Start neo4j server :    
+```sh
+    neostart
+```
+
+* You may call check that the server has GremlinPlugin available with 
+
+```sh
+    curl -s -G http://localhost:7474/tp/gremlin/execute
+```
+
+* Result should be : 
+
+```json
+    {
+       "success": true
+    }
+```
+
+* You may now removed the git repository for gremlin-plugin.
+```sh
+    cd ..
+    rm -rf gremlin-plugin
+    mkd neo4j/Scripts 
+    chmod 777 neo4j/Scripts/
+```
 
 
