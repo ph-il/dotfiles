@@ -459,22 +459,18 @@ This install [gremlin plug-in](https://github.com/thinkaurelius/neo4j-gremlin-pl
     mate pom.xml
 ```
 
-* Now, check the `pom.xml` file, add this in the `pom.xml`, below contributors section.) : 
-```xml
-    <repositories>
-       <repository>
-         <id>snapshots-repo</id>
-         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-         <releases><enabled>false</enabled></releases>
-         <snapshots><enabled>true</enabled></snapshots>
-       </repository>
-     </repositories>
-```
+* Make the following changes in the following files : 
+
+    1 `pom.xml` : change the version tag from 2.3.1 to 2.3.5
+    2 `tinkerpop2/pom.xml` : change the version tag from 2.3.1 to 2.3.5
+    3 `tinkerpop3/pom.xml`
+        * change the version tag from 2.3.1 to 2.3.5
+        * change the tinkerpop-version tag from 3.1.0-incubating to 3.2.0-incubating
 
 * Then, finish the compilation and move the files: 
 ```sh
     mvn clean package -Dtp.version=3
-    unzip target/neo4j-gremlin-plugin-tp3-2.3.1-server-plugin.zip -d $NEO4J_HOME/plugins/gremlin-plugin
+    unzip target/neo4j-gremlin-plugin-tp3-2.3.5-server-plugin.zip -d $NEO4J_HOME/plugins/gremlin-plugin
     mate neo4j/conf/neo4j-server.properties
 ```
 
@@ -503,8 +499,8 @@ This install [gremlin plug-in](https://github.com/thinkaurelius/neo4j-gremlin-pl
 ```sh
     cd ..
     rm -rf gremlin-plugin
-    mkd neo4j/Scripts 
-    chmod 777 neo4j/Scripts/
+    chmod 777 neo4j
+    neostop
 ```
 
 
