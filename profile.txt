@@ -256,12 +256,12 @@ gosf() {
     then
         SF_PROG="php $PRJ_SF/bin/console"
         SF_CACHE="$PRJ_SF/var/cache/"
-        SF_LOG="$PRJ_SF/var/log/"
+        SF_LOG="$PRJ_SF/var/logs/"
     elif [ "$3" == 2 ]
     then
         SF_PROG="php $PRJ_SF/app/console"
         SF_CACHE="$PRJ_SF/app/cache/"
-        SF_LOG="$PRJ_SF/app/log/"
+        SF_LOG="$PRJ_SF/app/logs/"
     else
         SF_PROG="$PRJ_SF/symfony"
         SF_CACHE="$PRJ_SF/cache/"
