@@ -238,6 +238,8 @@ toolsupdate() {
 #    sudo pecl upgrade-all
     echo "Updating Gems..."
     sudo gem update
+    echo "Updating npm..."
+    sudo npm update
 }
  
 # Defining a default project

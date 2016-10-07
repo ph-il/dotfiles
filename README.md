@@ -61,7 +61,7 @@ Please correct the problems brew doctor will give you. It might be different for
 
 * Execute
 ```sh
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven
+brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven node
 ```
 
 ## Install Redis
@@ -295,11 +295,23 @@ sudo mv composer.phar /usr/local/bin/composer
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 sudo chmod a+x /usr/local/bin/symfony
 ```
-
-## Install SASS and Compass
+## Install Bower
 
 * Execute
 ```sh
+sudo npm install -g bower
+```
+## Install Bundler
+
+* Execute
+```sh
+sudo npm install -g bower
+```
+## Install Less, SASS and Compass
+
+* Execute
+```sh
+sudo npm install -g less
 sudo gem install compass
 sudo gem install css_parser
 sudo gem install breakpoint
