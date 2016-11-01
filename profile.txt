@@ -336,9 +336,11 @@ sphp() {
     fi
 }
 
-
+if which rbenv > /dev/null; then 
+    eval "$(rbenv init -)"; 
+fi
 
 # Include ~/.bashrc for personal aliases
 if [ -f $HOME/.bashrc ]; then
-        source $HOME/.bashrc
+    source $HOME/.bashrc
 fi

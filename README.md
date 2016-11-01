@@ -39,6 +39,10 @@ source ~/.profile
 * Run the App Store
 * Find and Choose Download on Xcode
 * Once the installation finishes, start Xcode to complete the installation.
+* Execute
+```sh
+xcode-select --install
+```
 
 ## Install Homebrew
 
@@ -61,7 +65,14 @@ Please correct the problems brew doctor will give you. It might be different for
 
 * Execute
 ```sh
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven node
+brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven node rbenv ruby-build sqlite3 gpg
+```
+
+## Install Ruby
+```sh
+rbenv install 2.3.1
+rbenv global 2.3.1
+ruby -v
 ```
 
 ## Install Redis
@@ -77,6 +88,7 @@ brew services start redis
 ```sh
 redisstart
 ```
+
 ## Install Blackfire 
 
 * Configure your Blackfire credentials:
@@ -121,7 +133,7 @@ memstart
 ## Install MySQL
 
 * Execute
-```ql
+```sh
 brew install mysql
 mysql_secure_installation
 sudo mkdir /var/mysql
@@ -305,7 +317,7 @@ sudo npm install -g bower
 
 * Execute
 ```sh
-sudo npm install -g bower
+sudo gem install bundler
 ```
 ## Install Less, SASS and Compass
 
@@ -421,7 +433,7 @@ toolsupdate
 
 This will updates all tools.
 
-## Intall Exakat
+## Install Exakat
 
 * Create the directory for Exakat by executing 
 ```sh
