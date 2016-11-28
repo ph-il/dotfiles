@@ -234,7 +234,6 @@ brew install php70
 brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached --HEAD homebrew/php/php70-redis --HEAD homebrew/php/php70-yaml
 brew install php70-opcache php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70 php70-ast
 ```
-
 ### Test PHP 7.0
 
 * Execute
@@ -245,6 +244,36 @@ php -i "(command-line 'phpinfo()')"
 * Make sure that everyting is working
 
 
+## Install PHP 7.1
+
+We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
+
+* Execute
+```sh
+brew install php71
+```
+###Install Extensions
+
+As PHP 7.1 is in BETA, some extentions doesn't exist.
+
+* Execute
+```sh
+brew install --HEAD homebrew/php/php71-redis --HEAD homebrew/php/php71-yaml
+brew install php71-opcache php71-apcu php71-intl php71-xdebug php71-mcrypt php71-mongodb php71-oauth php71-tidy blackfire-php71 php71-ast
+```
+
+### Test PHP 7.1
+
+* Execute
+```sh
+php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+
+
+
 ## Configure PHP
 
 * Execute
@@ -252,7 +281,8 @@ php -i "(command-line 'phpinfo()')"
 cfgphp
 ```
 
-* Update PHP Init files
+* Update ALL PHP Init files
+* Please change information for YOUR region.
 ```sh
 date.timezone = America/Toronto
 date.default_latitude  = 45.54545
@@ -296,8 +326,7 @@ pgstart
 
 * Execute
 ```sh
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+brew install composer
 ```
 
 ## Install Symfony Installer
