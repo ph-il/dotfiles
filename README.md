@@ -1,110 +1,100 @@
-# phposxinstall
-My Installation of PHP and Tools for OSX
+# Ph-il’s (Philoupedia) dotfiles
 
-## Install textmate 2
+## Installation
 
-* Download Textmate 2 at : http://api.textmate.org/downloads/beta 
-* Install it in your app directory
-* Run Textmate to install the CLI version
-	* It will be in the menu : TextMate | Preferences | Terminal 
-	* Click install
+**Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
-## Determine a "Projects" directory
+### Using Git and the bootstrap script
 
-You'll need to determine a directory for all projects.
-I recommend ~/projects, so it's the one I'll use on all examples. Please fell free to change it.
-     
-* Execute
-```sh
-cd
-mkdir -pv projects
+You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+
+```bash
+git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-## Install Alias and Configuration for the Command Line.
+To update, `cd` into your local `dotfiles` repository and then:
 
-* Check with `ls ~/.profile`, if you have a .profile file
-* If you have one, rename it (i.e. profile.txt ), then you’ll be able to your .bashrc file. We use .bashrc for your own configuration, and .profile for this install and any updates of installation and alias.
-* Copy .profile in your home directory
-```sh
-cp profile.txt ~/.profile
-```
-	
-* Execute
-```sh
-source ~/.profile
+```bash
+source bootstrap.sh
 ```
 
-## Install Xcode
+Alternatively, to update while avoiding the confirmation prompt:
 
-* Run the App Store
-* Find and Choose Download on Xcode
-* Once the installation finishes, start Xcode to complete the installation.
-* Execute
-```sh
-xcode-select --install
+```bash
+set -- -f; source bootstrap.sh
 ```
 
-## Install Homebrew
+### Specify the `$PATH`
 
-* Execute
-      
-```sh
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap Homebrew/bundle
-brew doctor
-brew bundle
-```
-Please correct the problems brew doctor will give you. It might be different for every body.
-	
+If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as [detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-26)) takes place.
 
-## Install Blackfire 
+Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
 
-* Configure your Blackfire credentials:
-```sh
-sudo blackfire-agent -register
+```bash
+export PATH="/usr/local/bin:$PATH"
 ```
 
-* Register the blackfire-agent service:
-```sh
-ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
+### Add custom commands without creating a new fork
+
+If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+
+My `~/.extra` looks something like this:
+
+```bash
+# Git credentials
+# Not in the repository, to prevent people from accidentally committing under my name
+GIT_AUTHOR_NAME="Philippe Gamache"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+git config --global user.name "$GIT_AUTHOR_NAME"
+GIT_AUTHOR_EMAIL="philippe@ph-il.ca"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
 
-* Then load it for the first time:
-```sh
-bfstart
+You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
+
+### Sensible macOS defaults
+
+When setting up a new Mac, you may want to set some sensible macOS defaults:
+
+```bash
+./install.sh
 ```
 
-* In order to restart the service, and whenever you modify its configuration, unload it:
-```sh
-bfstop
-```
+## Feedback
 
-* Then load it again:
-```sh
-bfstart
-```
-## Install MySQL
+Suggestions/improvements
+[welcome](https://github.com/ph-il/dotfiles/issues)!
 
-* Execute
-```sh
-mysql_secure_installation
-sudo mkdir /var/mysql
-sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
-```
+## Author
 
-* To restart MySql after an upgrade:
-```sh
-mysqlrestart
-```
+| [Follow @philoupedia on Twitter](http://twitter.com/philopedia) |
+|---|
+| [Philippe Gamache](https://ph-il.ca/) |
+|---|
+| [Gnome Archivist](https://gnomearchiviste.ca/) |
 
-* To connect run:
-```sh
-mysql -uroot
-```
+## Thanks to…
 
-## Install PHP 
+* [Mathias Bynens](https://mathiasbynens.be/) and his [dotfiles repository](https://github.com/mathiasbynens/dotfiles) for the base code and readme. All is thanks are also imprtant:  
+  * @ptb and [his _OS X Lion Setup_ repository](https://github.com/ptb/Mac-OS-X-Lion-Setup)
+  * [Ben Alman](http://benalman.com/) and his [dotfiles repository](https://github.com/cowboy/dotfiles)
+  * [Chris Gerke](http://www.randomsquared.com/) and his [tutorial on creating an OS X SOE master image](http://chris-gerke.blogspot.com/2012/04/mac-osx-soe-master-image-day-7.html) + [_Insta_ repository](https://github.com/cgerke/Insta)
+  * [Cătălin Mariș](https://github.com/alrra) and his [dotfiles repository](https://github.com/alrra/dotfiles)
+  * [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
+  * [Jan Moesen](http://jan.moesen.nu/) and his [ancient `.bash_profile`](https://gist.github.com/1156154) + [shiny _tilde_ repository](https://github.com/janmoesen/tilde)
+  * [Lauri ‘Lri’ Ranta](http://lri.me/) for sharing [loads of hidden preferences](http://osxnotes.net/defaults.html)
+  * [Matijs Brinkhuis](http://hotfusion.nl/) and his [dotfiles repository](https://github.com/matijs/dotfiles)
+  * [Nicolas Gallagher](http://nicolasgallagher.com/) and his [dotfiles repository](https://github.com/necolas/dotfiles)
+  * [Sindre Sorhus](http://sindresorhus.com/)
+  * [Tom Ryder](https://sanctum.geek.nz/) and his [dotfiles repository](https://sanctum.geek.nz/cgit/dotfiles.git/about)
+  * [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [OSXDefaults project](https://github.com/kevinSuttle/OSXDefaults), which aims to provide better documentation for [`~/.macos`](https://mths.be/macos)
+  * [Haralan Dobrev](http://hkdobrev.com/)
+  * anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
+* [Jean-Christophe Laffer](https://github.com/ptb/Mac-OS-X-Lion-Setup) for lot of code in my original .profile
+* [Damien Seguy](http://exakat.io) for the [Exakat config](https://github.com/dseguy)
 
-We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
+
 
 
 ### Test PHP 5.5
@@ -144,52 +134,6 @@ php -i "(command-line 'phpinfo()')"
 
 * Make sure that everyting is working
 
-## Configure PHP
-
-* Execute
-```sh
-cfgphp
-```
-
-* Update ALL PHP Init files
-* Please change information for YOUR region.
-```sh
-date.timezone = America/Toronto
-date.default_latitude  = 45.54545
-date.default_longitude = -73.63908
-
-error_reporting  =  E_ALL
-
-display_errors = On
-
-[xdebug]
-xdebug.var_display_max_children = 999
-xdebug.var_display_max_data = 999
-xdebug.var_display_max_depth = 100
-```
-
-### Test PHP
-
-* Execute
-```sh
-php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
-
-
-## Install Bower
-
-* Execute
-```sh
-sudo npm install -g bower
-```
-## Install Less
-
-* Execute
-```sh
-sudo npm install -g less
-```
 
 ## Setup Apache
 
