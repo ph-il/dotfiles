@@ -11,7 +11,6 @@ export EDITOR="/usr/local/bin/mate -w"
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH:/Users/$(whoami)/bin"
 
 export JAVA_HOME=$(/usr/libexec/java_home) 
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home" 
 export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
 
  
@@ -150,8 +149,11 @@ alias dir="lt"
 alias dot="l."
  
 # Memcached
-alias memstart='/usr/local/opt/memcached/bin/memcached -d'
-alias memstop='sudo killall -TERM memcached'
+#alias memstart='/usr/local/opt/memcached/bin/memcached -d'
+#alias memstop='sudo killall -TERM memcached'
+alias memrestart='brew services restart memcached'
+alias memstart='brew services start memcached'
+alias memstop='brew services stop memcached'
 alias memreset="echo 'flush_all' | nc localhost 11211"
 alias memstats="echo 'stats' | nc localhost 11211"
  
@@ -159,8 +161,9 @@ alias memstats="echo 'stats' | nc localhost 11211"
 alias mkd="mkdir -pv"
  
 # Mysql
-alias mysqlstart='mysql.server start'
-alias mysqlstop='mysql.server stop'
+alias mysqlrestart='brew services restart mysql'
+alias mysqlstart='brew services start mysql'
+alias mysqlstop='brew services stop mysql'
 alias cfgmysql='mate /etc/my.cnf'
 
 # neo4j
@@ -179,13 +182,17 @@ alias cs='phpcs --ignore=*/SCCS/*,*/vendor/*,*/.svn/*,*/base/*,*/templates/* --s
 alias csf='php-cs-fixer fix --level=all'
 
 # postgreSql
-alias pgstart='postgres -D /usr/local/var/postgres'
+alias pgrestart='brew services restart postgres'
+alias pgstart='brew services start postgres'
+alias pgstop='brew services stop postgres'
 
 # Project Directory
 alias goprj='cd "${PRJ_DIR}"'
 
 # redis
-alias redisstart='redis-server /usr/local/etc/redis.conf'
+alias redisrestart='brew services restart redis'
+alias redisstart='brew services start redis'
+alias redisstop='brew services stop redis'
  
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
@@ -229,21 +236,23 @@ toolsupdate() {
         exit 1
     fi    
     
-    
     echo "Updating brew installs..."
     currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
     brew unlink php$currentversion 2> /dev/null > /dev/null
     brew update
     brew upgrade
-    brew link php
+    brew link php$currentversion 2> /dev/null > /dev/null
 #if you run memcached as a service uncomment next line  
     brew services restart memcached    
 #if you run mysql as a service uncomment next line  
     brew services restart mysql
+    brew services restart redis
 #    echo "Updating PEAR and PECL..."
 #    sudo pear upgrade PEAR
 #    sudo pear upgrade-all
 #    sudo pecl upgrade-all
+    echo "Updating composer global..."
+    composer global update
     echo "Updating Gems..."
     sudo gem update
     echo "Updating npm..."
@@ -354,7 +363,7 @@ sphp() {
                 read -n 1 yn
                 case $yn in
                     [Yy]* ) echo && break;;
-                    [Nn]* ) echo && exit 1;;
+                    [Nn]* ) echo && exit 0;;
                 esac
             done
         fi
@@ -367,7 +376,7 @@ sphp() {
 
         echo "Linking new modphp addon..."
         sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${majorNew}.so
-        
+
         echo "Fixing LoadModule..."
         apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
         sudo sed -i -e "/LoadModule php${majorOld}_module/s/^#*/#/" $apacheConf

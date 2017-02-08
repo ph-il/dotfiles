@@ -50,44 +50,12 @@ xcode-select --install
       
 ```sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap Homebrew/bundle
 brew doctor
-brew tap homebrew/dupes
-brew tap homebrew/versions
-brew tap homebrew/php
-brew tap blackfireio/homebrew-blackfire
-brew update
-brew upgrade
+brew bundle
 ```
-	
 Please correct the problems brew doctor will give you. It might be different for every body.
-
-## Install tools, git & newer version of autoconf
-
-* Execute
-```sh
-brew install autoconf git ack wget curl redis memcached libmemcached colordiff imagemagick icoutils gettext icu4c libxml2 unixodbc readline bash-git-prompt blackfire-agent highlight maven node rbenv ruby-build sqlite3 gpg
-```
-
-## Install Ruby
-```sh
-rbenv install 2.3.1
-rbenv global 2.3.1
-ruby -v
-```
-
-## Install Redis
-
-As redis is more an more usefull and will be used in some of our tools, it's already installed. But : 
-
-* To have launchd start redis now and restart at login:
-```sh
-brew services start redis
-```
-
-* Or, if you don't want/need a background service you can just run:
-```sh
-redisstart
-```
+	
 
 ## Install Blackfire 
 
@@ -115,26 +83,10 @@ bfstop
 ```sh
 bfstart
 ```
-
-## Install Memcached
-
-As memcached is  usefull and will be used in some of our tools, it's already installed. But : 
-
-* To restart memcached after an upgrade:
-```sh
-brew services restart memcached
-```
-
-* Or, if you don't want/need a background service you can just run:
-```sh
-memstart
-```
-
 ## Install MySQL
 
 * Execute
 ```sh
-brew install mysql
 mysql_secure_installation
 sudo mkdir /var/mysql
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
@@ -142,12 +94,7 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 * To restart MySql after an upgrade:
 ```sh
-brew services restart mysql
-```
-
-* Or, if you don't want/need a background service you can just run:
-```sh
-mysqlstart
+mysqlrestart
 ```
 
 * To connect run:
@@ -155,21 +102,10 @@ mysqlstart
 mysql -uroot
 ```
 
-## Install PHP 5.5
+## Install PHP 
 
 We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
 
-* Execute
-```sh
-brew install php55
-```
-
-### Install Extensions
-
-* Execute
-```sh
-brew install php55-igbinary php55-memcached php55-memcache php55-opcache php55-mcrypt php55-apcu php55-intl php55-xdebug php55-twig php55-mongo php55-oauth php55-solr php55-tidy php55-xhprof blackfire-php55 php55-redis php55-yaml
-```
 
 ### Test PHP 5.5
 
@@ -180,29 +116,6 @@ $(brew --prefix homebrew/php/php55)/bin/php -i "(command-line 'phpinfo()')"
 
 * Make sure that everyting is working
 
-### Unlink PHP 55
-
-* Execute
-```sh
-brew unlink php55
-```
-
-## Install PHP 5.6
-
-We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
-
-* Execute
-```sh
-brew install php56
-```
-
-###Install Extensions
-
-* Execute
-```sh
-brew install php56-igbinary php56-memcached php56-memcache php56-opcache php56-apcu php56-intl php56-mcrypt php56-xdebug php56-twig php56-mongo php56-oauth php56-solr php56-tidy php56-xhprof blackfire-php56 php56-redis php56-yaml
-```
-
 ### Test PHP 5.6
 
 * Execute
@@ -212,55 +125,15 @@ $(brew --prefix homebrew/php/php56)/bin/php -i "(command-line 'phpinfo()')"
 
 * Make sure that everyting is working
 
-### Unlink PHP 5.6
 
-* Execute
-```sh
-brew unlink php56
-```
-
-## Install PHP 7.0
-
-We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
-
-* Execute
-```sh
-brew install php70
-```
-###Install Extensions
-
-* Execute
-```sh
-brew install --HEAD homebrew/php/php70-igbinary --HEAD homebrew/php/php70-memcached --HEAD homebrew/php/php70-redis --HEAD homebrew/php/php70-yaml
-brew install php70-opcache php70-apcu php70-intl php70-xdebug php70-mcrypt php70-mongodb php70-oauth php70-tidy blackfire-php70 php70-ast
-```
 ### Test PHP 7.0
 
 * Execute
 ```sh
-php -i "(command-line 'phpinfo()')"
+$(brew --prefix homebrew/php/php70)/bin/php -i "(command-line 'phpinfo()')"
 ```
 
 * Make sure that everyting is working
-
-
-## Install PHP 7.1
-
-We install different versions of PHP so we can switch between them for development and help to run every test in Exakat.
-
-* Execute
-```sh
-brew install php71
-```
-###Install Extensions
-
-As PHP 7.1 is in BETA, some extentions doesn't exist.
-
-* Execute
-```sh
-brew install --HEAD homebrew/php/php71-redis --HEAD homebrew/php/php71-yaml
-brew install php71-opcache php71-apcu php71-intl php71-xdebug php71-mcrypt php71-mongodb php71-oauth php71-tidy blackfire-php71 php71-ast
-```
 
 ### Test PHP 7.1
 
@@ -270,9 +143,6 @@ php -i "(command-line 'phpinfo()')"
 ```
 
 * Make sure that everyting is working
-
-
-
 
 ## Configure PHP
 
@@ -296,7 +166,6 @@ display_errors = On
 xdebug.var_display_max_children = 999
 xdebug.var_display_max_data = 999
 xdebug.var_display_max_depth = 100
-
 ```
 
 ### Test PHP
@@ -308,54 +177,18 @@ php -i "(command-line 'phpinfo()')"
 
 * Make sure that everyting is working
 
-## Run PostgreSql
 
-* To have launchd start postgresql now and restart at login:
-
-```sh
-brew services start postgresql
-```
-
-* Or, if you don't want/need a background service you can just run:
-
-```sh
-pgstart
-```
-
-## Install Composer
-
-* Execute
-```sh
-brew install composer
-```
-
-## Install Symfony Installer
-
-* Execute
-```sh
-sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-sudo chmod a+x /usr/local/bin/symfony
-```
 ## Install Bower
 
 * Execute
 ```sh
 sudo npm install -g bower
 ```
-## Install Bundler
-
-* Execute
-```sh
-sudo gem install bundler
-```
-## Install Less, SASS and Compass
+## Install Less
 
 * Execute
 ```sh
 sudo npm install -g less
-sudo gem install compass
-sudo gem install css_parser
-sudo gem install breakpoint
 ```
 
 ## Setup Apache
@@ -445,14 +278,6 @@ Include /private/etc/apache2/other/*.conf
 ```sh
 cfghosts
 ```
-
-## Install PHP Coding Standards Fixer, PHP_CodeSniffer, PHPUnit, Composer, Symfony Installer, ...
-
-* Execute:
-```sh
-brew install php-cs-fixer pdepend php-code-sniffer phpunit phpunit-skeleton-generator phpmd phpmetrics phploc phpcpd composer symfony-installer phan
-```
-
 ## Update Tools 
 
 * Execute:
