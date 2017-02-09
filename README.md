@@ -128,10 +128,10 @@ cfgphp
 
 * Execute:
 ```sh
-toolsupdate
+update
 ```
 
-This will updates all tools.
+This will updates all tools and Mac Application.
 
 ## Feedback
 
@@ -141,9 +141,7 @@ Suggestions/improvements
 ## Author
 
 | [Follow @philoupedia on Twitter](http://twitter.com/philopedia/) |
-|---|
 | [Philippe Gamache](https://ph-il.ca/) |
-|---|
 | [Gnome Archivist](https://gnomearchiviste.ca/) |
 
 ## Thanks to…

@@ -4,6 +4,7 @@
 
 # Folder view configuration files
 .DS_Store
+.DS_Store?
 Desktop.ini
 
 # Thumbnail cache files
@@ -18,14 +19,35 @@ Icon
 .AppleDouble
 .localized
 .LSOverride
+.com.apple.*
 
 # Node.js & npm.
 node_modules
 npm-debug.log
 
-# Vim
+# IDE
 %*
 *.sw[a-z]
 *.un~
 .netrwhist
 Session.vim
+.vim/viminfo
+.vim/swaps/*
+.vim/undo
+vim/.viminfo
+.idea
+
+# credential file
+.gitconfig.local
+
+# log files
+*.log
+
+# Temp files
+*.tmproj
+
+# Version Control
+.svn
+.cvs
+.git
+

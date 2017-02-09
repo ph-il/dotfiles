@@ -225,6 +225,8 @@ update() {
     badge
     brew upgrade --force-bottle --cleanup
     badge
+    brew upgrade brew-cask
+    badge
     brew cleanup
     badge
     brew cask cleanup;
