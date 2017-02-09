@@ -1,18 +1,9 @@
-##### local variable #####
- 
-# Please change if you're using an other directory for Projects
-export PRJ_DIR="${HOME}/Projects"
 
 ##### Environment variables #####
  
-export PHP_AUTOCONF=/usr/local/Cellar/autoconf/2.69/bin/autoconf
-export EDITOR="/usr/local/bin/mate -w"
-export DEV_ENV="NONE"
 
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH:/Users/$(whoami)/bin"
 
-export JAVA_HOME=$(/usr/libexec/java_home) 
-export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
 
  
 
@@ -32,15 +23,14 @@ update() {
 	badge
 		
     echo "Updating brew installs..."
-    currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
-    brew unlink php$currentversion 2> /dev/null > /dev/null
+    brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
     brew update
 	badge
     brew upgrade
 	badge
 	brew cleanup;
 	badge
-    brew link php$currentversion 2> /dev/null > /dev/null
+    brew link php$PHP_VERSION 2> /dev/null > /dev/null
     brew services restart memcached    
 	badge
     brew services restart mysql
@@ -83,7 +73,7 @@ gosf() {
     PRJ_SF="${1}"
     export PRJ_SF
 
-    if [[ "$2" != "" && "$2" != "none" ]]
+    if [[ "$2" != "" && "$2" != "none" && PHP_VERSION != "$2"]]
     then
         sphp ${2}
     fi
@@ -156,10 +146,9 @@ sphp() {
         exit 1
     fi
 
-    currentversion="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
     newversion="$1"
 
-    majorOld=${currentversion:0:1}
+    majorOld=${PHP_VERSION:0:1}
     majorNew=${newversion:0:1}
     minorNew=${newversion:1:1}
 
@@ -169,19 +158,19 @@ sphp() {
         echo "PHP version $newversion found"
         
         # Check if new version is already the current version.
-        if [ "${newversion}" == "${currentversion}" ]; then
+        if [ "${newversion}" == "${PHP_VERSION}" ]; then
             echo -n "PHP version ${newversion} is already being used. Continue by reloading? (y/n) "
             while true; do
                 read -n 1 yn
                 case $yn in
                     [Yy]* ) echo && break;;
-                    [Nn]* ) echo && exit 0;;
+                    [Nn]* ) echo && exit 1;;
                 esac
             done
         fi
         
         echo "Unlinking old binaries..."
-        brew unlink php$currentversion 2> /dev/null > /dev/null
+        brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
         
         echo "Linking new binaries..."
         brew link php$newversion
@@ -195,6 +184,7 @@ sphp() {
         sudo sed -i -e "/LoadModule php${majorNew}_module/s/^#//" $apacheConf
 
         echo "Updating version file..."
+		export PHP_VERSION="${newversion}"
 
         echo "Restarting system Apache..."
         apachectl -k restart > /dev/null 2>&1
@@ -210,7 +200,4 @@ if which rbenv > /dev/null; then
     eval "$(rbenv init -)"; 
 fi
 
-# Include ~/.bashrc for personal aliases
-if [ -f $HOME/.bashrc ]; then
-    source $HOME/.bashrc
-fi
+
