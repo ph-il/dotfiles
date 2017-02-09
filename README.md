@@ -41,6 +41,15 @@ If `~/.extra` exists, it will be sourced along with the other files. You can use
 My `~/.extra` looks something like this:
 
 ```bash
+##### PROJECTS ALIAS #####
+ 
+# goto a specific project
+alias gotest='gosf $PRJ_DIR/test/formation2 55 2'
+alias gora='gosf $PRJ_DIR/rpgapi/ 70 3' 
+
+##### ALIAS #####
+
+##### CONFIG #####
 # Git credentials
 # Not in the repository, to prevent people from accidentally committing under my name
 GIT_AUTHOR_NAME="Philippe Gamache"
@@ -60,42 +69,7 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ```bash
 ./install.sh
 ```
-
-## Feedback
-
-Suggestions/improvements
-[welcome](https://github.com/ph-il/dotfiles/issues)!
-
-## Author
-
-| [Follow @philoupedia on Twitter](http://twitter.com/philopedia) |
-|---|
-| [Philippe Gamache](https://ph-il.ca/) |
-|---|
-| [Gnome Archivist](https://gnomearchiviste.ca/) |
-
-## Thanks to…
-
-* [Mathias Bynens](https://mathiasbynens.be/) and his [dotfiles repository](https://github.com/mathiasbynens/dotfiles) for the base code and readme. All is thanks are also imprtant:  
-  * @ptb and [his _OS X Lion Setup_ repository](https://github.com/ptb/Mac-OS-X-Lion-Setup)
-  * [Ben Alman](http://benalman.com/) and his [dotfiles repository](https://github.com/cowboy/dotfiles)
-  * [Chris Gerke](http://www.randomsquared.com/) and his [tutorial on creating an OS X SOE master image](http://chris-gerke.blogspot.com/2012/04/mac-osx-soe-master-image-day-7.html) + [_Insta_ repository](https://github.com/cgerke/Insta)
-  * [Cătălin Mariș](https://github.com/alrra) and his [dotfiles repository](https://github.com/alrra/dotfiles)
-  * [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
-  * [Jan Moesen](http://jan.moesen.nu/) and his [ancient `.bash_profile`](https://gist.github.com/1156154) + [shiny _tilde_ repository](https://github.com/janmoesen/tilde)
-  * [Lauri ‘Lri’ Ranta](http://lri.me/) for sharing [loads of hidden preferences](http://osxnotes.net/defaults.html)
-  * [Matijs Brinkhuis](http://hotfusion.nl/) and his [dotfiles repository](https://github.com/matijs/dotfiles)
-  * [Nicolas Gallagher](http://nicolasgallagher.com/) and his [dotfiles repository](https://github.com/necolas/dotfiles)
-  * [Sindre Sorhus](http://sindresorhus.com/)
-  * [Tom Ryder](https://sanctum.geek.nz/) and his [dotfiles repository](https://sanctum.geek.nz/cgit/dotfiles.git/about)
-  * [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [OSXDefaults project](https://github.com/kevinSuttle/OSXDefaults), which aims to provide better documentation for [`~/.macos`](https://mths.be/macos)
-  * [Haralan Dobrev](http://hkdobrev.com/)
-  * anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
-* [Jean-Christophe Laffer](https://github.com/ptb/Mac-OS-X-Lion-Setup) for lot of code in my original .profile
-* [Damien Seguy](http://exakat.io) for the [Exakat config](https://github.com/dseguy)
-
-
-
+## Testing
 
 ### Test PHP 5.5
 
@@ -103,7 +77,6 @@ Suggestions/improvements
 ```sh
 $(brew --prefix homebrew/php/php55)/bin/php -i "(command-line 'phpinfo()')"
 ```
-
 * Make sure that everyting is working
 
 ### Test PHP 5.6
@@ -133,6 +106,70 @@ php -i "(command-line 'phpinfo()')"
 ```
 
 * Make sure that everyting is working
+
+
+## Some usefull commands
+
+### Setup Hosts
+
+* To update your .hosts file, execute:
+```sh
+cfghosts
+```
+
+### Setup PHP
+
+* To update your .hosts file, execute:
+```sh
+cfgphp
+```
+
+### Update Tools 
+
+* Execute:
+```sh
+toolsupdate
+```
+
+This will updates all tools.
+
+## Feedback
+
+Suggestions/improvements
+[welcome](https://github.com/ph-il/dotfiles/issues)!
+
+## Author
+
+| [Follow @philoupedia on Twitter](http://twitter.com/philopedia/) |
+|---|
+| [Philippe Gamache](https://ph-il.ca/) |
+|---|
+| [Gnome Archivist](https://gnomearchiviste.ca/) |
+
+## Thanks to…
+
+* [Mathias Bynens](https://mathiasbynens.be/) and his [dotfiles repository](https://github.com/mathiasbynens/dotfiles) for the base code and readme. All is thanks are also imprtant:  
+  * @ptb and [his _OS X Lion Setup_ repository](https://github.com/ptb/Mac-OS-X-Lion-Setup)
+  * [Ben Alman](http://benalman.com/) and his [dotfiles repository](https://github.com/cowboy/dotfiles)
+  * [Chris Gerke](http://www.randomsquared.com/) and his [tutorial on creating an OS X SOE master image](http://chris-gerke.blogspot.com/2012/04/mac-osx-soe-master-image-day-7.html) + [_Insta_ repository](https://github.com/cgerke/Insta)
+  * [Cătălin Mariș](https://github.com/alrra) and his [dotfiles repository](https://github.com/alrra/dotfiles)
+  * [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
+  * [Jan Moesen](http://jan.moesen.nu/) and his [ancient `.bash_profile`](https://gist.github.com/1156154) + [shiny _tilde_ repository](https://github.com/janmoesen/tilde)
+  * [Lauri ‘Lri’ Ranta](http://lri.me/) for sharing [loads of hidden preferences](http://osxnotes.net/defaults.html)
+  * [Matijs Brinkhuis](http://hotfusion.nl/) and his [dotfiles repository](https://github.com/matijs/dotfiles)
+  * [Nicolas Gallagher](http://nicolasgallagher.com/) and his [dotfiles repository](https://github.com/necolas/dotfiles)
+  * [Sindre Sorhus](http://sindresorhus.com/)
+  * [Tom Ryder](https://sanctum.geek.nz/) and his [dotfiles repository](https://sanctum.geek.nz/cgit/dotfiles.git/about)
+  * [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [OSXDefaults project](https://github.com/kevinSuttle/OSXDefaults), which aims to provide better documentation for [`~/.macos`](https://mths.be/macos)
+  * [Haralan Dobrev](http://hkdobrev.com/)
+  * anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
+* [Jean-Christophe Laffer](https://github.com/ptb/Mac-OS-X-Lion-Setup) for lot of code in my original .profile
+* [Damien Seguy](http://exakat.io) for the [Exakat config](https://github.com/dseguy)
+
+
+
+
+
 
 
 ## Setup Apache
@@ -216,20 +253,6 @@ Include /private/etc/apache2/other/*.conf
 * If you're using thos example. Replace every occurrence of "username" with your own login by executing
 
 
-## Setup Hosts
-
-* To update your .hosts file, execute:
-```sh
-cfghosts
-```
-## Update Tools 
-
-* Execute:
-```sh
-toolsupdate
-```
-
-This will updates all tools.
 
 ## Install Exakat
 
