@@ -42,12 +42,12 @@ sudo blackfire-agent -register
 ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
 
 ## Configure MySQL
-
 mysql_secure_installation
 sudo mkdir /var/mysql
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 # Setup computer
-chflags nohidden ~/Library
-defaults write com.apple.finder ShowPathbar -bool true
-defaults write com.apple.finder ShowStatusBar -bool true
+./.macos
+
+
+
