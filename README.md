@@ -163,14 +163,9 @@ Suggestions/improvements
   * [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [OSXDefaults project](https://github.com/kevinSuttle/OSXDefaults), which aims to provide better documentation for [`~/.macos`](https://mths.be/macos)
   * [Haralan Dobrev](http://hkdobrev.com/)
   * anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
-* [Jean-Christophe Laffer](https://github.com/ptb/Mac-OS-X-Lion-Setup) for lot of code in my original .profile
+* [Paul Irish](http://paulirish.com) and his [dotfiles repository](https://github.com/paulirish/dotfiles)
+* [Jean-Christophe Lauffer](https://github.com/jclauffer) for lot of code in my original .profile
 * [Damien Seguy](http://exakat.io) for the [Exakat config](https://github.com/dseguy)
-
-
-
-
-
-
 
 ## Setup Apache
 

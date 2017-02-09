@@ -8,8 +8,24 @@ Desktop.ini
 
 # Thumbnail cache files
 ._*
+ehthumbs.db
 Thumbs.db
+Icon
 
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+.AppleDouble
+.localized
+.LSOverride
+
+# Node.js & npm.
+node_modules
+npm-debug.log
+
+# Vim
+%*
+*.sw[a-z]
+*.un~
+.netrwhist
+Session.vim

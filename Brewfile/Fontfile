@@ -1,5 +1,9 @@
 cask_args appdir: '/Applications'
 
+brew 'sfnt2woff'
+brew 'sfnt2woff-zopfli'
+brew 'woff2'
+
 cask 'font-3270'
 cask 'font-abeezee'
 cask 'font-abel'

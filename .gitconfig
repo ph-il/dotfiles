@@ -76,6 +76,12 @@
 		fi \
 	}; f"
 
+    br  = branch
+    cm  = commit
+    ca  = !git add -A && git commit         # Commit all changes.
+    co  = checkout
+    cp  = cherry-pick
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
@@ -150,6 +156,16 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
+[pretty]
+
+    custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+    #                     │        │            │            │             └─ author name
+    #                     │        │            │            └─ message
+    #                     │        │            └─ date (relative)
+    #                     │        └─ decorations (branch, heads or tags)
+    #                     └─ hash (abbreviated)
+
+
 [push]
 
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
@@ -158,6 +174,7 @@
 	default = matching
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
+
 
 # URL shorthands
 

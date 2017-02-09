@@ -2,200 +2,200 @@
 
 # Create a new directory and enter it
 function mkcd() {
-	mkdir -p "$@" && cd "$_";
+    mkdir -p "$@" && cd "$_";
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+    cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
-	local tmpFile="${@%/}.tar";
-	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+    local tmpFile="${@%/}.tar";
+    tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
 
-	size=$(
-		stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
-		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
-	);
+    size=$(
+        stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
+        stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
+    );
 
-	local cmd="";
-	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
-		# the .tar file is smaller than 50 MB and Zopfli is available; use it
-		cmd="zopfli";
-	else
-		if hash pigz 2> /dev/null; then
-			cmd="pigz";
-		else
-			cmd="gzip";
-		fi;
-	fi;
+    local cmd="";
+    if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+        # the .tar file is smaller than 50 MB and Zopfli is available; use it
+        cmd="zopfli";
+    else
+        if hash pigz 2> /dev/null; then
+            cmd="pigz";
+        else
+            cmd="gzip";
+        fi;
+    fi;
 
-	echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
-	"${cmd}" -v "${tmpFile}" || return 1;
-	[ -f "${tmpFile}" ] && rm "${tmpFile}";
+    echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
+    "${cmd}" -v "${tmpFile}" || return 1;
+    [ -f "${tmpFile}" ] && rm "${tmpFile}";
 
-	zippedSize=$(
-		stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
-		stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
-	);
+    zippedSize=$(
+        stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
+        stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
+    );
 
-	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
+    echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
 }
 
 # Determine size of a file or total size of a directory
 function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* ./*;
-	fi;
+    if du -b /dev/null > /dev/null 2>&1; then
+        local arg=-sbh;
+    else
+        local arg=-sh;
+    fi
+    if [[ -n "$@" ]]; then
+        du $arg -- "$@";
+    else
+        du $arg .[^.]* ./*;
+    fi;
 }
 
 # Use Git’s colored diff when available
 hash git &>/dev/null;
 if [ $? -eq 0 ]; then
-	function diff() {
-		git diff --no-index --color-words "$@";
-	}
+    function diff() {
+        git diff --no-index --color-words "$@";
+    }
 fi;
 
 # Create a data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+    local mimeType=$(file -b --mime-type "$1");
+    if [[ $mimeType == text/* ]]; then
+        mimeType="${mimeType};charset=utf-8";
+    fi
+    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
 # Create a git.io short URL
 function gitio() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: \`gitio slug url\`";
-		return 1;
-	fi;
-	curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
+    if [ -z "${1}" -o -z "${2}" ]; then
+        echo "Usage: \`gitio slug url\`";
+        return 1;
+    fi;
+    curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
 }
 
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
-	local port="${1:-4000}";
-	local ip=$(ipconfig getifaddr en1);
-	sleep 1 && open "http://${ip}:${port}/" &
-	php -S "${ip}:${port}";
+    local port="${1:-4000}";
+    local ip=$(ipconfig getifaddr en1);
+    sleep 1 && open "http://${ip}:${port}/" &
+    php -S "${ip}:${port}";
 }
 
 # Compare original and gzipped file size
 function gz() {
-	local origsize=$(wc -c < "$1");
-	local gzipsize=$(gzip -c "$1" | wc -c);
-	local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
-	printf "orig: %d bytes\n" "$origsize";
-	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
+    local origsize=$(wc -c < "$1");
+    local gzipsize=$(gzip -c "$1" | wc -c);
+    local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+    printf "orig: %d bytes\n" "$origsize";
+    printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
 # Syntax-highlight JSON strings or files
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
-	if [ -t 0 ]; then # argument
-		python -mjson.tool <<< "$*" | pygmentize -l javascript;
-	else # pipe
-		python -mjson.tool | pygmentize -l javascript;
-	fi;
+    if [ -t 0 ]; then # argument
+        python -mjson.tool <<< "$*" | pygmentize -l javascript;
+    else # pipe
+        python -mjson.tool | pygmentize -l javascript;
+    fi;
 }
 
 # Run `dig` and display the most useful info
 function digga() {
-	dig +nocmd "$1" any +multiline +noall +answer;
+    dig +nocmd "$1" any +multiline +noall +answer;
 }
 
 # UTF-8-encode a string of Unicode symbols
 function escape() {
-	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
+    printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
+    # print a newline unless we’re piping the output to another program
+    if [ -t 1 ]; then
+        echo ""; # newline
+    fi;
 }
 
 # Decode \x{ABCD}-style Unicode escape sequences
 function unidecode() {
-	perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
+    perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
+    # print a newline unless we’re piping the output to another program
+    if [ -t 1 ]; then
+        echo ""; # newline
+    fi;
 }
 
 # Get a character’s Unicode code point
 function codepoint() {
-	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
+    perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
+    # print a newline unless we’re piping the output to another program
+    if [ -t 1 ]; then
+        echo ""; # newline
+    fi;
 }
 
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
 function getcertnames() {
-	if [ -z "${1}" ]; then
-		echo "ERROR: No domain specified.";
-		return 1;
-	fi;
+    if [ -z "${1}" ]; then
+        echo "ERROR: No domain specified.";
+        return 1;
+    fi;
 
-	local domain="${1}";
-	echo "Testing ${domain}…";
-	echo ""; # newline
+    local domain="${1}";
+    echo "Testing ${domain}…";
+    echo ""; # newline
 
-	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
-		| openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
+    local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
+        | openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
 
-	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText=$(echo "${tmp}" \
-			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
-			no_serial, no_sigdump, no_signame, no_validity, no_version");
-		echo "Common Name:";
-		echo ""; # newline
-		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
-		echo ""; # newline
-		echo "Subject Alternative Name(s):";
-		echo ""; # newline
-		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
-		return 0;
-	else
-		echo "ERROR: Certificate not found.";
-		return 1;
-	fi;
+    if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+        local certText=$(echo "${tmp}" \
+            | openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
+            no_serial, no_sigdump, no_signame, no_validity, no_version");
+        echo "Common Name:";
+        echo ""; # newline
+        echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
+        echo ""; # newline
+        echo "Subject Alternative Name(s):";
+        echo ""; # newline
+        echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+            | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
+        return 0;
+    else
+        echo "ERROR: Certificate not found.";
+        return 1;
+    fi;
 }
 
 # `m` with no arguments opens the current directory, otherwise opens the given
 # location
 function m() {
-	if [ $# -eq 0 ]; then
-		mate .;
-	else
-		mate "$@";
-	fi;
+    if [ $# -eq 0 ]; then
+        mate .;
+    else
+        mate "$@";
+    fi;
 }
 
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
-	if [ $# -eq 0 ]; then
-		open .;
-	else
-		open "$@";
-	fi;
+    if [ $# -eq 0 ]; then
+        open .;
+    else
+        open "$@";
+    fi;
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -203,7 +203,7 @@ function o() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
 # This is use to upgrade many of the command line tools we'll add.
@@ -216,46 +216,54 @@ update() {
     fi    
     
     echo "Updating MacOS..."
-	sudo softwareupdate -i -a;
-	badge
-		
+    sudo softwareupdate -i -a;
+    badge
+        
     echo "Updating brew installs..."
     brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
-    brew update
-	badge
-    brew upgrade
-	badge
-	brew cleanup;
-	badge
+    brew -v update
+    badge
+    brew upgrade --force-bottle --cleanup
+    badge
+    brew cleanup
+    badge
+    brew cask cleanup;
+    badge
+    brew prune 
+    badge
+    brew doctor
+    badge
+    npm-check -g -u
+    
     brew link php$PHP_VERSION 2> /dev/null > /dev/null
     brew services restart memcached    
-	badge
+    badge
     brew services restart mysql
-	badge
+    badge
     brew services restart redis
-	badge
+    badge
 #    echo "Updating PEAR and PECL..."
 #    sudo pear upgrade PEAR
 #    sudo pear upgrade-all
 #    sudo pecl upgrade-all
     echo "Updating composer global..."
     composer global update
-	badge
+    badge
     echo "Updating Gems..."
-	sudo gem update --system
-	badge
-	sudo gem update
-	badge
-	sudo gem cleanup	
-	badge
+    sudo gem update --system
+    badge
+    sudo gem update --no-document
+    badge
+    sudo gem cleanup    
+    badge
     echo "Updating npm..."
-	npm install npm -g 
-	badge
-	npm update -g
-	badge
+    npm install npm -g 
+    badge
+    npm update -g
+    badge
     echo "Updating Exakat..."
-	exakat upgrade -u
-	badge
+    exakat upgrade -u
+    badge
 }
  
 # Defining a default project
@@ -381,7 +389,7 @@ sphp() {
         sudo sed -i -e "/LoadModule php${majorNew}_module/s/^#//" $apacheConf
 
         echo "Updating version file..."
-		export PHP_VERSION="${newversion}"
+        export PHP_VERSION="${newversion}"
 
         echo "Restarting system Apache..."
         apachectl -k restart > /dev/null 2>&1
@@ -391,4 +399,57 @@ sphp() {
         echo "Try \`brew install php${newversion}\` first."
         exit 1
     fi
+}
+
+# Extract archives - use: extract <file>
+# Based on http://dotfiles.org/~pseup/.bashrc
+function extract() {
+    if [ -f "$1" ] ; then
+        local filename=$(basename "$1")
+        local foldername="${filename%%.*}"
+        local fullpath=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "$1"`
+        local didfolderexist=false
+        if [ -d "$foldername" ]; then
+            didfolderexist=true
+            read -p "$foldername already exists, do you want to overwrite it? (y/n) " -n 1
+            echo
+            if [[ $REPLY =~ ^[Nn]$ ]]; then
+                return
+            fi
+        fi
+        mkdir -p "$foldername" && cd "$foldername"
+        case $1 in
+            *.tar.bz2) tar xjf "$fullpath" ;;
+            *.tar.gz) tar xzf "$fullpath" ;;
+            *.tar.xz) tar Jxvf "$fullpath" ;;
+            *.tar.Z) tar xzf "$fullpath" ;;
+            *.tar) tar xf "$fullpath" ;;
+            *.taz) tar xzf "$fullpath" ;;
+            *.tb2) tar xjf "$fullpath" ;;
+            *.tbz) tar xjf "$fullpath" ;;
+            *.tbz2) tar xjf "$fullpath" ;;
+            *.tgz) tar xzf "$fullpath" ;;
+            *.txz) tar Jxvf "$fullpath" ;;
+            *.zip) unzip "$fullpath" ;;
+            *) echo "'$1' cannot be extracted via extract()" && cd .. && ! $didfolderexist && rm -r "$foldername" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# animated gifs from any video
+# from alex sexton   gist.github.com/SlexAxton/4989674
+gifify() {
+  if [[ -n "$1" ]]; then
+    if [[ $2 == '--good' ]]; then
+      ffmpeg -i "$1" -r 10 -vcodec png out-static-%05d.png
+      time convert -verbose +dither -layers Optimize -resize 900x900\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > "$1.gif"
+      rm out-static*.png
+    else
+      ffmpeg -i "$1" -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > "$1.gif"
+    fi
+  else
+    echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
+  fi
 }

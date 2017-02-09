@@ -25,6 +25,8 @@ export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
@@ -46,3 +48,8 @@ export PHP_VERSION="`php -r \"error_reporting(0); echo str_replace('.', '', subs
 
 export JAVA_HOME=$(/usr/libexec/java_home) 
 export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
+
+# here's LS_COLORS
+# github.com/trapd00r/LS_COLORS
+command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
+eval "$(gdircolors -b ~/.dircolors)"

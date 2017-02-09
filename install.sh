@@ -1,10 +1,12 @@
 #!/bin/bash
+
+./bootstrap.sh
+
 #
 # Install all the things with Homebrew, Casks and a Brewfile
 #
 
 cd
-
 mkdir -pv Projects
 
 # If Homebrew is not installed
