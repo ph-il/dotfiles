@@ -15,67 +15,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
 
  
-# configuring GIT
-if [ -d $(/usr/local/bin/brew --prefix)/etc/bash_completion.d ]; then
-  source $(/usr/local/bin/brew --prefix)/etc/bash_completion.d/git-completion.bash
-  source $(/usr/local/bin/brew --prefix)/etc/bash_completion.d/git-prompt.sh
-fi
-# Voir git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=yes
-export GIT_PS1_SHOWSTASHSTATE=yes
-export GIT_PS1_SHOWUNTRACKEDFILES=yes
-export GIT_PS1_SHOWUPSTREAM=verbose
-export GIT_PS1_DESCRIBE_STYLE=branch
-export GIT_PS1_SHOWCOLORHINTS=yes
-  
-# Réglages de VCS (svn et git)
-function vcs_info() {
-  local dir="$PWD"
-  local vcs
-  local nick
-  while [[ "$dir" != "/" ]]; do
-    for vcs in git svn; do
-      if [[ -d "$dir/.$vcs" ]] && hash "$vcs" &>/dev/null; then
-        case "$vcs" in
-          git) __git_ps1 "${1:-(%s) }"; return;;
-          svn) depot=$(svn info 2>/dev/null\
-                | grep -e '^Repository Root:'\
-                | sed -e 's#.*/##')
-               version=$(svn info 2>/dev/null\
-                | grep -e '^Revision:'\
-                | awk '{print $2}')
-               [ -n "$(svn status --ignore-externals | grep -Ev '^X')" ] && dirty=" *" || dirty=""
-               nick="$depot:$version$dirty"
-          ;;
-        esac
-        [[ -n "$nick" ]] && printf "${1:-(%s) }" "$nick"
-        return 0
-      fi
-    done
-    dir="$(dirname "$dir")"
-  done
-}
- 
-#  if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-#    GIT_PROMPT_THEME=Default
-#    source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-#  fi
- 
-# Couleurs
-        RED="\[\033[0;31m\]"
-     YELLOW="\[\033[0;33m\]"
-      GREEN="\[\033[0;32m\]"
-       BLUE="\[\033[0;34m\]"
-  LIGHT_RED="\[\033[1;31m\]"
-LIGHT_GREEN="\[\033[1;32m\]"
-      WHITE="\[\033[1;37m\]"
- LIGHT_GRAY="\[\033[0;37m\]"
-  COLOR_NONE="\[\e[0m\]"
-  
-export PS1=${YELLOW}'\u'${COLOR_NONE}'@'${GREEN}'phil-x'${COLOR_NONE}':'${BLUE}'\w'${COLOR_NONE}' $(vcs_info "$2")'${YELLOW}'\$'${COLOR_NONE}' '
-export PS2=${YELLOW}'> '${COLOR_NONE}
- 
-   
+
  
 # Functions replacing external scripts
 # This is use to upgrade many of the command line tools we'll add.
