@@ -140,9 +140,10 @@ Suggestions/improvements
 
 ## Author
 
-| [Follow @philoupedia on Twitter](http://twitter.com/philopedia/) |
-| [Philippe Gamache](https://ph-il.ca/) |
-| [Gnome Archivist](https://gnomearchiviste.ca/) |
+[Follow @philoupedia on Twitter](http://twitter.com/philopedia/) |
+--- |
+[Philippe Gamache](https://ph-il.ca/) |
+[Gnome Archivist](https://gnomearchiviste.ca/) |
 
 ## Thanks to…
 
