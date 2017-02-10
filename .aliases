@@ -51,8 +51,8 @@ alias cleanall='sudo find . -name $1 -print0 | xargs -0 sudo rm -rf '
 alias cleancvs="find . -type f -name csv -ls -delete"
 alias cleancvsi="find . -type f -name .cvsignore -ls -delete"
 alias cleanerr="find . -type f -name php_errors.log -ls -delete"
-alias cleansccs"find . -type f -name SCCS -ls -delete"
-alias cleansvn"find . -type f -name .svn -ls -delete"
+alias cleansccs="find . -type f -name SCCS -ls -delete"
+alias cleansvn="find . -type f -name .svn -ls -delete"
 alias cleantdb="find . -type f -name Thumbs.db -ls -delete"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

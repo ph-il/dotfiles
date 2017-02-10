@@ -1,4 +1,0 @@
-gem bundler
-gem compass
-gem css_parser
-gem breakpoint

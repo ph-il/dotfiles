@@ -280,7 +280,7 @@ gosf() {
     PRJ_SF="${1}"
     export PRJ_SF
 
-    if [[ "$2" != "" && "$2" != "none" && PHP_VERSION != "$2"]]
+    if [ "$2" != "" && "$2" != "none" && ${PHP_VERSION} != "$2"]
     then
         sphp ${2}
     fi

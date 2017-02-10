@@ -56,32 +56,19 @@ if ! which brew > /dev/null; then
      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi;
 
+# Install everything in Brewfile
 brew tap Homebrew/bundle
-brew bundle ./Brewfile/Tapsfile
+brew bundle 
 
 # Update brew
 brew upgrade
 brew update
 
-# Install everything in Brewfile
 
-brew bundle ./Brewfile/Brewfile
-
-    # allow mtr to run without sudo
-    mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`
-    sudo chmod 4755 $mtrlocation/sbin/mtr
-    sudo chown root $mtrlocation/sbin/mtr
-
-brew bundle ./Brewfile/Php55file
-brew unlink php55
-brew bundle ./Brewfile/Php56file
-brew unlink php56
-brew bundle ./Brewfile/Php70file
-brew unlink php70
-brew bundle ./Brewfile/Php71file
-brew bundle ./Brewfile/Gemfile
-brew bundle ./Brewfile/Caskfile
-brew bundle ./Brewfile/Fontfile
+# allow mtr to run without sudo
+mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`
+sudo chmod 4755 $mtrlocation/sbin/mtr
+sudo chown root $mtrlocation/sbin/mtr
 
 npm install -g bower
 npm install -g less
@@ -107,6 +94,4 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 # Setup computer
 ./.macos
-
-
 

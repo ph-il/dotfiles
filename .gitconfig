@@ -105,12 +105,18 @@
 	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
+    
+    editor = mate -w
+	pager = less -FSRX
 
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
 	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
 
 [color "branch"]
 
@@ -134,8 +140,12 @@
 [commit]
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
+	#gpgsign = true
 
+[branch]
+
+	autosetupmerge = true
+	
 [diff]
 
 	# Detect copies as well as renames
@@ -197,3 +207,15 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
+[filter "media"]
+
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[filter "lfs"]
+
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
