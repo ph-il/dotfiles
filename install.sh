@@ -56,14 +56,13 @@ if ! which brew > /dev/null; then
      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi;
 
+
 # Install everything in Brewfile
 brew tap Homebrew/bundle
+
+brew unlink php${PHP_VERSION}
+
 brew bundle 
-
-# Update brew
-brew upgrade
-brew update
-
 
 # allow mtr to run without sudo
 mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`

@@ -176,6 +176,9 @@ brew 'zopfli'
 
 ### Install PHP 5.5
 brew 'php55'
+
+`brew link php55`
+
 brew 'blackfire-php55'
 brew 'php55-apcu'
 brew 'php55-igbinary' 
@@ -198,6 +201,9 @@ brew 'php55-yaml'
 
 ### Install PHP 5.6
 brew 'php56'
+
+`brew link php56`
+
 brew 'blackfire-php56'
 brew 'php56-apcu'
 brew 'php56-igbinary' 
@@ -220,6 +226,9 @@ brew 'php56-yaml'
 
 ### Install PHP 7.0
 brew 'php70'
+
+`brew link php70`
+
 brew 'php70-igbinary', args: %w['HEAD']
 brew 'php70-memcached', args: %w[HEAD]
 #brew 'php70-memcache'
@@ -242,6 +251,9 @@ brew 'php70-yaml', args: %w[HEAD]
 
 ### Install PHP 7.1
 brew 'php71'
+
+`brew link php71`
+
 brew 'php71-igbinary'
 brew 'php71-memcached', args: %w[HEAD]
 #brew 'php71-memcache'
@@ -272,7 +284,6 @@ cask 'cleanmymac'
 cask 'colorpicker'
 cask 'colorpicker-hex'
 cask 'cyberduck'
-cask 'dash'
 cask 'deltawalker'
 cask 'discord'
 cask 'docker'
@@ -315,10 +326,6 @@ gem 'css_parser'
 gem 'breakpoint'
 
 # Fonts
-
-brew 'sfnt2woff'
-brew 'sfnt2woff-zopfli'
-brew 'woff2'
 
 cask 'font-3270'
 cask 'font-abeezee'
@@ -366,8 +373,6 @@ cask 'font-amiri'
 cask 'font-anaheim'
 cask 'font-andada-sc'
 cask 'font-andada'
-cask 'font-andagii'
-cask 'font-andale-mono'
 cask 'font-andika'
 cask 'font-angkor'
 cask 'font-anka-coder'
@@ -385,8 +390,6 @@ cask 'font-arbutus'
 cask 'font-architects-daughter'
 cask 'font-archivo-black'
 cask 'font-archivo-narrow'
-cask 'font-arial-black'
-cask 'font-arial'
 cask 'font-arimo'
 cask 'font-arizonia'
 cask 'font-armata'
@@ -407,8 +410,6 @@ cask 'font-averia-libre'
 cask 'font-averia-sans-libre'
 cask 'font-averia-serif-libre'
 cask 'font-awesome-terminal-fonts'
-cask 'font-babelstone-han'
-cask 'font-babelstone-modern'
 cask 'font-bad-script'
 cask 'font-baloo'
 cask 'font-balthazar'
@@ -503,9 +504,7 @@ cask 'font-codystar'
 cask 'font-combo'
 cask 'font-comfortaa'
 cask 'font-comic-neue'
-cask 'font-comic-sans-ms'
 cask 'font-coming-soon'
-cask 'font-computer-modern'
 cask 'font-conakry'
 cask 'font-concert-one'
 cask 'font-condiment'
@@ -518,7 +517,6 @@ cask 'font-cookie'
 cask 'font-copse'
 cask 'font-corben'
 cask 'font-courgette'
-cask 'font-courier-new'
 cask 'font-courier-prime'
 cask 'font-cousine'
 cask 'font-coustard'
@@ -541,7 +539,6 @@ cask 'font-dashicons'
 cask 'font-dawning-of-a-new-day'
 cask 'font-days-one'
 cask 'font-dejavu-sans-mono-for-powerline'
-cask 'font-dejavu-sans'
 cask 'font-delius-swash-caps'
 cask 'font-delius-unicase'
 cask 'font-delius'
@@ -550,7 +547,6 @@ cask 'font-denk-one'
 cask 'font-devicons'
 cask 'font-devonshire'
 cask 'font-dhyana'
-cask 'font-didact-gothic'
 cask 'font-digohweli-old-do'
 cask 'font-digohweli'
 cask 'font-diplomata-sc'
@@ -651,7 +647,6 @@ cask 'font-gentium-basic'
 cask 'font-gentium-book-basic'
 cask 'font-gentium-plus'
 cask 'font-geo'
-cask 'font-georgia'
 cask 'font-geostar-fill'
 cask 'font-geostar'
 cask 'font-germania-one'
@@ -684,9 +679,6 @@ cask 'font-hack-nerd-font'
 cask 'font-hack'
 cask 'font-halant'
 cask 'font-hammersmith-one'
-cask 'font-han-nom-a'
-cask 'font-hanalei-fill'
-cask 'font-hanalei'
 cask 'font-hanamina'
 cask 'font-handlee'
 cask 'font-hanuman'
@@ -716,7 +708,6 @@ cask 'font-im-fell-french-canon-sc'
 cask 'font-im-fell-french-canon'
 cask 'font-im-fell-great-primer-sc'
 cask 'font-im-fell-great-primer'
-cask 'font-impact'
 cask 'font-imprima'
 cask 'font-inconsolata-dz-for-powerline'
 cask 'font-inconsolata-dz'
@@ -754,7 +745,6 @@ cask 'font-junicode'
 cask 'font-jura'
 cask 'font-just-another-hand'
 cask 'font-just-me-again-down-here'
-cask 'font-kacstone'
 cask 'font-kalam'
 cask 'font-kameron'
 cask 'font-kantumruy'
@@ -810,9 +800,6 @@ cask 'font-lilita-one'
 cask 'font-lily-script-one'
 cask 'font-limelight'
 cask 'font-linden-hill'
-cask 'font-linux-biolinum'
-cask 'font-linux-libertine'
-cask 'font-lisutzimu'
 cask 'font-lobster-two'
 cask 'font-lobster'
 cask 'font-lohit-assamese'
@@ -887,7 +874,6 @@ cask 'font-migmix-2m'
 cask 'font-migmix-2p'
 cask 'font-migu-1c'
 cask 'font-migu-1m'
-cask 'font-migu1m'
 cask 'font-migu-1p'
 cask 'font-migu-2m'
 cask 'font-milonga'
@@ -1369,16 +1355,21 @@ cask 'font-yeseva-one'
 cask 'font-yesteryear'
 cask 'font-zeyada'
 
+mas '1Password', id: 443987910
+mas 'Dash', id: 449589707
+mas 'GarageBand', 682658836
+mas 'Gemini 2', id: 1090488118
 mas 'Keynote', id: 409183694
 mas 'iMovie', id: 408981434
 mas 'Mactracker', id: 430255202
-mas '1Password', id: 443987910
+mas 'Name Mangler 3', id: 603637384
+mas 'Numbers', id: 409203825
+mas 'OmniOutliner', id: 404478020
 mas 'OneDrive', id: 823766827
+mas 'Pages', id: 409201541
 mas 'Sketch', id: 402476602
 mas 'Slack', id: 803453959
-mas 'Pages', id: 409201541
-mas 'Pixelmator', id: 407963104
-mas 'Reeder', id: 880001334
-mas 'Textual', id: 896450579
-mas 'Numbers', id: 409203825
+mas 'TweetDeck', id: 485812721
+mas 'Twitter', id: 409789998
+
 
