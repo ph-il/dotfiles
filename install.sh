@@ -2,6 +2,8 @@
 
 ./bootstrap.sh
 
+cd
+
 ### XCode Command Line Tools
 #      thx https://github.com/alrra/dotfiles/blob/ff123ca9b9b/os/os_x/installs/install_xcode.sh
 
@@ -37,7 +39,6 @@ if ! xcode-select --print-path &> /dev/null; then
     print_result $? 'Agree with the XCode Command Line Tools licence'
 
 fi
-###
 
 #
 # Install all the things with Homebrew, Casks and a Brewfile
