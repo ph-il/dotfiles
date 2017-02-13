@@ -1,15 +1,15 @@
 cask_args appdir: '/Applications'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
+tap 'homebrew/services'
+tap 'homebrew/versions'
+tap 'homebrew/dupes'
+tap 'homebrew/php'
 tap 'homebrew/binary'
 tap 'homebrew/bundle'
 tap 'homebrew/completions'
 tap 'homebrew/dev-tools'
-tap 'homebrew/dupes'
-tap 'homebrew/php'
-tap 'homebrew/services'
-tap 'homebrew/versions'
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+tap 'caskroom/versions'
 tap 'thoughtbot/formulae'
 tap 'blackfireio/homebrew-blackfire'
 
@@ -1337,16 +1337,16 @@ cask 'font-yesteryear'
 cask 'font-zeyada'
 
 mas 443987910 #'1Password', id: 443987910
-# mas 'Dash', id: 449589707
-# mas 'GarageBand', 682658836
-# mas 'Gemini 2', id: 1090488118
-# mas 'Keynote', id: 409183694
-# mas 'iMovie', id: 408981434
-# mas 'Name Mangler 3', id: 603637384
-# mas 'Numbers', id: 409203825
-# mas 'OmniOutliner', id: 404478020
-# mas 'OneDrive', id: 823766827
-# mas 'Pages', id: 409201541
-# mas 'Slack', id: 803453959
-# mas 'TweetDeck', id: 485812721
-# mas 'Twitter', id: 409789998
+mas 449589707 #'Dash', id: 449589707
+mas 682658836 #'GarageBand', 682658836
+mas 1090488118 #'Gemini 2', id: 1090488118
+mas 409183694 #'Keynote', id: 409183694
+mas 408981434 #'iMovie', id: 408981434
+mas 603637384 #'Name Mangler 3', id: 603637384
+mas 409203825 #'Numbers', id: 409203825
+mas 404478020 #'OmniOutliner', id: 404478020
+mas 823766827 #'OneDrive', id: 823766827
+mas 409201541 #'Pages', id: 409201541
+mas 803453959 #'Slack', id: 803453959
+mas 485812721 #'TweetDeck', id: 485812721
+mas 409789998 #'Twitter', id: 409789998

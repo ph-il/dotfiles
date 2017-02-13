@@ -57,6 +57,8 @@ brew tap Homebrew/bundle
 
 brew bundle 
 
+./bootstrap.sh
+
 # allow mtr to run without sudo
 mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`
 sudo chmod 4755 $mtrlocation/sbin/mtr
@@ -87,4 +89,3 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 # Setup computer
 ./.macos
 
-./bootstrap.sh
