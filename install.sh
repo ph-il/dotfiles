@@ -60,8 +60,6 @@ fi;
 # Install everything in Brewfile
 brew tap Homebrew/bundle
 
-brew unlink php${PHP_VERSION}
-
 brew bundle 
 
 # allow mtr to run without sudo

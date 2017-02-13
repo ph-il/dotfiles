@@ -112,20 +112,7 @@ brew 'p7zip'
 brew 'packer'
 brew 'packer-completion'
 brew 'pcre'
-brew 'pdepend'
 brew 'percona-toolkit'
-brew 'phan'
-brew 'phing'
-brew 'phpcpd'
-brew 'php-code-sniffer'
-brew 'php-cs-fixer'
-brew 'phpdocumentor'
-brew 'phpdox'
-brew 'phploc'
-brew 'phpmd'
-brew 'phpmetrics'
-brew 'phpunit'
-brew 'phpunit-skeleton-generator'
 brew 'pigz'
 brew 'pidcat'
 brew 'postgres', restart_service: true
@@ -177,7 +164,7 @@ brew 'zopfli'
 ### Install PHP 5.5
 brew 'php55'
 
-`brew link php55`
+`brew link --overwrite php55`
 
 brew 'blackfire-php55'
 brew 'php55-apcu'
@@ -202,7 +189,7 @@ brew 'php55-yaml'
 ### Install PHP 5.6
 brew 'php56'
 
-`brew link php56`
+`brew link --overwrite php56`
 
 brew 'blackfire-php56'
 brew 'php56-apcu'
@@ -227,7 +214,7 @@ brew 'php56-yaml'
 ### Install PHP 7.0
 brew 'php70'
 
-`brew link php70`
+`brew link --overwrite php70`
 
 brew 'php70-igbinary', args: %w['HEAD']
 brew 'php70-memcached', args: %w[HEAD]
@@ -271,6 +258,20 @@ brew 'php71-tidy'
 brew 'blackfire-php71'
 brew 'php71-redis', args: %w[HEAD]
 brew 'php71-yaml', args: %w[HEAD]
+
+brew 'pdepend'
+brew 'phan'
+brew 'phing'
+brew 'phpcpd'
+brew 'php-code-sniffer'
+brew 'php-cs-fixer'
+brew 'phpdocumentor'
+brew 'phpdox'
+brew 'phploc'
+brew 'phpmd'
+brew 'phpmetrics'
+brew 'phpunit'
+brew 'phpunit-skeleton-generator'
 
 
 # Mac Application Installation
@@ -1335,19 +1336,17 @@ cask 'font-yeseva-one'
 cask 'font-yesteryear'
 cask 'font-zeyada'
 
-mas '1Password', id: 443987910
-mas 'Dash', id: 449589707
-mas 'GarageBand', 682658836
-mas 'Gemini 2', id: 1090488118
-mas 'Keynote', id: 409183694
-mas 'iMovie', id: 408981434
-mas 'Name Mangler 3', id: 603637384
-mas 'Numbers', id: 409203825
-mas 'OmniOutliner', id: 404478020
-mas 'OneDrive', id: 823766827
-mas 'Pages', id: 409201541
-mas 'Slack', id: 803453959
-mas 'TweetDeck', id: 485812721
-mas 'Twitter', id: 409789998
-
-
+mas 443987910 #'1Password', id: 443987910
+# mas 'Dash', id: 449589707
+# mas 'GarageBand', 682658836
+# mas 'Gemini 2', id: 1090488118
+# mas 'Keynote', id: 409183694
+# mas 'iMovie', id: 408981434
+# mas 'Name Mangler 3', id: 603637384
+# mas 'Numbers', id: 409203825
+# mas 'OmniOutliner', id: 404478020
+# mas 'OneDrive', id: 823766827
+# mas 'Pages', id: 409201541
+# mas 'Slack', id: 803453959
+# mas 'TweetDeck', id: 485812721
+# mas 'Twitter', id: 409789998
