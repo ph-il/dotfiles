@@ -55,7 +55,7 @@ fi;
 # Install everything in Brewfile
 brew tap Homebrew/bundle
 
-brew bundle 
+brew bundle -v
 
 ./bootstrap.sh
 
