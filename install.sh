@@ -1,9 +1,5 @@
 #!/bin/bash
 
-./bootstrap.sh
-
-cd
-
 ### XCode Command Line Tools
 #      thx https://github.com/alrra/dotfiles/blob/ff123ca9b9b/os/os_x/installs/install_xcode.sh
 
@@ -43,8 +39,6 @@ fi
 #
 # Install all the things with Homebrew, Casks and a Brewfile
 #
-
-cd
 
 if ! [ -d "${HOME}/Projects" ] 
 then
@@ -93,3 +87,4 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 # Setup computer
 ./.macos
 
+./bootstrap.sh
