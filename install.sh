@@ -53,9 +53,32 @@ fi;
 
 
 # Install everything in Brewfile
+brew doctor
+
 brew tap Homebrew/bundle
 
-brew bundle -v
+brew bundle -v --file=Tapfile
+
+brew update
+brew upgrade
+
+#brew bundle -v 
+
+brew bundle -v --file=Php55file
+brew unlink php55
+brew bundle -v --file=Php56file
+brew unlink php56
+brew bundle -v --file=Php70file
+brew unlink php70
+brew unlink php70-apcu
+brew bundle -v --file=Php71file
+brew bundle -v --file=Phpfile
+
+brew bundle -v --file=Caskfile
+brew bundle -v --file=Gemfile
+brew bundle -v --file=Fontfile
+brew bundle -v --file=Masfile
+
 
 ./bootstrap.sh
 
@@ -85,6 +108,12 @@ ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
 mysql_secure_installation
 sudo mkdir /var/mysql
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+
+# Update global git config
+git lfs install
+# Update system git config
+sudo git lfs install --system
+
 
 # Setup computer
 ./.macos

@@ -41,7 +41,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
  
 # chmod
 alias chmox='chmod -x' 
@@ -220,6 +219,11 @@ alias pgstop='brew services stop postgres'
 alias redisrestart='brew services restart redis'
 alias redisstart='brew services start redis'
 alias redisstop='brew services stop redis'
+
+# RabbitMQ
+alias rmqrestart='brew services restart rabbitmq' 
+alias rmqstart='brew services start rabbitmq' 
+alias rmqstop='brew services stop rabbitmq' 
  
 # sed - Better use RegEx in sed
 alias sed='sed -E'
@@ -277,6 +281,11 @@ alias vssh="vagrant ssh"
 alias vreload="vagrant reload"
 alias vrebuild="vagrant destroy --force && vagrant up"
 
+# varnish
+alias restart='brew services restart varnish' 
+alias varnishrestart='brew services start varnish' 
+alias varnishrestop='brew services stop varnish' 
+ 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
