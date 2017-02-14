@@ -143,7 +143,14 @@ alias brwe=brew  #typos
  
 # host names
 alias cfghosts='sudo ${EDITOR} /etc/hosts'
-  
+
+# Kuzzle
+alias gokuzzle='cd "${KUZZLE_DIR}"'
+alias k='cd "${KUZZLE_DIR}"'
+alias kuzlog='pm2 log'
+alias kuzstop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml'
+alias kuzstart='pm2 start "${KUZZLE_DIR}/pm2.conf.yml'
+
 # ls alias to help
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

@@ -103,7 +103,7 @@ npm install -g diff-so-fancy
 npm install --global trash-cli
 
 # Install pm2 (Advanced, production process manager for Node.js) use by Kuzzle
-npm install pm2 -g
+sudo npm install pm2 -g
 
 sudo easy_install Pygments
 
@@ -121,7 +121,38 @@ git lfs install
 # Update system git config
 sudo git lfs install --system
 
+# Install Kuzzle
+
+# Create the Kuzzle root directory
+if ! [ -d "${PRJ_DEV}/Kuzzle" ] 
+then
+    mkdir -pv Kuzzle
+fi;
+
+# Create a directory for Kuzzle Proxy and install it
+gokuzzle
+git clone https://github.com/kuzzleio/kuzzle-proxy.git
+cd kuzzle-proxy
+npm install
+
+# Create a directory for Kuzzle Core and install it
+gokuzzle
+git clone https://github.com/kuzzleio/kuzzle.git
+cd kuzzle
+npm install
+
+echo "apps:
+   - name: kuzzle-proxy
+     cwd: ${KUZZLE_PROXY_INSTALL_DIR}
+     script: ${KUZZLE_PROXY_INSTALL_DIR}/index.js
+   - name: kuzzle
+     cwd: ${KUZZLE_CORE_INSTALL_DIR}
+     script: ${KUZZLE_CORE_INSTALL_DIR}/bin/kuzzle
+     args: start
+     env:
+       kuzzle_server__http__port: 7510
+       kuzzle_services__proxyBroker__host: localhost
+  " > ${KUZZLE_DIR}/pm2.conf.yml
 
 # Setup computer
 ./.macos
-
