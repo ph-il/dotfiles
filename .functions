@@ -285,21 +285,31 @@ gosf() {
         sphp ${2}
     fi
 
-    if [ "$3" == 3 ]
+    if [ "$3" == 'sf3' ]
     then
+        DEV_ENV="sf3"
         SF_PROG="php $PRJ_SF/bin/console"
         SF_CACHE="$PRJ_SF/var/cache/"
         SF_LOG="$PRJ_SF/var/logs/"
-    elif [ "$3" == 2 ]
+    elif [ "$3" == 'sf2' ]
     then
+        DEV_ENV="sf2"
         SF_PROG="php $PRJ_SF/app/console"
         SF_CACHE="$PRJ_SF/app/cache/"
         SF_LOG="$PRJ_SF/app/logs/"
-    else
+    elif [ "$3" == 'sf1' ]
+    then
+        DEV_ENV="sf1"
         SF_PROG="$PRJ_SF/symfony"
         SF_CACHE="$PRJ_SF/cache/"
         SF_LOG="$PRJ_SF/log/"
+    else
+        DEV_ENV="none"
+        SF_PROG="donotrun"
+        SF_CACHE="none"
+        SF_LOG="none"
     fi
+    export DEV_ENV
     export SF_PROG
     export SF_CACHE
     export SF_LOG
@@ -330,6 +340,18 @@ sfschema() {
         echo "##### $i #####"; grep -v '^ ' $i | grep -v '^$' | grep -v '^#' | sed 's/://g' | sed 's/^/# /g'
         echo
     done >> schema.yml
+}
+
+donotrun() {
+    if [[ $(id -u) -eq 0 ]]; then
+        echo "The command \"sf\" should not be executed as root or via sudo directly."
+        echo "When a service requires root access, you will be prompted for a password as needed."
+        exit 1
+    fi    
+
+    echo "The command \"sf\" should not be executed without an DEV_ENV."
+    echo "You can do this by running gosf"
+    exit 1
 }
 
 # Switch between PHP version. Will restart Apache
