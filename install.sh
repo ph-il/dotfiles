@@ -102,6 +102,9 @@ npm install -g diff-so-fancy
 # trash as the safe `rm` alternative
 npm install --global trash-cli
 
+# Install pm2 (Advanced, production process manager for Node.js) use by Kuzzle
+npm install pm2 -g
+
 sudo easy_install Pygments
 
 # Configure Blackfire
