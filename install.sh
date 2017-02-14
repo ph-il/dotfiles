@@ -62,7 +62,7 @@ brew bundle -v --file=Tapfile
 brew update
 brew upgrade
 
-#brew bundle -v 
+brew bundle -v 
 
 brew bundle -v --file=Php55file
 brew unlink php55
