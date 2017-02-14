@@ -12,18 +12,6 @@ You can clone the repository wherever you want. (I like to keep it in `~/Project
 git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
-
-```bash
-source bootstrap.sh
-```
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-```bash
-set -- -f; source bootstrap.sh
-```
-
 ### Specify the `$PATH`
 
 If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as [detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-26)) takes place.
@@ -64,11 +52,52 @@ You could also use `~/.extra` to override settings, functions and aliases from m
 
 ### Sensible macOS defaults
 
-When setting up a new Mac, you may want to set some sensible macOS defaults:
+When setting up a new Mac, you may want to set some sensible macOS defaults and Applications:
+This will run App Installation, bootstrap.sh and .macos
 
 ```bash
 ./install.sh
 ```
+
+## Updates
+
+### Update Tools 
+
+This will updates all tools and Mac Application.
+
+* Execute:
+```sh
+update
+```
+
+### Update sensible macOS defaults
+
+```bash
+source .macos
+```
+
+### Update bootstrap script and dotfiles
+
+To update, `cd` into your local `dotfiles` repository and then:
+
+```bash
+source bootstrap.sh
+```
+
+Alternatively, to update while avoiding the confirmation prompt:
+
+```bash
+set -- -f; source bootstrap.sh
+```
+
+### Add new applications added in Brewfile 
+
+When some application need to be add, put it in the Brewfile, then run
+
+```bash
+source update.sh
+```
+
 ## Testing
 
 ### Test PHP 5.5
@@ -129,15 +158,6 @@ cfgphp
 * To update your apache config files, execute:
 ```sh
 cfgapache
-```
-
-### Update Tools 
-
-This will updates all tools and Mac Application.
-
-* Execute:
-```sh
-update
 ```
 
 ### Start PHP Server
