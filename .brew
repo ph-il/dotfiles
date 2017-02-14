@@ -32,6 +32,6 @@ brew bundle -v --file=Phpfile
 
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile
-brew bundle -v --file=Fontfile
+#brew bundle -v --file=Fontfile
 brew bundle -v --file=Masfile
 
