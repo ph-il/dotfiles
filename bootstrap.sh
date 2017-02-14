@@ -14,6 +14,16 @@ function doIt() {
         --exclude "LICENSE" \
         --exclude "Apache" \
         --exclude "Brewfile" \
+        --exclude "Tapfile" \
+        --exclude "Caskfile" \
+        --exclude "Fontfile" \
+        --exclude "Gemfile" \
+        --exclude "Masfile" \
+        --exclude "Phpfile" \
+        --exclude "Php55file" \
+        --exclude "Php56file" \
+        --exclude "Php70file" \
+        --exclude "Php71file" \
         -avh --no-perms . ~;
     source ~/.profile;
 }

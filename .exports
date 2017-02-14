@@ -44,7 +44,7 @@ export PHP_AUTOCONF=/usr/local/Cellar/autoconf/2.69/bin/autoconf
 export DEV_ENV="none"
 export SF_PROG="donotrun"
 export SF_CACHE="none"
-export SF_LOG=""none"
+export SF_LOG="none"
 
 # Current PHP version
 export PHP_VERSION="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"

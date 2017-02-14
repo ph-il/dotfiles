@@ -36,6 +36,10 @@ if ! xcode-select --print-path &> /dev/null; then
 
 fi
 
+cd "$(dirname "${BASH_SOURCE}")";
+
+git pull origin master;
+
 #
 # Install all the things with Homebrew, Casks and a Brewfile
 #
