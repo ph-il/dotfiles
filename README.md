@@ -92,7 +92,7 @@ set -- -f; source bootstrap.sh
 
 ### Add new applications added in Brewfile 
 
-When some application need to be add, put it in the Brewfile, then run
+When some application need to be add, put it in the Brewfile, save in your git, then run:
 
 ```bash
 source update.sh
