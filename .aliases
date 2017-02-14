@@ -88,6 +88,11 @@ alias mkd="mkdir -pv"
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
 
+# elasticsearch
+alias esrestart='brew services restart elasticsearch'
+alias esstart='brew services start elasticsearch'
+alias esstop='brew services stop elasticsearch'
+
 # Exakat
 alias goexakat='sphp 71; cd "${PRJ_DIR}/tools/exakat"'
 alias exakat='php exakat.phar -v' 
@@ -246,6 +251,7 @@ alias svnst='svn st --ignore-externals'
 # symfony 1, 2, 3 project command (need to use the go function before)
 alias sf='$SF_PROG'
 alias sfcc='sf cache:clear'
+# Dangerous @TODO Create a function that will be more safe
 alias sfhcc='sudo rm -rf ${SF_CACHE}*'
 alias sfcl='sudo find ${SF_LOG} -type f -delete'
 alias sfcxh='sudo find ${SF_LOG}xhprof/ -type f -delete'

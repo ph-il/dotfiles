@@ -37,6 +37,7 @@ brew 'curl'
 brew 'dex2jar'
 brew 'dns2tcp'
 brew 'editorconfig'
+brew 'elasticsearch'
 brew 'fcrackzip'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew 'findutils', args: ['with-default-names']
