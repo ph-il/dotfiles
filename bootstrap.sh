@@ -9,6 +9,12 @@ function doIt() {
         --exclude "init/" \
         --exclude ".DS_Store" \
         --exclude ".macos" \
+        --exclude ".exakat" \
+        --exclude ".kuzzle" \
+        --exclude ".xcode" \
+        --exclude ".brew" \
+        --exclude ".npminstall" \
+        --exclude ".appconfig" \
         --exclude "install.sh" \
         --exclude "update.sh" \
         --exclude "bootstrap.sh" \
