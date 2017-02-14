@@ -44,8 +44,8 @@ My `~/.extra` looks something like this:
 ##### PROJECTS ALIAS #####
  
 # goto a specific project
-alias gotest='gosf $PRJ_DIR/test/formation2 55 2'
-alias gora='gosf $PRJ_DIR/rpgapi/ 70 3' 
+alias gotest='gosf $PRJ_DIR/test/formation2 55 sf2'
+alias godf='gosf $PRJ_DIR/dotfiles/ none none' 
 
 ##### ALIAS #####
 
@@ -119,19 +119,42 @@ cfghosts
 
 ### Setup PHP
 
-* To update your .hosts file, execute:
+* To update your php config files, execute:
 ```sh
 cfgphp
 ```
 
+### Setup Apache
+
+* To update your apache config files, execute:
+```sh
+cfgapache
+```
+
 ### Update Tools 
+
+This will updates all tools and Mac Application.
 
 * Execute:
 ```sh
 update
 ```
 
-This will updates all tools and Mac Application.
+### Start PHP Server
+
+* Execute:
+```sh
+phpserver
+```
+
+### Switch PHP Version
+
+Switch between PHP version 55, 56, 70, 71
+
+* Execute:
+```sh
+sphp version
+```
 
 ## Feedback
 
