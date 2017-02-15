@@ -280,25 +280,21 @@ gosf() {
     PRJ_SF="${1}"
     export PRJ_SF
 
-    if [ "$2" != "" && "$2" != "none" && ${PHP_VERSION} != "$2"]
-    then
+    if [ "$2" != "" && "$2" != "none" && ${PHP_VERSION} != "$2"]; then
         sphp ${2}
     fi
 
-    if [ "$3" == 'sf3' ]
-    then
+    if [ "$3" == 'sf3' ]; then
         DEV_ENV="sf3"
         SF_PROG="php $PRJ_SF/bin/console"
         SF_CACHE="$PRJ_SF/var/cache/"
         SF_LOG="$PRJ_SF/var/logs/"
-    elif [ "$3" == 'sf2' ]
-    then
+    elif [ "$3" == 'sf2' ]; then
         DEV_ENV="sf2"
         SF_PROG="php $PRJ_SF/app/console"
         SF_CACHE="$PRJ_SF/app/cache/"
         SF_LOG="$PRJ_SF/app/logs/"
-    elif [ "$3" == 'sf1' ]
-    then
+    elif [ "$3" == 'sf1' ]; then
         DEV_ENV="sf1"
         SF_PROG="$PRJ_SF/symfony"
         SF_CACHE="$PRJ_SF/cache/"
@@ -309,6 +305,7 @@ gosf() {
         SF_CACHE="none"
         SF_LOG="none"
     fi
+    
     export DEV_ENV
     export SF_PROG
     export SF_CACHE
@@ -328,6 +325,7 @@ gosf() {
     #     apachectl restart
     # fi
 }
+
 # This is use for symfony 1.x projects.
 # If you are using many schema files, it will add a list of all files to your schema.yml
 # Usage: sfschema

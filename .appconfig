@@ -62,7 +62,7 @@ PATTERN="DirectoryIndex index.html"
 if grep -q "$PATTERN" $apacheConf;
  then
     sudo echo "" >> $apacheConf
-    sudo sudo sudo sed -i -e "s/$PATTERN/DirectoryIndex index.php index.html/g" $apacheConf
+    sudo sed -i -e "s/$PATTERN/DirectoryIndex index.php index.html/g" $apacheConf
  else
     echo "DirectoryIndex is already set"
 fi
@@ -73,8 +73,8 @@ sudo echo "" >> $apacheConf
 sudo echo "Options FollowSymLinks Multiviews Indexes" >> $apacheConf
 
 sudo perl -i -0pe "s/    AllowOverride none\n    Require all denied\n/    Options FollowSymLinks Multiviews Indexes\n    AllowOverride All\n    Require all granted\n/" $apacheConf
-sudo sudo sed -i -e 's/User _www/User '$(whoami)'/g' $apacheConf
-sudo sudo sed -i -e 's/Group _www/Group staff/g' $apacheConf
+sudo sed -i -e 's/User _www/User '$(whoami)'/g' $apacheConf
+sudo sed -i -e 's/Group _www/Group staff/g' $apacheConf
 
 PATTERN="SetHandler application/x-httpd-php"
 if grep -q "${PATTERN}" $apacheConf;

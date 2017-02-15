@@ -136,6 +136,27 @@ php -i "(command-line 'phpinfo()')"
 
 * Make sure that everyting is working
 
+### Test Exakat
+
+* You may call check that the server has GremlinPlugin available with 
+
+```sh
+curl -s -G http://localhost:7474/tp/gremlin/execute
+```
+
+* Result should be : 
+
+```json
+    {
+       "success": true
+    }
+```
+
+* You can check Exakat Installation
+```sh
+goexakat
+exakat doctor
+```
 
 ## Some usefull commands
 
@@ -208,101 +229,4 @@ Suggestions/improvements
 * [Paul Irish](http://paulirish.com) and his [dotfiles repository](https://github.com/paulirish/dotfiles)
 * [Jean-Christophe Lauffer](https://github.com/jclauffer) for lot of code in my original .profile
 * [Damien Seguy](http://exakat.io) for the [Exakat config](https://github.com/dseguy)
-
-
-
-## Install Exakat
-
-* Create the directory for Exakat by executing 
-```sh
-    goprj
-    mkd tools/exakat
-```
-
-### Install Java
-
-Install Java(TM) JDK 1.8. Neo4j recommends using Java 1.7, but is currently reported to work correctly with Java 1.8. Some variable are already set in our `.profile` file.
-
-* Go to [Java Se Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) and follow the instructions
-* Check with `java -version`
-* `echo $JAVA_HOME` (Should be set to the path of Java 1.8)
-
-### Install Neo4j
-
-We need Neo4j 2.3.\* (tested with 2.3.5)
-
-* Execute: 
-```sh
-    goexakat
-    curl -O http://neo4j.com/artifact.php?name=neo4j-community-2.3.5-unix.tar.gz 
-    tar -xf artifact.php\?name=neo4j-community-2.3.5-unix.tar.gz
-    mv neo4j-community-2.3.5 neo4j
-    rm artifact.php\?name=neo4j-community-2.3.5-unix.tar.gz
-    neostart
-    neostop
-    mate $NEO4J_HOME/conf/neo4j-server.properties
-```    
-
-* Register the Gremlin plugin in the `$NEO4J_HOME/conf/neo4j-server.properties` file. To do so, add this line:
-
-```
-    org.neo4j.server.thirdparty_jaxrs_classes=com.thinkaurelius.neo4j.plugins=/tp
-```
-
-#### Gremlin plug-in
-
-This install [gremlin plug-in](https://github.com/thinkaurelius/neo4j-gremlin-plugin) for Neo4j.
-  
-* First, in command line : 
-
-```sh
-    git clone https://github.com/thinkaurelius/neo4j-gremlin-plugin.git gremlin-plugin
-    cd gremlin-plugin
-    mate pom.xml
-```
-
-* Make the following changes in the following files : 
-
-    1 `pom.xml` : change the version tag from 2.3.1 to 2.3.5
-    2 `tinkerpop2/pom.xml` : change the version tag from 2.3.1 to 2.3.5
-    3 `tinkerpop3/pom.xml`
-        * change the version tag from 2.3.1 to 2.3.5
-        * change the tinkerpop-version tag from 3.1.0-incubating to 3.2.0-incubating
-
-* Then, finish the compilation and move the files: 
-```sh
-    mvn clean package -Dtp.version=3
-    unzip target/neo4j-gremlin-plugin-tp3-2.3.5-server-plugin.zip -d $NEO4J_HOME/plugins/gremlin-plugin
-    mate neo4j/conf/neo4j-server.properties
-```
-
-* Replace `dbms.security.auth_enabled=true` to `dbms.security.auth_enabled=false`
-
-* Start neo4j server :    
-```sh
-    neostart
-```
-
-* You may call check that the server has GremlinPlugin available with 
-
-```sh
-    curl -s -G http://localhost:7474/tp/gremlin/execute
-```
-
-* Result should be : 
-
-```json
-    {
-       "success": true
-    }
-```
-
-* You may now removed the git repository for gremlin-plugin.
-```sh
-    cd ..
-    rm -rf gremlin-plugin
-    chmod 777 neo4j
-    neostop
-```
-
 
