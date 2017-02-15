@@ -179,6 +179,11 @@ alias memstop='brew services stop memcached'
 alias memreset="echo 'flush_all' | nc localhost 11211"
 alias memstats="echo 'stats' | nc localhost 11211"
   
+# MongoDb
+alias mongorestart='brew services restart mongodb'
+alias mongostart='brew services start mongodb'
+alias mongostop='brew services stop mongodb'
+
 # Mysql
 alias mysqlrestart='brew services restart mysql'
 alias mysqlstart='brew services start mysql'
