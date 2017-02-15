@@ -42,9 +42,9 @@ if grep -q "$PATTERN" $apacheConf;
     echo "sphp is already set"
  else
     sudo sed -i -e '/libphp5.so/d' $apacheConf
-    echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
-    echo "#LoadModule php5_module /usr/local/lib/libphp5.so" >> $apacheConf
-    echo "LoadModule php7_module /usr/local/lib/libphp7.so" >> $apacheConf
+    sudo echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
+    sudo echo "#LoadModule php5_module /usr/local/lib/libphp5.so" >> $apacheConf
+    sudo echo "LoadModule php7_module /usr/local/lib/libphp7.so" >> $apacheConf
 fi
 
 PATTERN="Include /private/etc/apache2/other/*.conf"

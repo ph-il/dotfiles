@@ -29,7 +29,7 @@ source .appconfig
 source .kuzzle
 
 # Install Exakat
-#source .exakat
+source .exakat
 
 # Setup computer
 source .macos
