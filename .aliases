@@ -144,6 +144,11 @@ alias brwe=brew  #typos
 # host names
 alias cfghosts='sudo ${EDITOR} /etc/hosts'
 
+# jenkins
+alias jkrestart='brew services restart jenkins'
+alias jkstart='brew services start jenkins'
+alias jkstop='brew services stop jenkins'
+
 # Kuzzle
 alias gokuzzle='cd "${KUZZLE_DIR}"'
 alias k='cd "${KUZZLE_DIR}"'
