@@ -266,6 +266,10 @@ update() {
     echo "Updating Exakat..."
     exakat upgrade -u
     badge
+    echo "Updating Pip3..."
+    pip3 install --upgrade pip setuptools wheel
+    badge
+    
 }
  
 # Defining a default project
