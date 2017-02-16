@@ -1,5 +1,5 @@
 ### Install PHP 5.6
-brew 'homebrew/php/php56'
+brew 'homebrew/php/php56', arg: ['with-httpd24']
 brew 'blackfire-php56'
 brew 'php56-apcu'
 brew 'php56-igbinary' 

@@ -407,7 +407,8 @@ sphp() {
         brew link php$newversion
 
         echo "Linking new modphp addon..."
-        sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${majorNew}.so
+        
+        sudo ln -sf /usr/local/opt/php$newversion/libexec/apache2/libphp${majorNew}.so /usr/local/lib/libphp${majorNew}.so
 
         echo "Fixing LoadModule..."
         apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`

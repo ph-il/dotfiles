@@ -6,7 +6,7 @@ sudo chmod 4755 $mtrlocation/sbin/mtr
 sudo chown root $mtrlocation/sbin/mtr
 
 # Configure Blackfire
-sudo blackfire-agent -register
+#sudo blackfire-agent -register
 ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
 
 ## Configure MySQL
@@ -20,7 +20,7 @@ git lfs install
 sudo git lfs install --system
 
 # Configure MongoDB
-if ! [ -d "/data/db" ] 
+if ! [ -d "/data/db" ]
 then
     mkdir -p /data/db
     sudo chown -R `id -un` /data/db
@@ -101,3 +101,5 @@ if grep -q "${PATTERN}" $apacheConf;
     sudo echo '    '${PATTERN} >> $apacheConf
     sudo echo "</FilesMatch>" >> $apacheConf
 fi
+
+sphp 70
