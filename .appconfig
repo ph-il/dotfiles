@@ -27,15 +27,23 @@ then
 fi;
 
 # Configure PHP
+sudo chmod -R guo+rw  /usr/local/etc/php/5.5/conf.d
+sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
+sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
+sudo chmod -R guo+rw  /usr/local/etc/php/7.1/conf.d
 cp ./Apache/zz_personal.ini /usr/local/etc/php/5.5/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/5.6/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.0/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
 
+
 # Configure Apache
+sudo chmod -R guo+rw /private/etc/apache2/extra
+sudo chmod -R guo+rw /private/etc/apache2/other
+sudo chmod -R guo+rw /private/etc/apache2/httpd.conf
 
 COMM='s/username/'$(whoami)'/g'
-for i in /etc/apache2/other/*.conf  
+for i in /private/etc/apache2/other/*.conf  
   do
     sudo sed -i -e $COMM "$i" 
 done
