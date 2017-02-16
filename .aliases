@@ -22,9 +22,9 @@ alias mkalias='${EDITOR} ~/.extra'
 alias runalias='source ~/.profile'
  
 # Apache
-alias apachectl='sudo /usr/sbin/apachectl'
-alias apache2ctl='sudo /usr/sbin/apachectl'
-alias cfgapache='${EDITOR} /etc/apache2'
+alias apachectl='sudo apachectl'
+alias apache2ctl='sudo apachectl'
+alias cfgapache='${EDITOR} /usr/local/etc/apache2/2.4/'
 
 # BlackFire
 alias bfstart='brew services start blackfireio/blackfire/blackfire-agent'

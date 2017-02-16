@@ -1,5 +1,5 @@
 ### Install PHP 7.1
-brew 'homebrew/php/php71', arg: ['with-httpd24']
+brew 'php71', arg: ['with-httpd24']
 brew 'php71-igbinary'
 brew 'php71-memcached', args: %w[HEAD]
 #brew 'php71-memcache'

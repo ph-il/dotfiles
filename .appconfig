@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.profile;
+
 # allow mtr to run without sudo
 mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`
 sudo chmod 4755 $mtrlocation/sbin/mtr
@@ -22,7 +24,7 @@ sudo git lfs install --system
 # Configure MongoDB
 if ! [ -d "/data/db" ]
 then
-    mkdir -p /data/db
+    sudo mkdir -p /data/db
     sudo chown -R `id -un` /data/db
 fi;
 
@@ -38,17 +40,21 @@ cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
 
 
 # Configure Apache
-sudo chmod -R guo+rw /private/etc/apache2/extra
-sudo chmod -R guo+rw /private/etc/apache2/other
-sudo chmod -R guo+rw /private/etc/apache2/httpd.conf
+
+apacheRoot=`httpd -V | grep -i httpd_root | cut -d '"' -f 2`
+apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+
+sudo chmod -R guo+rw ${apacheRoot}/extra
+sudo mkdir ${apacheRoot}/other
+sudo chmod -R guo+rw ${apacheRoot}/other
+sudo chmod -R guo+rw $apacheConf
 
 COMM='s/username/'$(whoami)'/g'
-for i in /private/etc/apache2/other/*.conf  
+for i in ${apacheRoot}/other/*.conf  
   do
     sudo sed -i -e $COMM "$i" 
 done
 
-apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
 
 PATTERN="# Brew PHP LoadModule for 'sphp' switcher"
 
@@ -102,4 +108,10 @@ if grep -q "${PATTERN}" $apacheConf;
     sudo echo "</FilesMatch>" >> $apacheConf
 fi
 
-sphp 70
+sudo cp -v $(apacheRoot)/homebrew.mxcl.httpd24.plist /Library/LaunchDaemons
+sudo chown -v root:wheel /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
+sudo chmod -v 644 /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
+sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
+
+sudo ln -sf /usr/local/opt/php71/libexec/apache2/libphp7.so /usr/local/lib/libphp7.so
+apachectl -k restart

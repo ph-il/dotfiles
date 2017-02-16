@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### XCode Command Line Tools
-source .xcode
+./.xcode
 
 cd "$(dirname "${BASH_SOURCE}")";
 
@@ -13,23 +13,26 @@ then
     mkdir -pv Projects
 fi;
 
+sudo apachectl stop
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
+
 # Install everything in Brewfile
-source .brew
+./.brew
 
 # Install dotfiles
 ./bootstrap.sh
 
 # Install somes applications with npm
-source .npminstall
+./.npminstall
 
 # Autoconfig somes application install with brew
-source .appconfig
+./.appconfig
 
 # Install Kuzzle
-source .kuzzle
+./.kuzzle
 
 # Install Exakat
-source .exakat
+./.exakat
 
 # Setup computer
-source .macos
+./.macos

@@ -389,16 +389,16 @@ sphp() {
         echo "PHP version $newversion found"
         
         # Check if new version is already the current version.
-        if [ "${newversion}" == "${PHP_VERSION}" ]; then
-            echo -n "PHP version ${newversion} is already being used. Continue by reloading? (y/n) "
-            while true; do
-                read -n 1 yn
-                case $yn in
-                    [Yy]* ) echo && break;;
-                    [Nn]* ) echo && exit 1;;
-                esac
-            done
-        fi
+        # if [ "${newversion}" == "${PHP_VERSION}" ]; then
+        #     echo -n "PHP version ${newversion} is already being used. Continue by reloading? (y/n) "
+        #     while true; do
+        #         read -n 1 yn
+        #         case $yn in
+        #             [Yy]* ) echo && break;;
+        #             [Nn]* ) echo && exit 1;;
+        #         esac
+        #     done
+        # fi
         
         echo "Unlinking old binaries..."
         brew unlink php$PHP_VERSION 2> /dev/null > /dev/null

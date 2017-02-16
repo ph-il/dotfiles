@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 if ! [ -d "${PRJ_DIR}/tools/exakat" ]
 then
     cd "${PRJ_DIR}"
-    mkdir tools/exakat
+    mkdir -p tools/exakat
 fi;
 
 cd "${PRJ_DIR}/tools/exakat"
