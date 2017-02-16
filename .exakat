@@ -1,13 +1,15 @@
 #!/bin/bash
 
+cd "$(dirname "${BASH_SOURCE}")";
+
 # Creation Exakat Directory
 if ! [ -d "${PRJ_DIR}/tools/exakat" ]
 then
-    goprj
+    cd "${PRJ_DIR}"
     mkdir tools/exakat
 fi;
 
-goexakat
+cd "${PRJ_DIR}/tools/exakat"
 
 curl -o exakat.phar http://dist.exakat.io/index.php?file=latest
 curl -O http://neo4j.com/artifact.php?name=neo4j-community-2.3.5-unix.tar.gz
@@ -26,7 +28,7 @@ sudo sed -i -e 's/3.1.0-incubating/3.2.0-incubating/g' tinkerpop3/pom.xml
 mvn clean package -Dtp.version=3
 unzip target/neo4j-gremlin-plugin-tp3-2.3.5-server-plugin.zip -d $NEO4J_HOME/plugins/gremlin-plugin
 sudo sed -i -e 's/dbms.security.auth_enabled=true/dbms.security.auth_enabled=false/g' neo4j/conf/neo4j-server.properties
-goexakat
+cd "${PRJ_DIR}/tools/exakat"
 rm -rf gremlin-plugin
 chmod 777 neo4j
 neostart
