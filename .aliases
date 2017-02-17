@@ -24,7 +24,9 @@ alias runalias='source ~/.profile'
 # Apache
 alias apachectl='sudo apachectl'
 alias apache2ctl='sudo apachectl'
-alias cfgapache='${EDITOR} /usr/local/etc/apache2/2.4/'
+apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+apacheRoot=${apacheConf::${#apacheConf}-10}
+alias cfgapache="${EDITOR} ${apacheRoot}"
 
 # BlackFire
 alias bfstart='brew services start blackfireio/blackfire/blackfire-agent'
