@@ -18,7 +18,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias ag='ag -f --hidden'
 
 # alias
-alias mkalias='${EDITOR} ~/.extra'
+alias mkalias='${EDITOR} ~/.extra;'
 alias runalias='source ~/.profile'
  
 # Apache
@@ -94,8 +94,14 @@ alias esstart='brew services start elasticsearch'
 alias esstop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='sphp 71; cd "${PRJ_DIR}/tools/exakat"'
+alias goexakat='gosf "${PRJ_DIR}/tools/exakat" php71'
 alias exakat='php exakat.phar -v' 
+
+# ezPublish project command (need to use the go function before)
+alias ezp='$DEVENV_PROG'
+alias ezpcc='ezp cache:clear'
+alias sfhcc='sudo rm -rf ${SF_CACHE}*'
+alias sfcl='sudo find ${SF_LOG} -type f -delete'
 
 # Files mv, rm, cp
 alias cp='cp -v'
@@ -266,12 +272,12 @@ alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
    
 # symfony 1, 2, 3 project command (need to use the go function before)
-alias sf='$SF_PROG'
+alias sf='$DEVENV_PROG'
 alias sfcc='sf cache:clear'
 # Dangerous @TODO Create a function that will be more safe
-alias sfhcc='sudo rm -rf ${SF_CACHE}*'
-alias sfcl='sudo find ${SF_LOG} -type f -delete'
-alias sfcxh='sudo find ${SF_LOG}xhprof/ -type f -delete'
+alias sfhcc='sudo rm -rf ${DEVENV_CACHE}*'
+alias sfcl='sudo find ${DEVENV_LOG} -type f -delete'
+alias sfcxh='sudo find ${DEVENV_LOG}xhprof/ -type f -delete'
  
 # symfony 1 only project command (need to use the go function before)
 alias sfpi='sf plugin:install'
@@ -305,8 +311,8 @@ alias vreload="vagrant reload"
 alias vrebuild="vagrant destroy --force && vagrant up"
 
 # varnish
-alias restart='brew services restart varnish' 
-alias varnishrestart='brew services start varnish' 
+alias varnishrestart='brew services restart varnish' 
+alias varnishstart='brew services start varnish' 
 alias varnishrestop='brew services stop varnish' 
  
 # Enable aliases to be sudo’ed

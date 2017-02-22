@@ -8,8 +8,7 @@ git pull origin master;
 # Update all the things with Homebrew, Casks and a Brewfile
 #
 
-brew update
-brew upgrade
+update
 
 brew tap Homebrew/bundle
 
@@ -44,7 +43,7 @@ brew link php${PHP_VERSION}
 
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile
-brew bundle -v --file=Fontfile
+#brew bundle -v --file=Fontfile
 brew bundle -v --file=Masfile
 
 brew unlink php${PHP_VERSION}

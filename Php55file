@@ -1,5 +1,4 @@
 ### Install PHP 5.5
-brew 'php55', arg: ['with-httpd24']
 brew 'blackfire-php55'
 brew 'php55-apcu'
 brew 'php55-igbinary' 

@@ -273,61 +273,63 @@ update() {
 }
  
 # Defining a default project
-# Usage: gosf 'project directory' 'php version' 'symfony version' 'project configuration name in apache'
-gosf() {
+# Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'ezp' 'rundk' 'runapache'
+devenv() {
     if [[ $(id -u) -eq 0 ]]; then
-        echo "The command \"gosf\" should not be executed as root or via sudo directly."
+        echo "The command \"devenv\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
         exit 1
     fi    
     
-    PRJ_SF="${1}"
-    export PRJ_SF
-
-    if [ "$2" != "" ] && [ "$2" != "none" ] && [ "${PHP_VERSION}" != "$2" ]; then
-        sphp ${2}
-    fi
-
-    if [ "$3" == 'sf3' ]; then
-        DEV_ENV="sf3"
-        SF_PROG="php $PRJ_SF/bin/console"
-        SF_CACHE="$PRJ_SF/var/cache/"
-        SF_LOG="$PRJ_SF/var/logs/"
-    elif [ "$3" == 'sf2' ]; then
-        DEV_ENV="sf2"
-        SF_PROG="php $PRJ_SF/app/console"
-        SF_CACHE="$PRJ_SF/app/cache/"
-        SF_LOG="$PRJ_SF/app/logs/"
-    elif [ "$3" == 'sf1' ]; then
-        DEV_ENV="sf1"
-        SF_PROG="$PRJ_SF/symfony"
-        SF_CACHE="$PRJ_SF/cache/"
-        SF_LOG="$PRJ_SF/log/"
-    else
-        DEV_ENV="none"
-        SF_PROG="donotrun"
-        SF_CACHE="none"
-        SF_LOG="none"
-    fi
+	if [ -z "${1}" ]; then
+        echo "ERROR: Directory location needed";
+        return 1;
+    fi;
+	
+	args=$#                          # number of command line args
     
-    export DEV_ENV
-    export SF_PROG
-    export SF_CACHE
-    export SF_LOG
+    DEVENV_DIR="${1}"
+    export DEVENV_DIR
+    cd "${DEVENV_DIR}"
 
-    cd "${1}"
-
- 
-    # if [[ "$3" != "" && "$3" != "none" ]]
-    # then
-    #     for i in /etc/apache2/other/*.default
-    #     do
-    #         sudo mv $i ${i%default}conf
-    #     done
-    #     sudo cp /etc/apache2/other/"${3}".conf /etc/apache2/other/000.default.conf
-    #     sudo mv /etc/apache2/other/"${3}".conf /etc/apache2/other/"${3}".default
-    #     apachectl restart
-    # fi
+	for (( i=2; i<=$args; i+=1 ))    # loop from 2 to N (where N is number of args)
+	do
+	    if [ "$i" == 'sf3' ]; then
+	        DEVENV_NAME="sf3"
+	        DEVENV_PROG="php $DEVENV_DIR/bin/console"
+	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
+	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+	    elif [ "$i" == 'sf2' ]; then
+	        DEVENV_NAME="sf2"
+	        DEVENV_PROG="php $DEVENV_DIR/app/console"
+	        DEVENV_CACHE="$DEVENV_DIR/app/cache/"
+	        DEVENV_LOG="$DEVENV_DIR/app/logs/"
+	    elif [ "$i" == 'sf1' ]; then
+	        DEVENV_NAME="sf1"
+	        DEVENV_PROG="$DEVENV_DIR/symfony"
+	        DEVENV_CACHE="$DEVENV_DIR/cache/"
+	        DEVENV_LOG="DEVENV_DIR/log/"
+	    elif [ "$i" == 'ezp' ]; then
+	        DEVENV_NAME="exp"
+	        DEVENV_PROG="php $DEVENV_DIR/ezpublish/console"
+	        DEVENV_CACHE="$DEVENV_DIR/ezpublish/cache/"
+	        DEVENV_LOG="$DEVENV_DIR/logs/"
+	    elif [ "$i" == 'rundk' ]; then
+			apachestop
+			./dk start
+	    elif [ "$i" == 'runapache' ]; then
+			apacherestart
+		elif [ "${i:0:3}" == 'php' ]; then
+		    if [ "${PHP_VERSION}" != "${i:3:2}" ]; then
+		        sphp ${i:3:2}
+		    fi
+	    fi		
+	done
+    
+    export DEVENV_NAME
+    export DEVENV_PROG
+    export DEVENV_CACHE
+    export DEVENV_LOG
 }
 
 # This is use for symfony 1.x projects.

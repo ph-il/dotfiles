@@ -1,7 +1,6 @@
 ### Install PHP 7.0
-brew 'php70', arg: ['with-httpd24']
 brew 'php70-igbinary', args: %w['HEAD']
-brew 'php70-memcached', args: %w[HEAD]
+brew 'php70-memcached', args: %w['HEAD']
 #brew 'php70-memcache'
 brew 'php70-opcache'
 brew 'php70-apcu'
@@ -15,6 +14,6 @@ brew 'php70-solr'
 brew 'php70-ast'
 brew 'php70-tidy'
 brew 'blackfire-php70'
-brew 'php70-redis', args: %w[HEAD]
-brew 'php70-yaml', args: %w[HEAD]
+brew 'php70-redis'
+brew 'php70-yaml', args: %w['HEAD']
 brew 'phan'
