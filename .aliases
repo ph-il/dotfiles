@@ -88,6 +88,11 @@ alias mkd="mkdir -pv"
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
 
+# brew services start docker-machine
+alias dockerrestart='brew services restart docker-machine'
+alias dockerstart='brew services start docker-machine'
+alias dockerstop='brew services stop docker-machine'
+
 # elasticsearch
 alias esrestart='brew services restart elasticsearch'
 alias esstart='brew services start elasticsearch'

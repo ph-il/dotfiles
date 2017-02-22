@@ -314,11 +314,6 @@ devenv() {
 	        DEVENV_PROG="php $DEVENV_DIR/ezpublish/console"
 	        DEVENV_CACHE="$DEVENV_DIR/ezpublish/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/logs/"
-	    elif [ "$i" == 'rundk' ]; then
-			apachestop
-			./dk start
-	    elif [ "$i" == 'runapache' ]; then
-			apacherestart
 		elif [ "${i:0:3}" == 'php' ]; then
 		    if [ "${PHP_VERSION}" != "${i:3:2}" ]; then
 		        sphp ${i:3:2}
