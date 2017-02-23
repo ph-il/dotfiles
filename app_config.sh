@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source ~/.profile;
 
@@ -38,7 +38,6 @@ cp ./Apache/zz_personal.ini /usr/local/etc/php/5.6/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.0/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
 
-
 # Configure Apache
 
 apacheRoot=`httpd -V | grep -i httpd_root | cut -d '"' -f 2`
@@ -54,7 +53,6 @@ for i in ${apacheRoot}/other/*.conf
   do
     sudo sed -i -e $COMM "$i" 
 done
-
 
 PATTERN="# Brew PHP LoadModule for 'sphp' switcher"
 

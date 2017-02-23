@@ -7,13 +7,12 @@ git pull origin master;
 function doIt() {
     rsync --exclude ".git/" \
         --exclude ".DS_Store" \
-        --exclude ".macos" \
-        --exclude ".exakat" \
-        --exclude ".kuzzle" \
-        --exclude ".xcode" \
-        --exclude ".brew" \
-        --exclude ".npminstall" \
-        --exclude ".appconfig" \
+        --exclude "macos.sh" \
+        --exclude "exakat_install.sh" \
+        --exclude "kuzzle_install.sh" \
+        --exclude "brew_install.sh" \
+        --exclude "npm_install.sh" \
+        --exclude "app_config.sh" \
         --exclude "install.sh" \
         --exclude "update.sh" \
         --exclude "bootstrap.sh" \

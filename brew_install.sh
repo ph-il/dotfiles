@@ -6,7 +6,6 @@ if ! which brew > /dev/null; then
      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi;
 
-
 # Install everything in Brewfile
 
 brew doctor
@@ -39,6 +38,5 @@ brew bundle -v --file=Phpfile
 
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile
-#brew bundle -v --file=Fontfile
 brew bundle -v --file=Masfile
 

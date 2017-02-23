@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cd "$(dirname "${BASH_SOURCE}")";
 
@@ -43,7 +43,6 @@ brew link php${PHP_VERSION}
 
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile
-#brew bundle -v --file=Fontfile
 brew bundle -v --file=Masfile
 
 brew unlink php${PHP_VERSION}
