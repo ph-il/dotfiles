@@ -168,5 +168,4 @@ brew 'python'
 brew 'ansible'
 brew 'mongodb'
 brew 'httpd24', args: ['with-privileged-ports', 'with-http2']
-brew 'docker-machin'
 brew 'elasticsearch'
