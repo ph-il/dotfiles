@@ -41,11 +41,6 @@ cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
 # Configure Docker
 docker-machine create -d virtualbox dev
 eval "$(docker-machine env dev)"
-if ! [ -d "/data/DOCKER_SOURCES" ]
-then
-    sudo mkdir -p /data/DOCKER_SOURCES
-    sudo chown -R `id -un` /data/DOCKER_SOURCES
-fi;
 
 # Configure Apache
 
