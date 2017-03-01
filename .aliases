@@ -102,12 +102,6 @@ alias esstop='brew services stop elasticsearch'
 alias goexakat='gosf "${PRJ_DIR}/tools/exakat" php71'
 alias exakat='php exakat.phar -v' 
 
-# ezPublish project command (need to use the go function before)
-alias ezp='$DEVENV_PROG'
-alias ezpcc='ezp cache:clear'
-alias sfhcc='sudo rm -rf ${SF_CACHE}*'
-alias sfcl='sudo find ${SF_LOG} -type f -delete'
-
 # Files mv, rm, cp
 alias cp='cp -v'
 alias mv='mv -v'
