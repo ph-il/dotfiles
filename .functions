@@ -273,7 +273,7 @@ update() {
 }
  
 # Defining a default project
-# Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'ezp' 'rundk' 'runapache'
+# Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'ezp'
 devenv() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"devenv\" should not be executed as root or via sudo directly."
@@ -291,32 +291,37 @@ devenv() {
     DEVENV_DIR="${1}"
     export DEVENV_DIR
     cd "${DEVENV_DIR}"
-
+	
+	DEVENV_NAME="none"
+	DEVENV_PROG="donotrun"
+	DEVENV_CACHE="none"
+	DEVENV_LOG="none"
+	
 	for (( i=2; i<=$args; i+=1 ))    # loop from 2 to N (where N is number of args)
 	do
-	    if [ "$i" == 'sf3' ]; then
+ 	    if [ "${!i}" == 'sf3' ]; then
 	        DEVENV_NAME="sf3"
 	        DEVENV_PROG="php $DEVENV_DIR/bin/console"
 	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
 	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
-	    elif [ "$i" == 'sf2' ]; then
+	    elif [ "${!i}" == 'sf2' ]; then
 	        DEVENV_NAME="sf2"
 	        DEVENV_PROG="php $DEVENV_DIR/app/console"
 	        DEVENV_CACHE="$DEVENV_DIR/app/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/app/logs/"
-	    elif [ "$i" == 'sf1' ]; then
+	    elif [ "${!i}" == 'sf1' ]; then
 	        DEVENV_NAME="sf1"
 	        DEVENV_PROG="$DEVENV_DIR/symfony"
 	        DEVENV_CACHE="$DEVENV_DIR/cache/"
 	        DEVENV_LOG="DEVENV_DIR/log/"
-	    elif [ "$i" == 'ezp' ]; then
+	    elif [ "${!i}" == 'ezp' ]; then
 	        DEVENV_NAME="exp"
 	        DEVENV_PROG="php $DEVENV_DIR/wwwroot/ezpublish/console"
 	        DEVENV_CACHE="$DEVENV_DIR/wwwroot/ezpublish/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/wwwroot/ezpublish/logs/"
-		elif [ "${i:0:3}" == 'php' ]; then
-		    if [ "${PHP_VERSION}" != "${i:3:2}" ]; then
-		        sphp ${i:3:2}
+		elif [ "${!i:0:3}" == 'php' ]; then
+		    if [ "${PHP_VERSION}" != "${!i:3:2}" ]; then
+		        sphp ${!i:3:2}
 		    fi
 	    fi		
 	done
@@ -331,7 +336,7 @@ devenv() {
 # If you are using many schema files, it will add a list of all files to your schema.yml
 # Usage: sfschema
 sfschema() {
-    cd ${PRJ_SF}
+    cd ${DEVENV_DIR}
     cd config/doctrine/
     echo
     for i in $(ls *.yml)
@@ -345,12 +350,12 @@ donotrun() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"sf\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
-        exit 1
+        exit 0
     fi    
 
     echo "The command \"sf\" should not be executed without an DEV_ENV."
     echo "You can do this by running gosf"
-    exit 1
+    exit 0
 }
 
 # Switch between PHP version. Will restart Apache
@@ -360,7 +365,7 @@ sphp() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"sphp\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
-        exit 1
+        exit 0
     fi
     
     # Usage
@@ -371,7 +376,7 @@ sphp() {
             echo " - phpversion: $line"
             # your code goes here
         done
-        exit 1
+        exit 0
     fi
 
     newversion="$1"
@@ -421,7 +426,7 @@ sphp() {
     else
         echo "PHP version $majorNew.$minorNew was not found."
         echo "Try \`brew install php${newversion}\` first."
-        exit 1
+        exit 0
     fi
 }
 
