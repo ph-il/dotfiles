@@ -70,7 +70,7 @@ if grep -q "$PATTERN" $apacheConf;
     sudo echo "LoadModule php7_module /usr/local/lib/libphp7.so" >> $apacheConf
 fi
 
-PATTERN="Include /private/etc/apache2/other/*.conf"
+PATTERN="/usr/local/etc/apache2/2.4/other/*.conf"
 
 if grep -q $PATTERN $apacheConf;
  then

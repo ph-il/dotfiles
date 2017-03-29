@@ -4,6 +4,7 @@ brew 'php71-memcached', args: %w['HEAD']
 #brew 'php71-memcache'
 brew 'php71-opcache'
 brew 'php71-apcu'
+brew 'php71-apcu-bc'
 brew 'php71-mcrypt'
 brew 'php71-intl'
 brew 'php71-xdebug'
