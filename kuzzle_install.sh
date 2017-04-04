@@ -2,23 +2,25 @@
 
 # Install Kuzzle
 
-source .kuzzle
 # Create the Kuzzle root directory
 if ! [ -d "${PRJ_DEV}/Kuzzle" ] 
 then
+	cd "${PRJ_DIR}"
     mkdir -pv Kuzzle
 fi;
 
 # Create a directory for Kuzzle Proxy and install it
-gokuzzle
+cd "${PRJ_DIR}/Kuzzle"
 git clone https://github.com/kuzzleio/kuzzle-proxy.git
 cd kuzzle-proxy
+git checkout rc.x
 npm install
 
 # Create a directory for Kuzzle Core and install it
-gokuzzle
+cd "${PRJ_DIR}/Kuzzle"
 git clone https://github.com/kuzzleio/kuzzle.git
 cd kuzzle
+git checkout rc.x
 npm install
 
 echo "apps:
