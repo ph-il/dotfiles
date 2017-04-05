@@ -27,7 +27,7 @@ alias apache2ctl='sudo apachectl'
 alias cfgapache='${EDITOR} /usr/local/etc/apache2/2.4/'
 
 # BlackFire
-alias bfstart='brew services start blackfireio/blackfire/blackfire-agent'
+alias bfstart='brew services run blackfireio/blackfire/blackfire-agent'
 alias bfstop='brew services stop blackfireio/blackfire/blackfire-agent'
 
 # cd - help change directory
@@ -88,14 +88,14 @@ alias mkd="mkdir -pv"
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
 
-# brew services start docker-machine
+# brew services run docker-machine
 alias dockerrestart='brew services restart docker-machine'
-alias dockerstart='brew services start docker-machine'
+alias dockerstart='brew services run docker-machine'
 alias dockerstop='brew services stop docker-machine'
 
 # elasticsearch
 alias esrestart='brew services restart elasticsearch'
-alias esstart='brew services start elasticsearch'
+alias esstart='brew services run elasticsearch'
 alias esstop='brew services stop elasticsearch'
 
 # Exakat
@@ -151,15 +151,15 @@ alias cfghosts='sudo ${EDITOR} /etc/hosts'
 
 # jenkins
 alias jkrestart='brew services restart jenkins'
-alias jkstart='brew services start jenkins'
+alias jkstart='brew services run jenkins'
 alias jkstop='brew services stop jenkins'
 
 # Kuzzle
 alias gokuzzle='cd "${KUZZLE_DIR}"'
 alias k='cd "${KUZZLE_DIR}"'
 alias kuzlog='pm2 log'
-alias kuzstop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml'
-alias kuzstart='pm2 start "${KUZZLE_DIR}/pm2.conf.yml'
+alias kuzstop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml"'
+alias kuzstart='pm2 start "${KUZZLE_DIR}/pm2.conf.yml"'
 
 # ls alias to help
 # Detect which `ls` flavor is in use
@@ -184,19 +184,19 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 #alias memstart='/usr/local/opt/memcached/bin/memcached -d'
 #alias memstop='sudo killall -TERM memcached'
 alias memrestart='brew services restart memcached'
-alias memstart='brew services start memcached'
+alias memstart='brew services run memcached'
 alias memstop='brew services stop memcached'
 alias memreset="echo 'flush_all' | nc localhost 11211"
 alias memstats="echo 'stats' | nc localhost 11211"
   
 # MongoDb
 alias mongorestart='brew services restart mongodb'
-alias mongostart='brew services start mongodb'
+alias mongostart='brew services run mongodb'
 alias mongostop='brew services stop mongodb'
 
 # Mysql
 alias mysqlrestart='brew services restart mysql'
-alias mysqlstart='brew services start mysql'
+alias mysqlstart='brew services run mysql'
 alias mysqlstop='brew services stop mysql'
 alias cfgmysql='${EDITOR} /etc/my.cnf'
 
@@ -239,17 +239,17 @@ alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
 # postgreSql
 alias pgrestart='brew services restart postgres'
-alias pgstart='brew services start postgres'
+alias pgstart='brew services run postgres'
 alias pgstop='brew services stop postgres'
 
 # redis
 alias redisrestart='brew services restart redis'
-alias redisstart='brew services start redis'
+alias redisstart='brew services run redis'
 alias redisstop='brew services stop redis'
 
 # RabbitMQ
 alias rmqrestart='brew services restart rabbitmq' 
-alias rmqstart='brew services start rabbitmq' 
+alias rmqstart='brew services run rabbitmq' 
 alias rmqstop='brew services stop rabbitmq' 
  
 # sed - Better use RegEx in sed
@@ -311,7 +311,7 @@ alias vrebuild="vagrant destroy --force && vagrant up"
 
 # varnish
 alias varnishrestart='brew services restart varnish' 
-alias varnishstart='brew services start varnish' 
+alias varnishstart='brew services run varnish' 
 alias varnishrestop='brew services stop varnish' 
  
 # Enable aliases to be sudo’ed
