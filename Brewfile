@@ -116,7 +116,9 @@ brew 'node', args: ['with-full-icu']
 brew 'nodebrew'
 brew 'node-build'
 brew 'nodenv'
+brew 'node@6', args: ['with-full-icu']
 brew 'npm'
+brew 'nvm'
 brew 'openssl', args: ['force']
 brew 'packer'
 brew 'packer-completion'

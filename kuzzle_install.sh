@@ -21,6 +21,8 @@ cd "${PRJ_DIR}/Kuzzle"
 git clone https://github.com/kuzzleio/kuzzle.git
 cd kuzzle
 git checkout rc.x
+git submodule init
+git submodule update
 npm install
 
 echo "apps:
