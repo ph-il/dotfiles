@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+if ! [ -d "${HOME}/.nvm" ] 
+then
+    mkdir -pv ~/.nvm
+fi;
+
+mkdir 
 npm install -g bower
 npm install -g less
 # Type `git open` to open the GitHub page or website for a repository.

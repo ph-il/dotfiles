@@ -1,1 +1,1 @@
-export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$(brew --prefix coreutils)/libexec/gnubin:$PATH:/Users/$(whoami)/bin"
+export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$(brew --prefix coreutils)/libexec/gnubin:/Users/$(whoami)/bin:$HOME/.nodebrew/current/bin:$PATH"
