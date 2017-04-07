@@ -255,6 +255,9 @@ alias rmqstop='brew services stop rabbitmq'
 # sed - Better use RegEx in sed
 alias sed='sed -E'
  
+# Services
+alias stopall='brew services stop --all' 
+ 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
