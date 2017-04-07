@@ -22,3 +22,9 @@ npm install --global trash-cli
 sudo npm install pm2 -g
 
 sudo easy_install Pygments
+
+npm install -g eslint
+eslint --init
+
+sudo easy_install pip
+sudo  pip install https://github.com/google/closure-linter/zipball/master
