@@ -275,7 +275,8 @@ alias svnst='svn st --ignore-externals'
    
 # symfony 1, 2, 3 project command (need to use the go function before)
 alias sf='$DEVENV_PROG'
-alias sfcc='sf cache:clear'
+alias sfcc='sf cache:clear --no-warmup'
+alias sfcw='sf cache:warmup'
 # Dangerous @TODO Create a function that will be more safe
 alias sfhcc='sudo rm -rf "${DEVENV_CACHE}*"'
 alias sfcl='sudo find "${DEVENV_LOG}" -type f -delete'
