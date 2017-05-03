@@ -6,6 +6,7 @@ git pull origin master;
 
 function doIt() {
     rsync --exclude ".git/" \
+        --exclude ".gitconfig" \
         --exclude ".DS_Store" \
         --exclude "macos.sh" \
         --exclude "exakat_install.sh" \

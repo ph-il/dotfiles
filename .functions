@@ -352,6 +352,16 @@ sfschema() {
     done >> schema.yml
 }
 
+sfvar() {
+    cd ${DEVENV_DIR}
+    rm -rf var/cache/*
+    rm -rf var/logs/*
+
+    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+    sudo /bin/chmod -R +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" var
+    sudo /bin/chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" var
+}
+
 donotrun() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"sf\" should not be executed as root or via sudo directly."
