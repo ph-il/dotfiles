@@ -66,7 +66,7 @@ alias emptytrash=" \
     sudo rm -rfv /private/var/log/asl/*.asl; \
     sudo rm -v /private/var/vm/sleepimage; \
     rm -rv \"/Users/paulirish/Library/Application Support/stremio/Cache\";  \
-    rm -rv \"/Users/paulirish/Library/Application Support/stremio/stremio-cache\" \
+    rm -rv \"/Users/paulirish/Library/Application Support/stremio/stremio-cache\"; \
     sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent' \
 "
 
@@ -136,10 +136,10 @@ alias egrep='egrep --color=auto'
 command -v grunt > /dev/null && alias grunt="grunt --stack"
 
 # hightlight
-alias hlphp="pbpaste | highlight --syntax=php -O rtf | pbcopy"
-alias hlhtml="pbpaste | highlight --syntax=html -O rtf | pbcopy"
-alias hlapache="pbpaste | highlight --syntax=httpd -O rtf | pbcopy"
-alias hljs="pbpaste | highlight --syntax=js -O rtf | pbcopy" 
+alias hlphp="pbpaste | highlight --syntax=php -O rtf --style candy | pbcopy"
+alias hlhtml="pbpaste | highlight --syntax=html -O rtf --style candy| pbcopy"
+alias hlapache="pbpaste | highlight --syntax=httpd -O rtf --style candy| pbcopy"
+alias hljs="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy" 
 
 # Homebrew 
 alias cask='brew cask' # i <3 u cask
@@ -293,6 +293,13 @@ alias sfdsc='sf doctrine:schema:create'
 alias sfdsd='sf doctrine:schema:drop --force --full-database'
 alias sfdsv='sf doctrine:schema:validate'
 alias sfload='sf doctrine:fixtures:load'
+alias sfcur="\
+    rm -rf var/cache/*; \
+    rm -rf var/logs/*; \
+    HTTPDUSER=$(ps axo user,comm | grep -E \"[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx\" | grep -v root | head -1 | cut -d\  -f1); \
+    sudo chmod +a \"$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit\" var; \
+    sudo chmod +a \"$(whoami) allow delete,write,append,file_inherit,directory_inherit\" var; \
+"
 
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon

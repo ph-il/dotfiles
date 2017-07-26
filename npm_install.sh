@@ -16,7 +16,9 @@ npm install -g git-recent
 # sexy git diffs
 npm install -g diff-so-fancy
 # trash as the safe `rm` alternative
-npm install --global trash-cli
+npm install -g trash-cli
+
+npm install -g sprity sprity-sass 
 
 # Install pm2 (Advanced, production process manager for Node.js) use by Kuzzle
 sudo npm install pm2 -g
