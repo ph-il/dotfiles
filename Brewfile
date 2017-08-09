@@ -30,7 +30,7 @@ brew 'cifer'
 brew 'cloc'
 brew 'colordiff'
 # Install GNU core utilities (those that come with macOS are outdated).
-brew 'coreutils', args: ['with-default-names']
+brew 'coreutils'
 brew 'cmake'
 brew 'ctags'
 brew 'curl'
@@ -40,7 +40,7 @@ brew 'editorconfig'
 brew 'elasticsearch'
 brew 'fcrackzip'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew 'findutils', args: ['with-default-names']
+brew 'findutils'
 brew 'fontconfig'
 brew 'foremost'
 brew 'fzf'

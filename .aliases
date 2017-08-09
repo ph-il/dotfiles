@@ -293,13 +293,7 @@ alias sfdsc='sf doctrine:schema:create'
 alias sfdsd='sf doctrine:schema:drop --force --full-database'
 alias sfdsv='sf doctrine:schema:validate'
 alias sfload='sf doctrine:fixtures:load'
-alias sfcur="\
-    rm -rf var/cache/*; \
-    rm -rf var/logs/*; \
-    HTTPDUSER=$(ps axo user,comm | grep -E \"[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx\" | grep -v root | head -1 | cut -d\  -f1); \
-    sudo chmod +a \"$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit\" var; \
-    sudo chmod +a \"$(whoami) allow delete,write,append,file_inherit,directory_inherit\" var; \
-"
+
 
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
