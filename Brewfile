@@ -67,11 +67,11 @@ brew 'libusb'
 brew 'libusb-compat'
 brew 'gpg'
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew 'gnu-sed', args: ['with-default-names']
+brew 'gnu-sed'
 brew 'libtool', args: ['force']
 brew 'graphviz'
 brew 'grc'
-brew 'homebrew/dupes/grep', args: ['with-default-names']
+#brew 'homebrew/dupes/grep', args: ['with-default-names']
 brew 'hashpump'
 brew 'boost'
 brew 'heroku'
@@ -125,7 +125,7 @@ brew 'packer-completion'
 brew 'percona-toolkit'
 brew 'pigz'
 brew 'pidcat'
-brew 'postgres', restart_service: true
+#brew 'postgres', restart_service: true
 brew 'pngcheck'
 brew 'pv'
 #brew 'python3'
@@ -168,6 +168,5 @@ brew 'libtiff'
 brew 'zopfli'
 brew 'python'
 brew 'ansible'
-brew 'mongodb'
+#brew 'mongodb'
 brew 'httpd24', args: ['with-privileged-ports', 'with-http2']
-brew 'elasticsearch'
