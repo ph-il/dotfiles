@@ -188,11 +188,6 @@ alias memstart='brew services run memcached'
 alias memstop='brew services stop memcached'
 alias memreset="echo 'flush_all' | nc localhost 11211"
 alias memstats="echo 'stats' | nc localhost 11211"
-  
-# MongoDb
-alias mongorestart='brew services restart mongodb'
-alias mongostart='brew services run mongodb'
-alias mongostop='brew services stop mongodb'
 
 # Mysql
 alias mysqlrestart='brew services restart mysql'
@@ -236,11 +231,6 @@ alias csf='php-cs-fixer fix --level=all'
 
 # PhpStorm
 alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
-
-# postgreSql
-alias pgrestart='brew services restart postgres'
-alias pgstart='brew services run postgres'
-alias pgstop='brew services stop postgres'
 
 # redis
 alias redisrestart='brew services restart redis'
@@ -294,7 +284,6 @@ alias sfdsd='sf doctrine:schema:drop --force --full-database'
 alias sfdsv='sf doctrine:schema:validate'
 alias sfload='sf doctrine:fixtures:load'
 
-
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
@@ -321,6 +310,10 @@ alias varnishrestop='brew services stop varnish'
  
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+# XDebug
+alias xdebug.enable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf.d;"
+alias xdebug.desable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf2.d;"
 
 
 

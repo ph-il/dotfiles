@@ -115,33 +115,6 @@ source update.sh
 
 ## Testing
 
-### Test PHP 5.5
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php55)/bin/php -i "(command-line 'phpinfo()')"
-```
-* Make sure that everyting is working
-
-### Test PHP 5.6
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php56)/bin/php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
-
-
-### Test PHP 7.0
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php70)/bin/php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
-
 ### Test PHP 7.1
 
 * Execute

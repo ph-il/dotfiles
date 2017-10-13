@@ -220,7 +220,6 @@ update() {
     badge
         
     echo "Updating brew installs..."
-    brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
     brew -v update
     badge
     brew upgrade --force-bottle --cleanup
@@ -237,7 +236,6 @@ update() {
     badge
     npm-check -g -u
     
-    brew link php$PHP_VERSION 2> /dev/null > /dev/null
     brew services restart memcached    
     badge
     brew services restart mysql
@@ -428,10 +426,10 @@ sphp() {
         
         sudo ln -sf /usr/local/opt/php$newversion/libexec/apache2/libphp${majorNew}.so /usr/local/lib/libphp${majorNew}.so
 
-        echo "Fixing LoadModule..."
-        apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
-        sudo sed -i -e "/LoadModule php${majorOld}_module/s/^#*/#/" $apacheConf
-        sudo sed -i -e "/LoadModule php${majorNew}_module/s/^#//" $apacheConf
+        # echo "Fixing LoadModule..."
+        # apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+        # sudo sed -i -e "/LoadModule php${majorOld}_module/s/^#*/#/" $apacheConf
+        # sudo sed -i -e "/LoadModule php${majorNew}_module/s/^#//" $apacheConf
 
         echo "Updating version file..."
         export PHP_VERSION="${newversion}"
