@@ -56,8 +56,12 @@ export DEVENV_LOG="none"
 export PHP_VERSION="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
 
 export JAVA_HOME=$(/usr/libexec/java_home) 
-export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
+#export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
+export JAVA_OPTIONS="-Xms32m -Xmx6512m"
 
+export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0"
+export PHP_IDE_CONFIG="serverName=127.0.0.1"
+ 
 # here's LS_COLORS
 # github.com/trapd00r/LS_COLORS
 command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
