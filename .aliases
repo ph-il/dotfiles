@@ -27,8 +27,8 @@ alias apache2ctl='sudo apachectl'
 alias cfgapache='${EDITOR} /usr/local/etc/apache2/2.4/'
 
 # BlackFire
-alias bfstart='brew services run blackfireio/blackfire/blackfire-agent'
-alias bfstop='brew services stop blackfireio/blackfire/blackfire-agent'
+alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
+alias blackfire.stop='brew services stop blackfireio/blackfire/blackfire-agent'
 
 # cd - help change directory
 # Easier navigation: .., ..., ...., ....., ~ and -
@@ -89,17 +89,17 @@ alias mkd="mkdir -pv"
 alias rmd="rmdir"
 
 # brew services run docker-machine
-alias dockerrestart='brew services restart docker-machine'
-alias dockerstart='brew services run docker-machine'
-alias dockerstop='brew services stop docker-machine'
+alias docker.restart='brew services restart docker-machine'
+alias docker.start='brew services run docker-machine'
+alias docker.stop='brew services stop docker-machine'
 
 # elasticsearch
-alias esrestart='brew services restart elasticsearch'
-alias esstart='brew services run elasticsearch'
-alias esstop='brew services stop elasticsearch'
+alias es.restart='brew services restart elasticsearch'
+alias es.start='brew services run elasticsearch'
+alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='gosf "${PRJ_DIR}/tools/exakat" php71'
+alias goexakat='devenv "${PRJ_DIR}/tools/exakat" php71'
 alias exakat='php exakat.phar -v' 
 
 # Files mv, rm, cp
@@ -158,8 +158,8 @@ alias jkstop='brew services stop jenkins'
 alias gokuzzle='cd "${KUZZLE_DIR}"'
 alias k='cd "${KUZZLE_DIR}"'
 alias kuzlog='pm2 log'
-alias kuzstop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml"'
-alias kuzstart='pm2 start "${KUZZLE_DIR}/pm2.conf.yml"'
+alias kuzzle.stop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml"'
+alias kuzzle.start='pm2 start "${KUZZLE_DIR}/pm2.conf.yml"'
 
 # ls alias to help
 # Detect which `ls` flavor is in use
@@ -183,16 +183,16 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 # Memcached
 #alias memstart='/usr/local/opt/memcached/bin/memcached -d'
 #alias memstop='sudo killall -TERM memcached'
-alias memrestart='brew services restart memcached'
-alias memstart='brew services run memcached'
-alias memstop='brew services stop memcached'
-alias memreset="echo 'flush_all' | nc localhost 11211"
-alias memstats="echo 'stats' | nc localhost 11211"
+alias mem.restart='brew services restart memcached'
+alias mem.start='brew services run memcached'
+alias mem.stop='brew services stop memcached'
+alias mem.reset="echo 'flush_all' | nc localhost 11211"
+alias mem.stats="echo 'stats' | nc localhost 11211"
 
 # Mysql
-alias mysqlrestart='brew services restart mysql'
-alias mysqlstart='brew services run mysql'
-alias mysqlstop='brew services stop mysql'
+alias mysql.restart='brew services restart mysql'
+alias mysql.start='brew services run mysql'
+alias mysql.stop='brew services stop mysql'
 alias cfgmysql='${EDITOR} /etc/my.cnf'
 
 # neo4j
@@ -233,14 +233,14 @@ alias csf='php-cs-fixer fix --level=all'
 alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
 # redis
-alias redisrestart='brew services restart redis'
-alias redisstart='brew services run redis'
-alias redisstop='brew services stop redis'
+alias redis.restart='brew services restart redis'
+alias redis.start='brew services run redis'
+alias redis.stop='brew services stop redis'
 
 # RabbitMQ
-alias rmqrestart='brew services restart rabbitmq' 
-alias rmqstart='brew services run rabbitmq' 
-alias rmqstop='brew services stop rabbitmq' 
+alias rmq.restart='brew services restart rabbitmq' 
+alias rmq.start='brew services run rabbitmq' 
+alias rmq.stop='brew services stop rabbitmq' 
  
 # sed - Better use RegEx in sed
 alias sed='sed -E'
@@ -304,16 +304,16 @@ alias vreload="vagrant reload"
 alias vrebuild="vagrant destroy --force && vagrant up"
 
 # varnish
-alias varnishrestart='brew services restart varnish' 
-alias varnishstart='brew services run varnish' 
-alias varnishrestop='brew services stop varnish' 
+alias varnish.restart='brew services restart varnish' 
+alias varnish.start='brew services run varnish' 
+alias varnish.restop='brew services stop varnish' 
  
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
 # XDebug
 alias xdebug.enable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf.d;"
-alias xdebug.desable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf2.d;"
+alias xdebug.disable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf2.d;"
 
 
 
