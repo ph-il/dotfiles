@@ -228,7 +228,7 @@ update() {
     badge
     brew cleanup
     badge
-    brew cask cleanup;
+    brew cask cleanup
     badge
     brew prune 
     badge
