@@ -11,7 +11,7 @@ brew 'unixodbc'
 brew 'ag' 
 brew 'readline', args: ['force']
 brew 'sqlite'
-brew 'aircrack-ng'
+#brew 'aircrack-ng'
 brew 'autoconf' 
 brew 'brew-cask-completion'
 brew 'bash-completion'
@@ -30,7 +30,7 @@ brew 'cifer'
 brew 'cloc'
 brew 'colordiff'
 # Install GNU core utilities (those that come with macOS are outdated).
-brew 'coreutils', args: ['with-default-names']
+brew 'coreutils'
 brew 'cmake'
 brew 'ctags'
 brew 'curl'
@@ -39,8 +39,9 @@ brew 'dns2tcp'
 brew 'editorconfig'
 brew 'elasticsearch'
 brew 'fcrackzip'
+brew 'ffmpeg'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew 'findutils', args: ['with-default-names']
+brew 'findutils'
 brew 'fontconfig'
 brew 'foremost'
 brew 'fzf'
@@ -67,11 +68,11 @@ brew 'libusb'
 brew 'libusb-compat'
 brew 'gpg'
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew 'gnu-sed', args: ['with-default-names']
+brew 'gnu-sed'
 brew 'libtool', args: ['force']
 brew 'graphviz'
 brew 'grc'
-brew 'homebrew/dupes/grep', args: ['with-default-names']
+#brew 'homebrew/dupes/grep', args: ['with-default-names']
 brew 'hashpump'
 brew 'boost'
 brew 'heroku'
@@ -109,6 +110,7 @@ brew 'mcrypt'
 # Install some other useful utilities like `sponge`.
 brew 'moreutils'
 brew 'mtr'
+brew 'mediainfo'
 brew 'jasper'
 brew 'netpbm'
 brew 'nmap'
@@ -116,14 +118,16 @@ brew 'node', args: ['with-full-icu']
 brew 'nodebrew'
 brew 'node-build'
 brew 'nodenv'
+brew 'node@6', args: ['with-full-icu']
 brew 'npm'
+brew 'nvm'
 brew 'openssl', args: ['force']
 brew 'packer'
 brew 'packer-completion'
 brew 'percona-toolkit'
 brew 'pigz'
 brew 'pidcat'
-brew 'postgres', restart_service: true
+#brew 'postgres', restart_service: true
 brew 'pngcheck'
 brew 'pv'
 #brew 'python3'
@@ -166,5 +170,5 @@ brew 'libtiff'
 brew 'zopfli'
 brew 'python'
 brew 'ansible'
-brew 'mongodb'
+#brew 'mongodb'
 brew 'httpd24', args: ['with-privileged-ports', 'with-http2']

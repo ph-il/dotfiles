@@ -53,17 +53,25 @@ You could also use `~/.extra` to override settings, functions and aliases from m
 ### Sensible macOS defaults
 
 When setting up a new Mac, you may want to set some sensible macOS defaults and Applications:
-This will run App Installation, bootstrap.sh and .macos
+
 
 ```bash
 ./install.sh
+./brew_install.sh
+./bootstrap.sh
+./npm_install.sh
+./app_config.sh
+./kuzzle_install.sh
+./exakat_install.sh
+./maxos.sh
+brew bundle -v --file=Fontfile
 ```
 
 ## Updates
 
 ### Update Tools 
 
-This will updates all tools and Mac Application.
+This will updates all tools and Mac Application already installed.
 
 * Execute:
 ```sh
@@ -73,21 +81,28 @@ update
 ### Update sensible macOS defaults
 
 ```bash
-source .macos
+./macos.sh
 ```
+
+### Update and Add new applications in this dotfiles
+
+```bash
+./update.sh
+```
+
 
 ### Update bootstrap script and dotfiles
 
 To update, `cd` into your local `dotfiles` repository and then:
 
 ```bash
-source bootstrap.sh
+./bootstrap.sh
 ```
 
 Alternatively, to update while avoiding the confirmation prompt:
 
 ```bash
-set -- -f; source bootstrap.sh
+set -- -f; ./bootstrap.sh
 ```
 
 ### Add new applications added in Brewfile 
@@ -99,33 +114,6 @@ source update.sh
 ```
 
 ## Testing
-
-### Test PHP 5.5
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php55)/bin/php -i "(command-line 'phpinfo()')"
-```
-* Make sure that everyting is working
-
-### Test PHP 5.6
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php56)/bin/php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
-
-
-### Test PHP 7.0
-
-* Execute
-```sh
-$(brew --prefix homebrew/php/php70)/bin/php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
 
 ### Test PHP 7.1
 

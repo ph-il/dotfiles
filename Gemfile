@@ -3,3 +3,4 @@
 gem 'compass'
 gem 'css_parser'
 gem 'breakpoint'
+gem 'sass'
