@@ -222,6 +222,9 @@ update() {
     echo "Updating brew installs..."
     brew -v update
     badge
+    sphp 71
+    brew upgrade --force-bottle --cleanup
+    sphp 72
     brew upgrade --force-bottle --cleanup
     badge
     brew upgrade brew-cask
@@ -298,7 +301,13 @@ devenv() {
 	for (( i=2; i<=$args; i+=1 ))    # loop from 2 to N (where N is number of args)
 	do
 		echo "SETTING ${!i}"
- 	    if [ "${!i}" == 'sf3' ]; then
+ 	    if [ "${!i}" == 'sf4' ]; then
+			echo "SET ${!i}"
+	        DEVENV_NAME="sf4"
+			DEVENV_PROG="php ${DEVENV_DIR}/bin/console"
+	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
+	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+ 	    elif [ "${!i}" == 'sf3' ]; then
 			echo "SET ${!i}"
 	        DEVENV_NAME="sf3"
 			DEVENV_PROG="php ${DEVENV_DIR}/bin/console"
@@ -310,18 +319,6 @@ devenv() {
 	        DEVENV_PROG="php ${DEVENV_DIR}/app/console"
 	        DEVENV_CACHE="$DEVENV_DIR/app/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/app/logs/"
-	    elif [ "${!i}" == 'sf1' ]; then
-			echo "SET ${!i}"
-	        DEVENV_NAME="sf1"
-	        DEVENV_PROG="$DEVENV_DIR/symfony"
-	        DEVENV_CACHE="$DEVENV_DIR/cache/"
-	        DEVENV_LOG="DEVENV_DIR/log/"
-	    elif [ "${!i}" == 'ezp' ]; then
-			echo "SET ${!i}"
-	        DEVENV_NAME="ezp"
-	        DEVENV_PROG="php ${DEVENV_DIR}/wwwroot/ezpublish/console"
-	        DEVENV_CACHE="$DEVENV_DIR/wwwroot/ezpublish/cache/"
-	        DEVENV_LOG="$DEVENV_DIR/wwwroot/ezpublish/logs/"
 		elif [ "${!i:0:3}" == 'php' ]; then
 			echo "SET ${!i}"
 		    if [ "${PHP_VERSION}" != "${!i:3:2}" ]; then

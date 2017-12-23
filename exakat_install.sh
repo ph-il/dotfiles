@@ -18,11 +18,13 @@ mv apache-tinkerpop-gremlin-server-3.2.6 tinkergraph
 rm -rf apache-tinkerpop-gremlin-server-3.2.6-bin.zip
 
 # Optional : install neo4j engine.
+rm -r ~/.groovy/grapes/
+rm -r ~/.m2/
 cd tinkergraph
-#bin/gremlin-server.sh install org.apache.tinkerpop neo4j-gremlin 3.2.6
 bin/gremlin-server.sh -i org.apache.tinkerpop neo4j-gremlin 3.2.6
 cd ..
 
 php exakat.phar doctor
 #sudo sed -i -e "s/;php70        = \/path\/to\/php70/php70 = \/usr\/local\/opt\/php70\/bin\/php/g" config/exakat.ini
-#sudo sed -i -e "s/;php71        = \/path\/to\/php71/php71 = \/usr\/local\/opt\/php71\/bin\/php/g" config/exakat.ini
+sudo sed -i -e "s/;php71        = \/path\/to\/php71/php71 = \/usr\/local\/opt\/php71\/bin\/php/g" config/exakat.ini
+sudo sed -i -e "s/;php72        = \/path\/to\/php72/php72 = \/usr\/local\/opt\/php72\/bin\/php/g" config/exakat.ini

@@ -2,9 +2,6 @@
 
 # Please change if you're using an other directory for Projects
 export PRJ_DIR="${HOME}/Projects"
-export KUZZLE_DIR="${PRJ_DIR}/Kuzzle"
-export KUZZLE_PROXY_INSTALL_DIR="${KUZZLE_DIR}/kuzzle-proxy"
-export KUZZLE_CORE_INSTALL_DIR="${KUZZLE_DIR}/kuzzle"
 
 # Make vim the default editor.
 #export EDITOR='vim';

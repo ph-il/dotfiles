@@ -1,0 +1,20 @@
+### Install PHP 7.2
+brew 'php72-igbinary'
+brew 'php72-memcached', args: %w['HEAD']
+#brew 'php72-memcache'
+brew 'php72-opcache'
+brew 'php72-apcu'
+brew 'php72-apcu-bc'
+brew 'php72-mcrypt'
+brew 'php72-intl'
+brew 'php72-xdebug'
+#brew 'php72-twig'
+#brew 'php72-mongodb'
+brew 'php72-geoip'
+brew 'php72-oauth'
+brew 'php72-solr'
+brew 'php72-ast'
+brew 'php72-tidy'
+brew 'blackfire-php72'
+brew 'php72-redis'
+brew 'php72-yaml', args: %w['HEAD']

@@ -19,15 +19,19 @@ brew upgrade
 
 brew bundle -v 
 
-#brew unlink php${PHP_VERSION}
+brew unlink php${PHP_VERSION}
 
-
-#brew link php71
+brew link php71
 brew bundle -v --file=Php71file
 brew bundle -v --file=Phpfile
-#brew unlink php71
+brew unlink php71
 
-#brew link php${PHP_VERSION}
+brew link php72
+brew bundle -v --file=Php72file
+brew bundle -v --file=Phpfile
+brew unlink php72
+
+brew link php${PHP_VERSION}
 
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile

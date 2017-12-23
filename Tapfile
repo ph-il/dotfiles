@@ -1,5 +1,5 @@
 tap 'homebrew/versions'
-#tap 'homebrew/apache'
+tap 'homebrew/apache'
 tap 'homebrew/php'
 tap 'homebrew/services'
 tap 'homebrew/binary'

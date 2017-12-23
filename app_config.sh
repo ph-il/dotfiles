@@ -29,18 +29,14 @@ then
 fi;
 
 # Configure PHP
-#sudo chmod -R guo+rw  /usr/local/etc/php/5.5/conf.d
-#sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
-#sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.1/conf.d
-#cp ./Apache/zz_personal.ini /usr/local/etc/php/5.5/conf.d/zz_personal.ini
-#cp ./Apache/zz_personal.ini /usr/local/etc/php/5.6/conf.d/zz_personal.ini
-#cp ./Apache/zz_personal.ini /usr/local/etc/php/7.0/conf.d/zz_personal.ini
+sudo chmod -R guo+rw  /usr/local/etc/php/7.2/conf.d
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
+cp ./Apache/zz_personal.ini /usr/local/etc/php/7.2/conf.d/zz_personal.ini
 
 # Configure Docker
-docker-machine create -d virtualbox dev
-eval "$(docker-machine env dev)"
+#docker-machine create -d virtualbox dev
+#eval "$(docker-machine env dev)"
 
 # Configure Apache
 
@@ -65,8 +61,6 @@ if grep -q "$PATTERN" $apacheConf;
     echo "sphp is already set"
  else
     sudo sed -i -e '/libphp5.so/d' $apacheConf
-    sudo echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
-    sudo echo "#LoadModule php5_module /usr/local/lib/libphp5.so" >> $apacheConf
     sudo echo "LoadModule php7_module /usr/local/lib/libphp7.so" >> $apacheConf
 fi
 

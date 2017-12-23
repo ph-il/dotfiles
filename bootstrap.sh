@@ -10,7 +10,6 @@ function doIt() {
         --exclude ".DS_Store" \
         --exclude "macos.sh" \
         --exclude "exakat_install.sh" \
-        --exclude "kuzzle_install.sh" \
         --exclude "brew_install.sh" \
         --exclude "npm_install.sh" \
         --exclude "app_config.sh" \

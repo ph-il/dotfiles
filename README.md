@@ -32,18 +32,18 @@ My `~/.extra` looks something like this:
 ##### PROJECTS ALIAS #####
  
 # goto a specific project
-alias gotest='gosf $PRJ_DIR/test/formation2 55 sf2'
-alias godf='gosf $PRJ_DIR/dotfiles/ none none' 
+alias go.test='gosf $PRJ_DIR/test/formation2 55 sf2'
+alias go.df='gosf $PRJ_DIR/dotfiles/ none none' 
 
 ##### ALIAS #####
 
 ##### CONFIG #####
 # Git credentials
 # Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Philippe Gamache"
+GIT_AUTHOR_NAME="Author Name"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="philippe@ph-il.ca"
+GIT_AUTHOR_EMAIL="author@email.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
@@ -61,7 +61,6 @@ When setting up a new Mac, you may want to set some sensible macOS defaults and 
 ./bootstrap.sh
 ./npm_install.sh
 ./app_config.sh
-./kuzzle_install.sh
 ./exakat_install.sh
 ./maxos.sh
 brew bundle -v --file=Fontfile
@@ -119,6 +118,17 @@ source update.sh
 
 * Execute
 ```sh
+sphp 71
+php -i "(command-line 'phpinfo()')"
+```
+
+* Make sure that everyting is working
+
+### Test PHP 7.2
+
+* Execute
+```sh
+sphp 71
 php -i "(command-line 'phpinfo()')"
 ```
 
@@ -142,7 +152,7 @@ curl -s -G http://localhost:7474/tp/gremlin/execute
 
 * You can check Exakat Installation
 ```sh
-goexakat
+go.exakat
 exakat doctor
 ```
 
@@ -152,21 +162,21 @@ exakat doctor
 
 * To update your .hosts file, execute:
 ```sh
-cfghosts
+cfg.hosts
 ```
 
 ### Setup PHP
 
 * To update your php config files, execute:
 ```sh
-cfgphp
+cfg.php
 ```
 
 ### Setup Apache
 
 * To update your apache config files, execute:
 ```sh
-cfgapache
+cfg.apache
 ```
 
 ### Start PHP Server
@@ -178,7 +188,7 @@ phpserver
 
 ### Switch PHP Version
 
-Switch between PHP version 55, 56, 70, 71
+Switch between PHP version 71, 72
 
 * Execute:
 ```sh

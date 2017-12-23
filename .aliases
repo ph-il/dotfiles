@@ -5,11 +5,11 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p='cd "${PRJ_DIR}"'
-alias goprj='cd "${PRJ_DIR}"'
+alias go.prj='cd "${PRJ_DIR}"'
 alias h="history"
 alias j="jobs"
 #alias g="git" #in Git Section
-alias gogd="cd Google\ Drive/"
+alias gogd="cd ~/Google\ Drive/"
 
 # AFK Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -18,15 +18,17 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias ag='ag -f --hidden'
 
 # alias
-alias mkalias='${EDITOR} ~/.extra;'
-alias runalias='source ~/.profile'
- 
+alias mk.alias='${EDITOR} ~/.extra;'
+alias run.alias='source ~/.profile'
+alias go.df='devenv $PRJ_DIR/dotfiles none none'
+alias mk.df='make "${PRJ_DIR}/dotfiles"'
+
 # Apache
 alias apachectl='sudo apachectl'
 alias apache2ctl='sudo apachectl'
 apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
 apacheRoot=${apacheConf::${#apacheConf}-10}
-alias cfgapache="${EDITOR} ${apacheRoot}"
+alias cfg.apache="${EDITOR} ${apacheRoot}"
 
 # BlackFire
 alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
@@ -48,16 +50,16 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias chmox='chmod -x' 
 
 # clean all [filename in argument] from one directory and sub-directory
-alias cleanall='sudo find . -name $1 -print0 | xargs -0 sudo rm -rf '
-alias cleancvs="find . -type f -name csv -ls -delete"
-alias cleancvsi="find . -type f -name .cvsignore -ls -delete"
-alias cleanerr="find . -type f -name php_errors.log -ls -delete"
-alias cleansccs="find . -type f -name SCCS -ls -delete"
-alias cleansvn="find . -type f -name .svn -ls -delete"
-alias cleantdb="find . -type f -name Thumbs.db -ls -delete"
+alias clean.all='sudo find . -name $1 -print0 | xargs -0 sudo rm -rf '
+alias clean.cvs="find . -type f -name csv -ls -delete"
+alias clean.cvsi="find . -type f -name .cvsignore -ls -delete"
+alias clean.err="find . -type f -name php_errors.log -ls -delete"
+alias clean.sccs="find . -type f -name SCCS -ls -delete"
+alias clean.svn="find . -type f -name .svn -ls -delete"
+alias clean.tdb="find . -type f -name Thumbs.db -ls -delete"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-alias cleanurl="find . -type f -name *.url -ls -delete"
+alias clean.url="find . -type f -name *.url -ls -delete"
 # Empty the Trash on all mounted volumes and the main HDD.
 # Then, clear the useless sleepimage.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -91,17 +93,17 @@ alias mkd="mkdir -pv"
 alias rmd="rmdir"
 
 # brew services run docker-machine
-alias docker.restart='brew services restart docker-machine'
-alias docker.start='brew services run docker-machine'
-alias docker.stop='brew services stop docker-machine'
+#alias docker.restart='brew services restart docker-machine'
+#alias docker.start='brew services run docker-machine'
+#alias docker.stop='brew services stop docker-machine'
 
 # elasticsearch
-alias es.restart='brew services restart elasticsearch'
-alias es.start='brew services run elasticsearch'
-alias es.stop='brew services stop elasticsearch'
+#alias es.restart='brew services restart elasticsearch'
+#alias es.start='brew services run elasticsearch'
+#alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='devenv "${PRJ_DIR}/tools/exakat" php71'
+alias go.exakat='devenv "${PRJ_DIR}/tools/exakat" php71'
 alias exakat='php exakat.phar -v' 
 
 # Files mv, rm, cp
@@ -138,10 +140,10 @@ alias egrep='egrep --color=auto'
 command -v grunt > /dev/null && alias grunt="grunt --stack"
 
 # hightlight
-alias hlphp="pbpaste | highlight --syntax=php -O rtf --style candy | pbcopy"
-alias hlhtml="pbpaste | highlight --syntax=html -O rtf --style candy| pbcopy"
-alias hlapache="pbpaste | highlight --syntax=httpd -O rtf --style candy| pbcopy"
-alias hljs="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy" 
+alias hl.php="pbpaste | highlight --syntax=php -O rtf --style candy | pbcopy"
+alias hl.html="pbpaste | highlight --syntax=html -O rtf --style candy| pbcopy"
+alias hl.apache="pbpaste | highlight --syntax=httpd -O rtf --style candy| pbcopy"
+alias hl.js="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy" 
 
 # Homebrew 
 alias cask='brew cask' # i <3 u cask
@@ -149,19 +151,12 @@ alias where=which # sometimes i forget
 alias brwe=brew  #typos 
  
 # host names
-alias cfghosts='sudo ${EDITOR} /etc/hosts'
+alias cfg.hosts='sudo ${EDITOR} /etc/hosts'
 
 # jenkins
-alias jkrestart='brew services restart jenkins'
-alias jkstart='brew services run jenkins'
-alias jkstop='brew services stop jenkins'
-
-# Kuzzle
-alias gokuzzle='cd "${KUZZLE_DIR}"'
-alias k='cd "${KUZZLE_DIR}"'
-alias kuzlog='pm2 log'
-alias kuzzle.stop='pm2 stop "${KUZZLE_DIR}/pm2.conf.yml"'
-alias kuzzle.start='pm2 start "${KUZZLE_DIR}/pm2.conf.yml"'
+alias jk.restart='brew services restart jenkins'
+alias jk.start='brew services run jenkins'
+alias jk.stop='brew services stop jenkins'
 
 # ls alias to help
 # Detect which `ls` flavor is in use
@@ -195,11 +190,11 @@ alias mem.stats="echo 'stats' | nc localhost 11211"
 alias mysql.restart='brew services restart mysql'
 alias mysql.start='brew services run mysql'
 alias mysql.stop='brew services stop mysql'
-alias cfgmysql='${EDITOR} /etc/my.cnf'
+alias cfg.mysql='${EDITOR} /etc/my.cnf'
 
 # neo4j
-alias neostart='$NEO4J_HOME/bin/neo4j start'
-alias neostop='$NEO4J_HOME/bin/neo4j stop'
+alias neo.start='$NEO4J_HOME/bin/neo4j start'
+alias neo.stop='$NEO4J_HOME/bin/neo4j stop'
 
 # Network
 # IP addresses
@@ -221,7 +216,7 @@ done
 alias path='echo -e ${PATH//:/\\n}'
 
 # php
-alias cfgphp='${EDITOR} /usr/local/etc/php/'
+alias cfg.php='${EDITOR} /usr/local/etc/php/'
 # Load xdebug Zend extension with php command
 # alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
@@ -254,37 +249,33 @@ alias stopall='brew services stop --all'
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 # Show/hide desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hide.desktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias show.desktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
  
 # Spotlight
-alias spotoff="sudo mdutil -a -i off"
-alias spoton="sudo mdutil -a -i on"
+alias spot.off="sudo mdutil -a -i off"
+alias spot.on="sudo mdutil -a -i on"
  
 # svn
 alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
    
-# symfony 1, 2, 3 project command (need to use the go function before)
+# symfony 2, 3, 4 project command (need to use the go function before)
 alias sf='$DEVENV_PROG'
-alias sfcc='sf cache:clear --no-warmup'
-alias sfcw='sf cache:warmup'
+alias sf.cc='sf cache:clear --no-warmup'
+alias sf.cw='sf cache:warmup'
 # Dangerous @TODO Create a function that will be more safe
-alias sfhcc='sudo rm -rf "${DEVENV_CACHE}*"'
-alias sfcl='sudo find "${DEVENV_LOG}" -type f -delete'
-alias sfcxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
+alias sf.hcc='sudo rm -rf "${DEVENV_CACHE}*"'
+alias sf.cl='sudo find "${DEVENV_LOG}" -type f -delete'
+alias sf.cxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
  
-# symfony 1 only project command (need to use the go function before)
-alias sfpi='sf plugin:install'
-alias sfpibeta='sf plugin:install --stability=beta'
-  
-# Symfony 2, 3 project only command (need to use the go function before)
-alias sfddd='sf doctrine:database:drop --force'
-alias sfddc='sf doctrine:database:create'
-alias sfdsc='sf doctrine:schema:create'
-alias sfdsd='sf doctrine:schema:drop --force --full-database'
-alias sfdsv='sf doctrine:schema:validate'
-alias sfload='sf doctrine:fixtures:load'
+# Symfony 2, 3, 4 project only command (need to use the go function before)
+alias sf.ddd='sf doctrine:database:drop --force'
+alias sf.ddc='sf doctrine:database:create'
+alias sf.dsc='sf doctrine:schema:create'
+alias sf.dsd='sf doctrine:schema:drop --force --full-database'
+alias sf.dsv='sf doctrine:schema:validate'
+alias sf.load='sf doctrine:fixtures:load'
 
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
@@ -316,7 +307,3 @@ alias sudo='sudo '
 # XDebug
 alias xdebug.enable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf.d;"
 alias xdebug.disable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf2.d;"
-
-
-
-

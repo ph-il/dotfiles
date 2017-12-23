@@ -21,6 +21,10 @@ brew bundle -v
 
 brew install php71 --with-httpd24
 brew bundle -v --file=Php71file
+brew unlink php71
+brew install php72 --with-httpd24
+brew bundle -v --file=Php72file
+
 brew bundle -v --file=Phpfile
 
 brew bundle -v --file=Caskfile
