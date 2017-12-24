@@ -9,6 +9,7 @@ fi;
 # Install everything in Brewfile
 
 brew doctor
+brew prune
 
 brew tap Homebrew/bundle
 
@@ -22,6 +23,8 @@ brew bundle -v
 brew install php71 --with-httpd24
 brew bundle -v --file=Php71file
 brew unlink php71
+brew unlink php71-apcu
+
 brew install php72 --with-httpd24
 brew bundle -v --file=Php72file
 
