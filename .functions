@@ -222,6 +222,10 @@ update() {
     echo "Updating brew installs..."
     brew -v update
     badge
+    sphp 56
+    brew upgrade --force-bottle --cleanup
+    sphp 70
+    brew upgrade --force-bottle --cleanup
     sphp 71
     brew upgrade --force-bottle --cleanup
     sphp 72
@@ -415,9 +419,11 @@ sphp() {
         
         echo "Unlinking old binaries..."
         brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
+        brew unlink php$PHP_VERSION-apcu 2> /dev/null > /dev/null
         
         echo "Linking new binaries..."
         brew link php$newversion
+        brew unlink php$newversion-apcu 2> /dev/null > /dev/null
 
         echo "Linking new modphp addon..."
         
@@ -437,7 +443,6 @@ sphp() {
     else
         echo "PHP version $majorNew.$minorNew was not found."
         echo "Try \`brew install php${newversion}\` first."
-        exit 0
     fi
 }
 

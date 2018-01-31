@@ -5,11 +5,13 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p='cd "${PRJ_DIR}"'
-alias go.prj='cd "${PRJ_DIR}"'
+alias goprj='cd "${PRJ_DIR}"'
 alias h="history"
 alias j="jobs"
 #alias g="git" #in Git Section
 alias gogd="cd ~/Google\ Drive/"
+
+alias where=which # sometimes i forget
 
 # AFK Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -20,15 +22,15 @@ alias ag='ag -f --hidden'
 # alias
 alias mk.alias='${EDITOR} ~/.extra;'
 alias run.alias='source ~/.profile'
-alias go.df='devenv $PRJ_DIR/dotfiles none none'
-alias mk.df='make "${PRJ_DIR}/dotfiles"'
+alias godf='devenv $PRJ_DIR/dotfiles none none'
+alias mk.df='${EDITOR} "${PRJ_DIR}/dotfiles"'
 
 # Apache
 alias apachectl='sudo apachectl'
 alias apache2ctl='sudo apachectl'
 apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
 apacheRoot=${apacheConf::${#apacheConf}-10}
-alias cfg.apache="${EDITOR} ${apacheRoot}"
+alias apache.cfg="${EDITOR} ${apacheRoot}"
 
 # BlackFire
 alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
@@ -103,7 +105,7 @@ alias rmd="rmdir"
 #alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias go.exakat='devenv "${PRJ_DIR}/tools/exakat" php71'
+alias goexakat='devenv "${PRJ_DIR}/tools/exakat" php71'
 alias exakat='php exakat.phar -v' 
 
 # Files mv, rm, cp
@@ -147,11 +149,10 @@ alias hl.js="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy"
 
 # Homebrew 
 alias cask='brew cask' # i <3 u cask
-alias where=which # sometimes i forget
 alias brwe=brew  #typos 
  
 # host names
-alias cfg.hosts='sudo ${EDITOR} /etc/hosts'
+alias hosts.cfg='sudo ${EDITOR} /etc/hosts'
 
 # jenkins
 alias jk.restart='brew services restart jenkins'
@@ -190,7 +191,7 @@ alias mem.stats="echo 'stats' | nc localhost 11211"
 alias mysql.restart='brew services restart mysql'
 alias mysql.start='brew services run mysql'
 alias mysql.stop='brew services stop mysql'
-alias cfg.mysql='${EDITOR} /etc/my.cnf'
+alias mysql.cfg='${EDITOR} /etc/my.cnf'
 
 # neo4j
 alias neo.start='$NEO4J_HOME/bin/neo4j start'
@@ -216,7 +217,7 @@ done
 alias path='echo -e ${PATH//:/\\n}'
 
 # php
-alias cfg.php='${EDITOR} /usr/local/etc/php/'
+alias php.cfg='${EDITOR} /usr/local/etc/php/'
 # Load xdebug Zend extension with php command
 # alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.

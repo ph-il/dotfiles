@@ -29,8 +29,12 @@ then
 fi;
 
 # Configure PHP
+sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
+sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.1/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.2/conf.d
+cp ./Apache/zz_personal.ini /usr/local/etc/php/5.6/conf.d/zz_personal.ini
+cp ./Apache/zz_personal.ini /usr/local/etc/php/7.0/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
 cp ./Apache/zz_personal.ini /usr/local/etc/php/7.2/conf.d/zz_personal.ini
 

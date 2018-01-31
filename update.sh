@@ -21,6 +21,15 @@ brew bundle -v
 
 brew unlink php${PHP_VERSION}
 
+brew link php56
+brew bundle -v --file=Php56file
+brew bundle -v --file=Phpfile
+brew unlink php56
+
+brew link php70
+brew bundle -v --file=Php70file
+brew unlink php70
+
 brew link php71
 brew bundle -v --file=Php71file
 brew bundle -v --file=Phpfile

@@ -26,6 +26,8 @@ function doIt() {
         --exclude "Gemfile" \
         --exclude "Masfile" \
         --exclude "Phpfile" \
+        --exclude "Php56file" \
+        --exclude "Php70file" \
         --exclude "Php71file" \
         --exclude "Php72file" \
         -avh --no-perms . ~;
