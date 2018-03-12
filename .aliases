@@ -20,10 +20,10 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias ag='ag -f --hidden'
 
 # alias
-alias mk.alias='${EDITOR} ~/.extra;'
-alias run.alias='source ~/.profile'
+alias mkalias='${EDITOR} ~/.extra'
+alias runalias='source ~/.profile'
 alias godf='devenv $PRJ_DIR/dotfiles none none'
-alias mk.df='${EDITOR} "${PRJ_DIR}/dotfiles"'
+alias mkdf='${EDITOR} "${PRJ_DIR}/dotfiles"'
 
 # Apache
 alias apachectl='sudo apachectl'
@@ -263,20 +263,20 @@ alias svnst='svn st --ignore-externals'
    
 # symfony 2, 3, 4 project command (need to use the go function before)
 alias sf='$DEVENV_PROG'
-alias sf.cc='sf cache:clear --no-warmup'
-alias sf.cw='sf cache:warmup'
+alias sfcc='sf cache:clear --no-warmup'
+alias sfcw='sf cache:warmup'
 # Dangerous @TODO Create a function that will be more safe
-alias sf.hcc='sudo rm -rf "${DEVENV_CACHE}*"'
-alias sf.cl='sudo find "${DEVENV_LOG}" -type f -delete'
-alias sf.cxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
+alias sfhcc='sudo rm -rf "${DEVENV_CACHE}*"'
+alias sfcl='sudo find "${DEVENV_LOG}" -type f -delete'
+alias sfcxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
  
 # Symfony 2, 3, 4 project only command (need to use the go function before)
-alias sf.ddd='sf doctrine:database:drop --force'
-alias sf.ddc='sf doctrine:database:create'
-alias sf.dsc='sf doctrine:schema:create'
-alias sf.dsd='sf doctrine:schema:drop --force --full-database'
-alias sf.dsv='sf doctrine:schema:validate'
-alias sf.load='sf doctrine:fixtures:load'
+alias sfddd='sf doctrine:database:drop --force'
+alias sfddc='sf doctrine:database:create'
+alias sfdsc='sf doctrine:schema:create'
+alias sfdsd='sf doctrine:schema:drop --force --full-database'
+alias sfdsv='sf doctrine:schema:validate'
+alias sfload='sf doctrine:fixtures:load'
 
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
@@ -300,7 +300,7 @@ alias vrebuild="vagrant destroy --force && vagrant up"
 # varnish
 alias varnish.restart='brew services restart varnish' 
 alias varnish.start='brew services run varnish' 
-alias varnish.restop='brew services stop varnish' 
+alias varnish.stop='brew services stop varnish' 
  
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

@@ -124,6 +124,7 @@ brew 'nvm'
 brew 'openssl', args: ['force']
 brew 'packer'
 brew 'packer-completion'
+brew 'pandoc'
 brew 'percona-toolkit'
 brew 'pigz'
 brew 'pidcat'
