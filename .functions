@@ -220,18 +220,38 @@ update() {
     badge
         
     echo "Updating brew installs..."
+		
     brew -v update
     badge
-    sphp 56
+    brew unlink php$PHP_VERSION 2> /dev/null > /dev/null
+    brew unlink php$PHP_VERSION-apcu 2> /dev/null > /dev/null
+
+    brew link php56 2> /dev/null > /dev/null
+    brew link php56-apcu 2> /dev/null > /dev/null
     brew upgrade --force-bottle --cleanup
-    sphp 70
+    brew unlink php56 2> /dev/null > /dev/null
+    brew unlink php56-apcu 2> /dev/null > /dev/null
+    brew link php70 2> /dev/null > /dev/null
+    brew link php70-apcu 2> /dev/null > /dev/null
     brew upgrade --force-bottle --cleanup
-    sphp 71
+    brew unlink php70 2> /dev/null > /dev/null
+    brew unlink php70-apcu 2> /dev/null > /dev/null
+    brew link php71 2> /dev/null > /dev/null
+    brew link php71-apcu 2> /dev/null > /dev/null
     brew upgrade --force-bottle --cleanup
-    sphp 72
+    brew unlink php71 2> /dev/null > /dev/null
+    brew unlink php71-apcu 2> /dev/null > /dev/null
+    brew link php72 2> /dev/null > /dev/null
+    brew link php72-apcu 2> /dev/null > /dev/null
     brew upgrade --force-bottle --cleanup
+    brew unlink php72 2> /dev/null > /dev/null
+    brew unlink php72-apcu 2> /dev/null > /dev/null
+ 
+    brew link php$PHP_VERSION 2> /dev/null > /dev/null
+    brew link php$PHP_VERSION-apcu 2> /dev/null > /dev/null
+ 
     badge
-    brew upgrade brew-cask
+    brew cask upgrade 
     badge
     brew cleanup
     badge
@@ -239,10 +259,7 @@ update() {
     badge
     brew prune 
     badge
-    brew doctor
-    badge
-    npm-check -g -u
-    
+    brew doctor    
     brew services restart memcached    
     badge
     brew services restart mysql
@@ -264,12 +281,14 @@ update() {
     sudo gem cleanup    
     badge
     echo "Updating npm..."
+    npm-check -g -u
+    badge
     npm install npm -g 
     badge
     npm update -g
     badge
     echo "Updating Exakat..."
-    exakat upgrade -u
+    php ${PRJ_DIR}/tools/exakat.phar upgrade -u
     badge
     echo "Updating Pip3..."
     pip3 install --upgrade pip setuptools wheel
@@ -423,11 +442,11 @@ sphp() {
         
         echo "Linking new binaries..."
         brew link php$newversion
-        brew unlink php$newversion-apcu 2> /dev/null > /dev/null
+        brew link php$newversion-apcu 2> /dev/null > /dev/null
 
         echo "Linking new modphp addon..."
         
-        sudo ln -sf /usr/local/opt/php$newversion/libexec/apache2/libphp${majorNew}.so /usr/local/lib/libphp${majorNew}.so
+        sudo ln -sf /usr/local/opt/php$newversion/libexec/apache2/libphp${majorNew}.so /usr/local/lib/libphp.so
 
         # echo "Fixing LoadModule..."
         # apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
