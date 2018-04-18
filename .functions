@@ -208,7 +208,7 @@ function tre() {
 
 # This is use to upgrade many of the command line tools we'll add.
 # Usage: update
-update() {
+function update() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"update\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
@@ -330,7 +330,7 @@ update() {
  
 # Defining a default project
 # Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'ezp'
-devenv() {
+function devenv() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"devenv\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
@@ -374,11 +374,6 @@ devenv() {
 	        DEVENV_PROG="php ${DEVENV_DIR}/app/console"
 	        DEVENV_CACHE="$DEVENV_DIR/app/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/app/logs/"
-		elif [ "${!i:0:3}" == 'php' ]; then
-			echo "SET ${!i}"
-		    if [ "${PHP_VERSION}" != "${!i:3:1}.${!i:4:1}" ]; then
-		        sphp ${!i:3:1}.${!i:4:1}
-		    fi
 	    fi		
 	done
     
@@ -391,7 +386,7 @@ devenv() {
 # This is use for symfony 1.x projects.
 # If you are using many schema files, it will add a list of all files to your schema.yml
 # Usage: sfschema
-sfschema() {
+function sfschema() {
     cd ${DEVENV_DIR}
     cd config/doctrine/
     echo
@@ -402,7 +397,7 @@ sfschema() {
     done >> schema.yml
 }
 
-sfvar() {
+function sfvar() {
     cd ${DEVENV_DIR}
     rm -rf var/cache/*
     rm -rf var/logs/*
@@ -412,26 +407,22 @@ sfvar() {
     sudo /bin/chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" var
 }
 
-donotrun() {
+function donotrun() {
     if [[ $(id -u) -eq 0 ]]; then
         echo "The command \"sf\" should not be executed as root or via sudo directly."
         echo "When a service requires root access, you will be prompted for a password as needed."
         exit 0
     fi    
 
-    echo "The command \"sf\" should not be executed without an DEV_ENV."
+    echo "The command \"sf\" should not be executed without an DEVENV_PROG."
     echo "You can do this by running gosf"
     exit 0
 }
 
 # Switch between PHP version. Will restart Apache
-# base on : https://github.com/sgotre/sphp-osx/blob/master/sphp
+# base on : https://gist.github.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2 Creator: Phil Cook, Email: phil@phil-cook.com, Twitter: @p_cook
 # Usage: sphp [phpversion]
-sphp() {
-	#!/bin/bash
-	# Creator: Phil Cook
-	# Email: phil@phil-cook.com
-	# Twitter: @p_cook
+function sphp() {
 	brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
 	brew_array=("5.6","7.0","7.1","7.2")
@@ -605,7 +596,7 @@ function extract() {
 
 # animated gifs from any video
 # from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
+function gifify() {
   if [[ -n "$1" ]]; then
     if [[ $2 == '--good' ]]; then
       ffmpeg -i "$1" -r 10 -vcodec png out-static-%05d.png
@@ -619,11 +610,12 @@ gifify() {
   fi
 }
 
+# base on : https://gist.github.com/rhukster/073a2c1270ccb2c6868e7aced92001cf
 # @author   Djamil Legato http://github.com/w00fz/xdebug-osx
+# @modified Andy Miller - Homebrew/core compatibility
 # @license  MIT
 # @version  1.2
-
-xdebug-toggle() {
+function xdebug-toggle() {
 	app="$(basename "$0")"
 	command="$1"
 	options="$2"

@@ -22,8 +22,9 @@ alias ag='ag -f --hidden'
 # alias
 alias mkalias='${EDITOR} ~/.extra'
 alias runalias='source ~/.profile'
-alias godf='devenv $PRJ_DIR/dotfiles none none'
+alias godf='devenv $PRJ_DIR/dotfiles'
 alias mkdf='${EDITOR} "${PRJ_DIR}/dotfiles"'
+alias go='alias | grep go'
 
 # Apache
 alias apachectl='sudo apachectl'
@@ -108,7 +109,7 @@ alias rmd="rmdir"
 #alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='devenv "${PRJ_DIR}/tools/exakat" php71'
+alias goexakat='devenv "${PRJ_DIR}/tools/exakat"; sphp 7.1'
 alias exakat='php exakat.phar -v' 
 
 # Files mv, rm, cp
