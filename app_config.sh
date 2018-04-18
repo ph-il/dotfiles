@@ -33,10 +33,10 @@ sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.1/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.2/conf.d
-cp ./Apache/zz_personal.ini /usr/local/etc/php/5.6/conf.d/zz_personal.ini
-cp ./Apache/zz_personal.ini /usr/local/etc/php/7.0/conf.d/zz_personal.ini
-cp ./Apache/zz_personal.ini /usr/local/etc/php/7.1/conf.d/zz_personal.ini
-cp ./Apache/zz_personal.ini /usr/local/etc/php/7.2/conf.d/zz_personal.ini
+cp ./php/5.6/conf.d/*.ini /usr/local/etc/php/5.6/conf.d/
+cp ./php/7.0/conf.d/*.ini /usr/local/etc/php/7.0/conf.d/
+cp ./php/7.1/conf.d/*.ini /usr/local/etc/php/7.1/conf.d/
+cp ./php/7.2/conf.d/*.ini /usr/local/etc/php/7.2/conf.d/
 
 # Configure Docker
 #docker-machine create -d virtualbox dev
@@ -65,7 +65,11 @@ if grep -q "$PATTERN" $apacheConf;
     echo "sphp is already set"
  else
     sudo sed -i -e '/libphp5.so/d' $apacheConf
-    sudo echo "LoadModule php7_module /usr/local/lib/libphp7.so" >> $apacheConf
+	sudo echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
+    sudo echo "#LoadModule php5_module /usr/local/opt/php@5.6/lib/httpd/modules/libphp5.so" >> $apacheConf
+    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so" >> $apacheConf
+    sudo echo "LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so" >> $apacheConf
+    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so" >> $apacheConf
 fi
 
 PATTERN="/usr/local/etc/apache2/2.4/other/*.conf"
@@ -113,5 +117,4 @@ sudo chown -v root:wheel /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
 sudo chmod -v 644 /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
 sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.httpd24.plist
 
-sudo ln -sf /usr/local/opt/php71/libexec/apache2/libphp7.so /usr/local/lib/libphp7.so
 apachectl -k restart

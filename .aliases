@@ -31,6 +31,9 @@ alias apache2ctl='sudo apachectl'
 apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
 apacheRoot=${apacheConf::${#apacheConf}-10}
 alias apache.cfg="${EDITOR} ${apacheRoot}"
+alias apache.restart='brew services restart httpd'
+alias apache.start='brew services run httpd'
+alias apache.stop='brew services stop httpd'
 
 # BlackFire
 alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
@@ -306,5 +309,5 @@ alias varnish.stop='brew services stop varnish'
 alias sudo='sudo '
 
 # XDebug
-alias xdebug.enable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf.d;"
-alias xdebug.disable="export PHP_INI_SCAN_DIR=/usr/local/etc/php/7.1/conf2.d;"
+alias xdebug.enable="xdebug-toggle on"
+alias xdebug.disable="xdebug-toggle off"

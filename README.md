@@ -59,6 +59,7 @@ When setting up a new Mac, you may want to set some sensible macOS defaults and 
 ./install.sh
 ./brew_install.sh
 ./bootstrap.sh
+./php_install.sh
 ./npm_install.sh
 ./app_config.sh
 ./exakat_install.sh

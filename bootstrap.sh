@@ -11,6 +11,7 @@ function doIt() {
         --exclude "macos.sh" \
         --exclude "exakat_install.sh" \
         --exclude "brew_install.sh" \
+	    --exclude "php_install.sh" \
         --exclude "npm_install.sh" \
         --exclude "app_config.sh" \
         --exclude "install.sh" \
@@ -19,6 +20,7 @@ function doIt() {
         --exclude "README.md" \
         --exclude "LICENSE" \
         --exclude "Apache/" \
+	    --exclude "php/" \
         --exclude "Brewfile" \
         --exclude "Tapfile" \
         --exclude "Caskfile" \
@@ -26,10 +28,6 @@ function doIt() {
         --exclude "Gemfile" \
         --exclude "Masfile" \
         --exclude "Phpfile" \
-        --exclude "Php56file" \
-        --exclude "Php70file" \
-        --exclude "Php71file" \
-        --exclude "Php72file" \
         -avh --no-perms . ~;
     source ~/.profile;
 }

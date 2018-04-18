@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 cask 'java'
+cask 'java8'
 cask 'textmate'
 
 brew 'ack'
@@ -172,4 +173,4 @@ brew 'zopfli'
 brew 'python'
 #brew 'ansible'
 #brew 'mongodb'
-brew 'httpd24', args: ['with-privileged-ports', 'with-http2']
+brew 'httpd'
