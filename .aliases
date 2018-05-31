@@ -3,6 +3,7 @@
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
+alias doc="cd ~/Documents"
 alias dt="cd ~/Desktop"
 alias p='cd "${PRJ_DIR}"'
 alias goprj='cd "${PRJ_DIR}"'
@@ -273,8 +274,6 @@ alias sfcw='sf cache:warmup'
 alias sfhcc='sudo rm -rf "${DEVENV_CACHE}*"'
 alias sfcl='sudo find "${DEVENV_LOG}" -type f -delete'
 alias sfcxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
- 
-# Symfony 2, 3, 4 project only command (need to use the go function before)
 alias sfddd='sf doctrine:database:drop --force'
 alias sfddc='sf doctrine:database:create'
 alias sfdsc='sf doctrine:schema:create'

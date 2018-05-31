@@ -8,7 +8,7 @@ sudo chmod 4755 $mtrlocation/sbin/mtr
 sudo chown root $mtrlocation/sbin/mtr
 
 # Configure Blackfire
-#sudo blackfire-agent -register
+sudo blackfire-agent -register
 ln -sfv /usr/local/opt/blackfire-agent/*.plist ~/Library/LaunchAgents
 
 ## Configure MySQL
@@ -29,12 +29,12 @@ then
 fi;
 
 # Configure PHP
-sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
-sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
+#sudo chmod -R guo+rw  /usr/local/etc/php/5.6/conf.d
+#sudo chmod -R guo+rw  /usr/local/etc/php/7.0/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.1/conf.d
 sudo chmod -R guo+rw  /usr/local/etc/php/7.2/conf.d
-cp ./php/5.6/conf.d/*.ini /usr/local/etc/php/5.6/conf.d/
-cp ./php/7.0/conf.d/*.ini /usr/local/etc/php/7.0/conf.d/
+#cp ./php/5.6/conf.d/*.ini /usr/local/etc/php/5.6/conf.d/
+#cp ./php/7.0/conf.d/*.ini /usr/local/etc/php/7.0/conf.d/
 cp ./php/7.1/conf.d/*.ini /usr/local/etc/php/7.1/conf.d/
 cp ./php/7.2/conf.d/*.ini /usr/local/etc/php/7.2/conf.d/
 
@@ -61,15 +61,15 @@ done
 PATTERN="# Brew PHP LoadModule for 'sphp' switcher"
 
 if grep -q "$PATTERN" $apacheConf;
- then
+  then
     echo "sphp is already set"
- else
+  else
     sudo sed -i -e '/libphp5.so/d' $apacheConf
-	sudo echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
-    sudo echo "#LoadModule php5_module /usr/local/opt/php@5.6/lib/httpd/modules/libphp5.so" >> $apacheConf
-    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so" >> $apacheConf
-    sudo echo "LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so" >> $apacheConf
-    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so" >> $apacheConf
+    sudo echo "# Brew PHP LoadModule for 'sphp' switcher" >> $apacheConf
+#    sudo echo "#LoadModule php5_module /usr/local/opt/php@5.6/lib/httpd/modules/libphp5.so" >> $apacheConf
+#    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so" >> $apacheConf
+    sudo echo "#LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so" >> $apacheConf
+    sudo echo "LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so" >> $apacheConf
 fi
 
 PATTERN="/usr/local/etc/apache2/2.4/other/*.conf"
@@ -85,10 +85,10 @@ fi
 PATTERN="DirectoryIndex index.html"
 
 if grep -q "$PATTERN" $apacheConf;
- then
+  then
     sudo echo "" >> $apacheConf
     sudo sed -i -e "s/$PATTERN/DirectoryIndex index.php index.html/g" $apacheConf
- else
+  else
     echo "DirectoryIndex is already set"
 fi
 
@@ -100,6 +100,8 @@ sudo echo "Options FollowSymLinks Multiviews Indexes" >> $apacheConf
 sudo perl -i -0pe "s/    AllowOverride none\n    Require all denied\n/    Options FollowSymLinks Multiviews Indexes\n    AllowOverride All\n    Require all granted\n/" $apacheConf
 sudo sed -i -e 's/User _www/User '$(whoami)'/g' $apacheConf
 sudo sed -i -e 's/Group _www/Group staff/g' $apacheConf
+sudo sed -i -e 's/Listen 8080/Listen 80/g' $apacheConf
+sudo sed -i -e 's/#ServerName localhost/ServerName localhost/g' $apacheConf
 
 PATTERN="SetHandler application/x-httpd-php"
 if grep -q "${PATTERN}" $apacheConf;

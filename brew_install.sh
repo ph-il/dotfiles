@@ -23,3 +23,5 @@ brew bundle -v
 brew bundle -v --file=Caskfile
 brew bundle -v --file=Gemfile
 brew bundle -v --file=Masfile
+
+brew cleanup -s
