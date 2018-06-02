@@ -44,27 +44,30 @@ pecl install mcrypt
 pecl install intl
 pecl install geoip
 pecl install ast
-pecl install tidy
 pecl uninstall -r yaml
 pecl install yaml
 
 brew install php@7.2
 brew install blackfire-php72
 pecl channel-update pecl.php.net
+pecl uninstall -r igbinary
+pecl install igbinary
 pecl uninstall -r apcu
 pecl install apcu
 pecl uninstall -r xdebug
 pecl install xdebug
+pecl uninstall -r redis
 pecl install redis
-pecl install apcu
+pecl uninstall -r memcached
 pecl install memcached
+pecl uninstall -r imagick
 pecl install imagick
-pecl install igbinary
+pecl uninstall -r intl
 pecl install intl
+pecl uninstall -r geoip
 pecl install geoip
+pecl uninstall -r ast
 pecl install ast
-pecl install tidy
-pecl install yaml
 pecl uninstall -r yaml
 pecl install yaml
 

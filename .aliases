@@ -87,8 +87,8 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # Composer
-alias cup='composer update --prefer-dist --no-plugins'
-alias ci='composer install --prefer-dist --no-plugins'
+alias cup='composer update --prefer-dist'
+alias ci='composer require --prefer-dist'
  
 # df - Better display free disk space with "Human-readable" output.
 alias df="df -h"
