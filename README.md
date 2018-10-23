@@ -115,15 +115,6 @@ source update.sh
 
 ## Testing
 
-### Test PHP 7.1
-
-* Execute
-```sh
-sphp 71
-php -i "(command-line 'phpinfo()')"
-```
-
-* Make sure that everyting is working
 
 ### Test PHP 7.2
 
@@ -185,15 +176,6 @@ cfg.apache
 * Execute:
 ```sh
 phpserver
-```
-
-### Switch PHP Version
-
-Switch between PHP version 71, 72
-
-* Execute:
-```sh
-sphp version
 ```
 
 ## Feedback

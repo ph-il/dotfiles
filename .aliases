@@ -110,7 +110,7 @@ alias rmd="rmdir"
 #alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='devenv "${PRJ_DIR}/tools/exakat"; sphp 7.1'
+alias goexakat='devenv "${PRJ_DIR}/tools/exakat"' #'; sphp 7.1'
 alias exakat='php exakat.phar -v' 
 
 # Files mv, rm, cp
