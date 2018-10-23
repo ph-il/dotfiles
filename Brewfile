@@ -116,7 +116,6 @@ brew 'nmap'
 brew 'node-build'
 brew 'nodebrew'
 brew 'node', args: ['with-full-icu']
-brew 'node@6', args: ['with-full-icu']
 brew 'nodenv'
 brew 'npm'
 brew 'nvm'
@@ -171,3 +170,4 @@ brew 'zopfli'
 #brew 'mongodb'
 brew 'httpd'
 brew 'golang'
+brew 'Jupyter'
