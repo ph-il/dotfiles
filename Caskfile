@@ -2,8 +2,8 @@ cask_args appdir: '/Applications'
 
 # Mac Application Installation
 cask 'adobe-creative-cloud'
-cask 'adobe-reader'
-cask 'appcleaner'
+#cask 'adobe-reader'
+#cask 'appcleaner'
 cask 'ccleaner'
 cask 'charles'
 cask 'cleanmymac'
