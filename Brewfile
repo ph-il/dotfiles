@@ -70,7 +70,7 @@ brew 'gpg'
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew 'gnu-sed'
 brew 'libtool', args: ['force']
-brew 'graphviz'
+brew 'graphviz', args: ['with-app']
 brew 'grc'
 #brew 'homebrew/dupes/grep', args: ['with-default-names']
 brew 'hashpump'
