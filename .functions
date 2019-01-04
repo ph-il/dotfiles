@@ -265,7 +265,7 @@ function update() {
 #    sudo pecl upgrade-all
 	
     badge
-	sphp 7.2 -s
+#	sphp 7.2 -s
 	brew -v update
     sudo pear upgrade PEAR
     sudo pear upgrade-all
@@ -359,19 +359,19 @@ function devenv() {
  	    if [ "${!i}" == 'sf4' ]; then
 			echo "SET ${!i}"
 	        DEVENV_NAME="sf4"
-			DEVENV_PROG="php ${DEVENV_DIR}/bin/console"
+			DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
 	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
 	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
  	    elif [ "${!i}" == 'sf3' ]; then
 			echo "SET ${!i}"
 	        DEVENV_NAME="sf3"
-			DEVENV_PROG="php ${DEVENV_DIR}/bin/console"
+			DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
 	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
 	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
 	    elif [ "${!i}" == 'sf2' ]; then
 			echo "SET ${!i}"
 	        DEVENV_NAME="sf2"
-	        DEVENV_PROG="php ${DEVENV_DIR}/app/console"
+	        DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/app/console"
 	        DEVENV_CACHE="$DEVENV_DIR/app/cache/"
 	        DEVENV_LOG="$DEVENV_DIR/app/logs/"
 	    fi		

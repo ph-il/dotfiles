@@ -24,7 +24,7 @@ alias ag='ag -f --hidden'
 alias mkalias='${EDITOR} ~/.extra'
 alias runalias='source ~/.profile'
 alias godf='devenv $PRJ_DIR/dotfiles'
-alias mkdf='${EDITOR} "${PRJ_DIR}/dotfiles"'
+alias mkdf='${EDITOR} "$PRJ_DIR/dotfiles"'
 alias go='alias | grep go'
 
 # Apache
@@ -279,7 +279,8 @@ alias sfddc='sf doctrine:database:create'
 alias sfdsc='sf doctrine:schema:create'
 alias sfdsd='sf doctrine:schema:drop --force --full-database'
 alias sfdsv='sf doctrine:schema:validate'
-alias sfload='sf doctrine:fixtures:load'
+alias sfdfl='sf doctrine:fixtures:load'
+alias sfdmm='sf doctrine:migrations:migration'
 
 # Terminal
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
