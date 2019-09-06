@@ -1,8 +1,6 @@
 tap 'homebrew/services'
-tap 'homebrew/dev-tools'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'thoughtbot/formulae'
 tap 'blackfireio/homebrew-blackfire'
-
