@@ -1,7 +1,7 @@
 cask_args appdir: '/Applications'
 
-cask 'java'
-cask 'java8'
+cask 'adoptopenjdk'
+cask 'adoptopenjdk8'
 cask 'textmate'
 
 brew 'ack'
@@ -169,5 +169,6 @@ brew 'zopfli'
 #brew 'ansible'
 #brew 'mongodb'
 brew 'httpd'
-brew 'golang'
-brew 'Jupyter'
+#brew 'golang'
+#brew 'Jupyter'
+brew 'brew-gem'
