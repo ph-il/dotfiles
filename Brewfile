@@ -75,7 +75,7 @@ brew 'boost'
 brew 'lua'
 brew 'highlight'
 brew 'hub'
-brew 'mysql', restart_service: true
+brew 'mysql@5.7', restart_service: true
 brew 'hydra'
 brew 'icoutils'
 brew 'icu4c', args: ['force']
@@ -123,7 +123,6 @@ brew 'pandoc'
 brew 'percona-toolkit'
 brew 'pigz'
 brew 'pidcat'
-brew 'mysql@5.7'
 brew 'pngcheck'
 brew 'pv'
 brew 'wxmac'
