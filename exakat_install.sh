@@ -27,8 +27,5 @@ cd ..
 
 php exakat.phar doctor
 
-#sudo sed -i -e "s/;php56        = \/path\/to\/php56/php56 = \/usr\/local\/opt\/php56\/bin\/php/g" config/exakat.ini
-#sudo sed -i -e "s/;php70        = \/path\/to\/php70/php70 = \/usr\/local\/opt\/php70\/bin\/php/g" config/exakat.ini
-#sudo sed -i -e "s/;php71        = \/path\/to\/php71/php71 = \/usr\/local\/opt\/php71\/bin\/php/g" config/exakat.ini
-sudo sed -i -e "s/;php72        = \/path\/to\/php72/php72 = \/usr\/local\/opt\/php72\/bin\/php/g" config/exakat.ini
+sudo sed -i -e "s/;php73        = \/path\/to\/php73/php73 = \/usr\/local\/opt\/php73\/bin\/php/g" config/exakat.ini
 
