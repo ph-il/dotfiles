@@ -9,7 +9,7 @@ fi;
 # Install everything in Brewfile
 
 brew doctor
-brew prune
+brew cleanup
 
 brew tap Homebrew/bundle
 

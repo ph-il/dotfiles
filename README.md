@@ -32,8 +32,8 @@ My `~/.extra` looks something like this:
 ##### PROJECTS ALIAS #####
  
 # goto a specific project
-alias go.test='gosf $PRJ_DIR/test/formation2 55 sf2'
-alias go.df='gosf $PRJ_DIR/dotfiles/ none none' 
+alias gotest='gosf $PRJ_DIR/test/formation2 55 sf2'
+alias godf='gosf $PRJ_DIR/dotfiles/ none none' 
 
 ##### ALIAS #####
 
