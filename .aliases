@@ -198,9 +198,9 @@ alias mem.reset="echo 'flush_all' | nc localhost 11211"
 alias mem.stats="echo 'stats' | nc localhost 11211"
 
 # Mysql
-alias mysql.restart='brew services restart mysql@5.7'
-alias mysql.start='brew services run  mysql@5.7'
-alias mysql.stop='brew services stop  mysql@5.7'
+alias mysql.restart='brew services restart mysql'
+alias mysql.start='brew services run  mysql'
+alias mysql.stop='brew services stop  mysql'
 alias mysql.cfg='${EDITOR} /etc/my.cnf'
 
 # neo4j

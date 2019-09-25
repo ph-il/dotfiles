@@ -75,7 +75,7 @@ brew 'boost'
 brew 'lua'
 brew 'highlight'
 brew 'hub'
-brew 'mysql@5.7', restart_service: true
+brew 'mysql', restart_service: true
 brew 'hydra'
 brew 'icoutils'
 brew 'icu4c', args: ['force']
@@ -135,6 +135,7 @@ brew 'ruby', args: ['force']
 brew 'reattach-to-user-namespace'
 brew 'redis', restart_service: true
 brew 'rename'
+brew 're2c'
 brew 'rhino'
 brew 'screen'
 brew 'shellcheck'
@@ -158,9 +159,12 @@ brew 'v8'
 brew 'varnish'
 brew 'vbindiff'
 brew 'webkit2png'
-brew 'wget', args: ['with-iri']
+brew 'wget'
 brew 'libpng'
 brew 'libtiff'
 brew 'zopfli'
 brew 'httpd'
 brew 'brew-gem'
+brew 'zlib'
+brew 'msgpack'
+
