@@ -27,3 +27,5 @@ eslint --init
 
 sudo easy_install pip
 sudo pip install https://github.com/google/closure-linter/zipball/master
+sudo pip3 install detect-secrets
+
