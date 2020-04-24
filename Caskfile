@@ -1,7 +1,6 @@
 cask_args appdir: '/Applications'
 
 # Mac Application Installation
-cask 'adobe-creative-cloud'
 cask 'ccleaner'
 cask 'charles'
 cask 'cyberduck'

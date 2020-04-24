@@ -162,7 +162,7 @@ alias hosts.cfg='sudo ${EDITOR} /etc/hosts'
 # java
 alias java8='export JAVA_HOME=$JAVA_8_HOME'
 alias java10='export JAVA_HOME=$JAVA_10_HOME'
-alias java12='export JAVA_HOME=$JAVA_12_HOME'
+alias java14='export JAVA_HOME=$JAVA_14_HOME'
 
 # jenkins
 alias jk.restart='brew services restart jenkins'

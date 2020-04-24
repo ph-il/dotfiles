@@ -55,7 +55,7 @@ export PHP_VERSION="`php -r \"error_reporting(0); echo str_replace('.', '', subs
 export JAVA_HOME=$(/usr/libexec/java_home) 
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_10_HOME=$(/usr/libexec/java_home -v10)
-export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
+export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
 #export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
 export JAVA_OPTIONS="-Xms32m -Xmx6512m"
 
