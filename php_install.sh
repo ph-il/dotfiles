@@ -1,5 +1,65 @@
+brew tap exolnet/homebrew-deprecated
+
+brew install php@5.6
+pecl channel-update pecl.php.net
+pecl install igbinary
+pecl install apcu
+pecl install xdebug
+pecl install redis
+pecl install memcached
+pecl install intl
+pecl install geoip
+pecl install ast
+pecl install yaml
+
+brew unlink php@5.6
+
+brew install php@7.2
+pecl channel-update pecl.php.net
+pecl install igbinary
+pecl install apcu
+pecl install xdebug
+pecl install redis
+pecl install memcached
+pecl install intl
+pecl install geoip
+pecl install ast
+pecl install yaml
+
+brew unlink php@7.2
+
+brew install php@7.3
+pecl channel-update pecl.php.net
+pecl install igbinary
+pecl install apcu
+pecl install xdebug
+pecl install redis
+pecl install memcached
+pecl install intl
+pecl install geoip
+pecl install ast
+pecl install yaml
+
+brew unlink php@7.3
+
+brew install php@7.4
+brew install blackfire-php74
+pecl channel-update pecl.php.net
+pecl install igbinary
+pecl install apcu
+pecl install xdebug
+pecl install redis
+pecl install memcached
+pecl install imagick
+pecl install intl
+pecl install geoip
+pecl install ast
+pecl install yaml
+
+brew unlink php@7.4
+
 brew install php
-brew install blackfire-php73
+brew install blackfire-php80
 pecl channel-update pecl.php.net
 pecl install igbinary
 pecl install apcu

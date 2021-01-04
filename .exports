@@ -15,6 +15,7 @@ export NODE_REPL_HISTORY=~/.node_history;
 export NODE_REPL_HISTORY_SIZE='32768';
 # Use sloppy mode by default, matching web browsers.
 export NODE_REPL_MODE='sloppy';
+export NODE_OPTIONS="--max-old-space-size=10240"
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
@@ -57,7 +58,8 @@ export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_10_HOME=$(/usr/libexec/java_home -v10)
 export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
 #export NEO4J_HOME="${PRJ_DIR}/tools/exakat/neo4j"
-export JAVA_OPTIONS="-Xms32m -Xmx6512m"
+export JAVA_OPTIONS="-Xms64m -Xmx16288m"
+export JAVA_OPTS="-Xss16288k"
 
 export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0"
 export PHP_IDE_CONFIG="serverName=127.0.0.1"

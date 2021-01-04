@@ -353,6 +353,14 @@ function devenv() {
 			echo "SET ${!i}"
 			sphp 7.3
 	    fi		
+ 	    if [ "${!i}" == 'java8' ]; then
+			echo "SET ${!i}"
+			java8
+	    fi		
+ 	    if [ "${!i}" == 'java10' ]; then
+			echo "SET ${!i}"
+			java10
+	    fi		
 
 	done
     
@@ -544,16 +552,20 @@ function xdebug-toggle() {
 }
 
 function sphp() {
+	# Base on Phil Cook : phpswitch.sh
+	# Creator: Phil Cook
+	# Email: phil@phil-cook.com
+	# Twitter: @p_cook
 	osx_major_version=$(sw_vers -productVersion | cut -d. -f1)
 	osx_minor_version=$(sw_vers -productVersion | cut -d. -f2)
 	osx_patch_version=$(sw_vers -productVersion | cut -d. -f3)
-	osx_patch_version=${osx_patch_version:-0}
-	osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx_patch_version}))
+    osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx_patch_version:-0}))
 
 	brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
 	brew_array=("7.3","7.4")
-	php_array=("php@7.3" "php@7.4")
+	brew_array=("5.6","7.2","7.3","7.4","8.0")
+	php_array=("php@5.6" "php@7.2" "php@7.3" "php@7.4" "php@8.0")
 	php_installed_array=()
 	php_version="php@$1"
 	php_opt_path="$brew_prefix\/opt\/"
@@ -563,9 +575,6 @@ function sphp() {
 	    echo "usage: sphp version [-s|-s=*] [-c=*]"
 	    echo
 	    echo "    version    one of:" ${brew_array[@]}
-	    echo "    -s         skip change of mod_php on apache"
-	    echo "    -s=*       skip change of mod_php on apache or valet restart i.e (apache|valet,apache|valet)"
-	    echo "    -c=*       switch a specific config (apache|valet,apache|valet"
 	    echo
 	    exit
 	fi
@@ -581,12 +590,6 @@ function sphp() {
 	if [[ " ${php_array[*]} " == *"$php_version"* ]]; then
 	    # Check that the requested version is installed
 	    if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then
-
-	        # Stop valet service
-	        if [[ ($valet_installed -eq 1) && ($valet_restart -eq 1) ]]; then
-	            echo "Stop Valet service"
-	            valet stop
-	        fi
 
 	        # Switch Shell
 	        echo "Switching to $php_version"
