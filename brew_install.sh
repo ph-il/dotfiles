@@ -3,7 +3,7 @@
 # If Homebrew is not installed
 if ! which brew > /dev/null; then
      # Install Homebrew 
-     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi;
 
 # Install everything in Brewfile
