@@ -33,7 +33,6 @@ sudo pecl install apcu
 sudo pecl install xdebug
 sudo pecl install redis
 sudo pecl install memcached
-sudo pecl install imagick
 sudo pecl install ast
 sudo pecl install yaml
 
@@ -48,7 +47,6 @@ sudo pecl install apcu
 sudo pecl install xdebug
 sudo pecl install redis
 sudo pecl install memcached
-sudo pecl install imagick
 sudo pecl install ast
 sudo pecl install yaml
 

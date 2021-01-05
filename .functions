@@ -607,6 +607,6 @@ function sphp() {
 	        echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
 	    fi
 	else
-	    echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
+	    echo "Unknown version of PHP. SPHP can only handle arguments of:" ${brew_array[@]}
 	fi
 }
