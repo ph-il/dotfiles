@@ -6,8 +6,7 @@ then
     mkdir -pv ~/.nvm
 fi;
 
-mkdir 
-npm install -g bower
+npm install -g yarn
 npm install -g less
 # Type `git open` to open the GitHub page or website for a repository.
 npm install -g git-open
@@ -25,7 +24,7 @@ sudo easy_install Pygments
 npm install -g eslint
 eslint --init
 
-sudo easy_install pip
+sudo easy_install pip3
 sudo pip install https://github.com/google/closure-linter/zipball/master
 sudo pip3 install detect-secrets
 
