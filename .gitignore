@@ -1,4 +1,9 @@
+# Project Oriented 
 .extra
+*.lock.json
+*.lock.json
+
+
 # Compiled Python files
 *.pyc
 

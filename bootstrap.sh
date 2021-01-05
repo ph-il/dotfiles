@@ -28,7 +28,7 @@ function doIt() {
         --exclude "Gemfile" \
         --exclude "Masfile" \
         --exclude "Phpfile" \
-		--exclude "Tapfile.lock.json" \
+		--exclude "*.lock.json" \
         -avh --no-perms . ~;
     source ~/.profile;
 }
