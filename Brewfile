@@ -67,7 +67,7 @@ brew 'gpg'
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew 'gnu-sed'
 brew 'libtool', args: ['force']
-brew 'graphviz', args: ['with-app']
+brew 'graphviz'
 brew 'grc'
 #brew 'homebrew/dupes/grep', args: ['with-default-names']
 brew 'hashpump'
@@ -80,7 +80,7 @@ brew 'hydra'
 brew 'icoutils'
 brew 'icu4c', args: ['force']
 brew 'pkg-config'
-brew 'imagemagick', args: ['with-webp']
+brew 'imagemagick'
 brew 'jmeter'
 brew 'john'
 brew 'jpeg', args: ['force']
@@ -166,4 +166,5 @@ brew 'httpd'
 brew 'brew-gem'
 brew 'zlib'
 brew 'msgpack'
+brew 'sass/sass/sass'
 

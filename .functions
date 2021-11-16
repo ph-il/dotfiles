@@ -345,6 +345,10 @@ function devenv() {
 	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
 	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
 	    fi		
+ 	    if [ "${!i}" == 'php80' ]; then
+			echo "SET ${!i}"
+			sphp 8.0
+	    fi		
  	    if [ "${!i}" == 'php74' ]; then
 			echo "SET ${!i}"
 			sphp 7.4
