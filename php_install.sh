@@ -1,43 +1,3 @@
-brew install php@7.2
-brew link php@7.2
-sudo pecl channel-update pecl.php.net
-sudo pecl install igbinary
-sudo pecl install apcu
-sudo pecl install xdebug
-sudo pecl install redis
-sudo pecl install memcached
-sudo pecl install ast
-sudo pecl install yaml
-
-brew unlink php@7.2
-
-brew install php@7.3
-brew link php@7.3
-sudo pecl channel-update pecl.php.net
-sudo pecl install igbinary
-sudo pecl install apcu
-sudo pecl install xdebug
-sudo pecl install redis
-sudo pecl install memcached
-sudo pecl install ast
-sudo pecl install yaml
-
-brew unlink php@7.3
-
-brew install php@7.4
-brew link php@7.4
-brew install blackfire-php74
-sudo pecl channel-update pecl.php.net
-sudo pecl install igbinary
-sudo pecl install apcu
-sudo pecl install xdebug
-sudo pecl install redis
-sudo pecl install memcached
-sudo pecl install ast
-sudo pecl install yaml
-
-brew unlink php@7.4
-
 brew install php@8.0
 brew link php@8.0
 brew install blackfire-php80
@@ -49,10 +9,6 @@ sudo pecl install redis
 sudo pecl install memcached
 sudo pecl install ast
 sudo pecl install yaml
-
-brew unlink php@8.0
-
-brew link php@7.4
 
 brew bundle -v --file=Phpfile
 

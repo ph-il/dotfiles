@@ -20,6 +20,4 @@ brew upgrade
 
 brew bundle -v 
 
-#brew bundle -v --file=Caskfile
-
 brew cleanup -s

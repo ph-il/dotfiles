@@ -9,7 +9,7 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+# Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
@@ -28,9 +28,6 @@ sudo pmset -a standbydelay 86400
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
-# Disable transparency in the menu bar and elsewhere on Yosemite
-defaults write com.apple.universalaccess reduceTransparency -bool true
-
 # Menu bar: hide the Time Machine, Volume, and User icons
 #defaults write com.apple.systemuiserver menuExtras -array \
 #    "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
@@ -38,7 +35,7 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 #    "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Set highlight color to green
-defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
+#defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -66,7 +63,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+#defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -106,10 +103,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 sudo systemsetup -setrestartfreeze on
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+#sudo systemsetup -setcomputersleep Off > /dev/null
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -128,7 +125,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+#sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 #sudo rm /private/var/vm/sleepimage
@@ -138,7 +135,7 @@ sudo pmset -a hibernatemode 0
 #sudo chflags uchg /private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
+#sudo pmset -a sms 0
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -216,7 +213,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+#sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -264,7 +261,7 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable spring loading for directories
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+#defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
 # Remove the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
@@ -311,7 +308,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Disable the warning before emptying the Trash
-defaults write com.apple.finder WarnOnEmptyTrash -bool false
+#defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
@@ -326,8 +323,8 @@ chflags nohidden ~/Library
 sudo chflags nohidden /Volumes
 
 # Remove Dropbox’s green checkmark icons in Finder
-file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
-[ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+#file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
+#[ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
@@ -374,16 +371,16 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
-defaults write com.apple.dock expose-group-by-app -bool false
+#defaults write com.apple.dock expose-group-by-app -bool false
 
 # Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
+#defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
+#defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+#defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
@@ -391,7 +388,7 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool false
+#defaults write com.apple.dock autohide -bool false
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
@@ -403,8 +400,8 @@ defaults write com.apple.dock showhidden -bool true
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
 # Add iOS & Watch Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
+#sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
+#sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
 
 # Add a spacer to the left side of the Dock (where the applications are)
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -424,14 +421,14 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (
 # 11: Launchpad
 # 12: Notification Center
 # Top left screen corner → Mission Control
-defaults write com.apple.dock wvous-tl-corner -int 2
-defaults write com.apple.dock wvous-tl-modifier -int 0
+#defaults write com.apple.dock wvous-tl-corner -int 2
+#defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Start screen saver
-defaults write com.apple.dock wvous-tr-corner -int 5
-defaults write com.apple.dock wvous-tr-modifier -int 0
+#defaults write com.apple.dock wvous-tr-corner -int 5
+#defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Desktop
-defaults write com.apple.dock wvous-bl-corner -int 4
-defaults write com.apple.dock wvous-bl-modifier -int 0
+#defaults write com.apple.dock wvous-bl-corner -int 4
+#defaults write com.apple.dock wvous-bl-modifier -int 0
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -733,10 +730,10 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # Turn on app auto-update
-defaults write com.apple.commerce AutoUpdate -bool true
+#defaults write com.apple.commerce AutoUpdate -bool true
 
 # Allow the App Store to reboot machine on macOS updates
-defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+#defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 ###############################################################################
 # Photos                                                                      #
