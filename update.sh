@@ -19,8 +19,4 @@ brew upgrade
 
 brew bundle -v 
 
-#brew bundle -v --file=Caskfile
-
-#brew unlink php${PHP_VERSION}
-
 ./bootstrap.sh
