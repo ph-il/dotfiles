@@ -161,8 +161,7 @@ alias hosts.cfg='sudo ${EDITOR} /etc/hosts'
 
 # java
 alias java8='export JAVA_HOME=$JAVA_8_HOME'
-alias java10='export JAVA_HOME=$JAVA_10_HOME'
-alias java14='export JAVA_HOME=$JAVA_14_HOME'
+alias java16='export JAVA_HOME=$JAVA_14_HOME'
 
 # jenkins
 alias jk.restart='brew services restart jenkins'
@@ -271,7 +270,7 @@ alias spot.on="sudo mdutil -a -i on"
 alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
    
-# symfony 2, 3, 4 project command (need to use the go function before)
+# symfony 5 and 6 project command (need to use the go function before)
 alias sf='$DEVENV_PROG'
 alias sfcc='sf cache:clear --no-warmup'
 alias sfcw='sf cache:warmup'
@@ -285,6 +284,7 @@ alias sfdsc='sf doctrine:schema:create'
 alias sfdsd='sf doctrine:schema:drop --force --full-database'
 alias sfdsv='sf doctrine:schema:validate'
 alias sfdfl='sf doctrine:fixtures:load'
+alias sfdmc='sf doctrine:migrations:create'
 alias sfdmm='sf doctrine:migrations:migration'
 
 # Terminal

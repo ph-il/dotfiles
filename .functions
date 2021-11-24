@@ -345,6 +345,13 @@ function devenv() {
 	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
 	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
 	    fi		
+ 	    if [ "${!i}" == 'sf6' ]; then
+			echo "SET ${!i}"
+	        DEVENV_NAME="sf6"
+			DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
+	        DEVENV_CACHE="$DEVENV_DIR/var/cache/"
+	        DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+	    fi		
 # 	    if [ "${!i}" == 'php80' ]; then
 #			echo "SET ${!i}"
 #			sphp 8.0
@@ -361,9 +368,9 @@ function devenv() {
 			echo "SET ${!i}"
 			java8
 	    fi		
- 	    if [ "${!i}" == 'java10' ]; then
+ 	    if [ "${!i}" == 'java16' ]; then
 			echo "SET ${!i}"
-			java10
+			java16
 	    fi		
 
 	done
