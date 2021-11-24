@@ -111,7 +111,6 @@ brew 'netpbm'
 brew 'nmap'
 brew 'node-build'
 brew 'nodebrew'
-brew 'node', args: ['with-full-icu']
 brew 'nodenv'
 brew 'npm'
 brew 'nvm'
