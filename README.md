@@ -58,9 +58,9 @@ When setting up a new Mac, you may want to set some sensible macOS defaults and 
 ```bash
 ./install.sh
 ./brew_install.sh
-./bootstrap.sh
 ./php_install.sh
 ./npm_install.sh
+./bootstrap.sh
 ./app_config.sh
 ./exakat_install.sh
 ./maxos.sh
@@ -116,11 +116,10 @@ source update.sh
 ## Testing
 
 
-### Test PHP 7.2
+### Test PHP 8
 
 * Execute
 ```sh
-sphp 71
 php -i "(command-line 'phpinfo()')"
 ```
 

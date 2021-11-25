@@ -19,11 +19,7 @@ npm install -g trash-cli
 
 npm install -g sprity sprity-sass 
 
-sudo easy_install Pygments
-
 npm install -g eslint
-eslint --init
 
-sudo easy_install pip3
 sudo pip install https://github.com/google/closure-linter/zipball/master
 sudo pip3 install detect-secrets
