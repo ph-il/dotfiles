@@ -6,15 +6,23 @@
 and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails.
 Use at your own risk!
 
-### Using Git and the bootstrap script
+### Using Git and the sync script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles`
-as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+You can clone the repository wherever you want. I like to keep it in `~/Projects/dotfiles`.
+The sync script will pull in the latest version and copy the files to your home folder.
 
 ```bash
 git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
+### Update to zsh from bash
+
+MacOS now use zsh as the default shell. In you updated your version, you might still be on bash. Then new version of
+this dotfiles is using bash.
+
+```bash
+chsh -s /bin/zsh
+```
 ### Every step to install on a new mac
 
 Just run those command one by one.
@@ -30,27 +38,14 @@ Just run those command one by one.
 ./setup/php.sh
 ./sync.py
 ./setup/exakat.sh
-# Installs quick look plugins: qlImageSize
-./setup/quicklook.sh
 ./setup/maxos.sh
 
 brew bundle -v --file=./setup/Fontfile
 ```
 
-### Update to zsh from bash
-
-MacOS now use zsh as the default shell. In you updated your version, you might still be on bash. Then new version of
-this dotfiles is using bash.
-
-```bash
-chsh -s /bin/zsh
-```
-
 ### Specify the `$PATH`
 
-If `~/dotfiles/zsh/path.zsh` exists, it will be sourced along with the other files, before any feature testing (such as
-[detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-26))
-takes place.
+If `~/dotfiles/zsh/path.zsh` exists, it will be sourced along with the other files.
 
 Here’s an example `~/dotfiles/zsh/path.zsh` file that adds `/usr/local/bin` to the `$PATH`:
 

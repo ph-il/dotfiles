@@ -24,6 +24,19 @@ brew upgrade
 # Install everything in Brewfile
 brew bundle -v
 
+# Installs quick look plugins
+brew cask install suspicious-package quicklook-json qlmarkdown qlstephen qlcolorcode
+
+# qlImageSize
+TMPDIR=`mktemp -d` && {
+	cd $TMPDIR
+	curl -o _.zip http://cloud.github.com/downloads/Nyx0uf/qlImageSize/qlImageSize.qlgenerator.zip
+	unzip -d ~/Library/QuickLook _.zip
+	rm -rf $TMPDIR
+}
+
+qlmanage -r
+
 # git-friendly
 curl -sS https://raw.githubusercontent.com/jamiew/git-friendly/master/install.sh | bash
 

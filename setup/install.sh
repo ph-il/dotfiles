@@ -59,5 +59,13 @@ then
     mkdir -pv Projects
 fi;
 
+pub=$HOME/.ssh/id_ed25519.pub
+echo 'Checking for SSH key, generating one if it does not exist...'
+  [[ -f $pub ]] || ssh-keygen -t ed25519
+
+echo 'Copying public key to clipboard. Paste it into your Github account...'
+  [[ -f $pub ]] && cat $pub | pbcopy
+  open 'https://github.com/account/ssh'
+
 #sudo apachectl stop
 #sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
