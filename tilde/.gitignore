@@ -1,5 +1,6 @@
 # Compiled Python files
 *.pyc
+VENV
 
 # Folder view configuration files
 .DS_Store
@@ -34,6 +35,15 @@ npm-debug.log
 *.sw[a-z]
 *.un~
 .netrwhist
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Sessionx.vim
+*~
+[._]*.un~
 Session.vim
 .vim/viminfo
 .vim/swaps/*
@@ -43,6 +53,13 @@ vim/.viminfo
 *.tmproj
 *.tmproject
 tmtags
+.rubymine_helpers
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.iml
+out
+gen
 
 # credential file
 .gitconfig.local
@@ -56,6 +73,14 @@ tmtags
 **/CVS/*
 .cvsignore
 */.cvsignore
+.hg/
+.hgignore
+.hgsigs
+.hgsub
+.hgsubstate
+.hgtags
+.bzr/
+.bzrignore
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -69,8 +94,7 @@ Temporary Items
 .dropbox.attr
 .dropbox.cache
 
-# Compiled source #
-###################
+# Compiled source
 *.com
 *.class
 *.dll
@@ -78,8 +102,7 @@ Temporary Items
 *.o
 *.so
 
-# Packages #
-############
+# Packages
 # it's better to unpack these files and commit the raw source
 # git has its own built in compression methods
 *.7z
@@ -90,9 +113,41 @@ Temporary Items
 *.rar
 *.tar
 *.zip
+*.gzip
+*.tgz
+*.bzip
+*.bzip2
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.xar
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp
+*.txz
 
-# databases #
-######################
-*.log
+# databases
 *.sql
 *.sqlite
+
+# Composer template
+composer.phar
+/vendor/
+
+# Diff template
+*.patch
+*.diff
+
+# Backup template
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+

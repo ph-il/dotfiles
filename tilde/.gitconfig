@@ -13,22 +13,21 @@
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
 	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
+	p = !"git pull; git submodule foreach git pull origin main"
 
 	fpush = push --force
 
 	sclone = clone --depth=1
-	
+
 	undocommit = reset HEAD~
 	hreset = reset --hard
 
-	c = commit -am
-
 	df = diff --color --color-words --abbrev
-		lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-		cherrypick = cherry-pick
-		cherry = cherry-pick
-		cp = cherry-pick
+
+	cherrypick = cherry-pick
+	cherry = cherry-pick
+	cp = cherry-pick
+
 	# Commit all changes
 	ca = !git add -A && git commit -av
 
@@ -39,9 +38,6 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
-
-	# Amend the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD --all --no-edit
 
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
@@ -64,7 +60,7 @@
 	# Find commits by commit message
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-	# Remove branches that have already been merged with master
+	# Remove branches that have already been merged with main
 	# a.k.a. ‘delete merged’
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
@@ -87,11 +83,40 @@
 		fi \
 	}; f"
 
+	a = add
+	ua = reset HEAD
+
     br  = branch
-    cm  = commit
-    ca  = !git add -A && git commit         # Commit all changes.
+	c = commit
+	ca = commit -a
+	cm = commit -m
+	cam = commit -am
+	cne = commit --no-edit
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD --all --no-edit
+    caa  = !git add -A && git commit         # Commit all changes.
     co  = checkout
-    cp  = cherry-pick
+	patch = !git --no-pager diff --no-color
+	# Merge fresh main into the current branch
+	mmm = !git fetch origin main && git merge origin/main --no-edit
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+	# Log with list of changed files for each commit
+	ll = log --stat --abbrev-commit
+	# List of my own commits
+	my = !git log --branches=* --no-merges --pretty=format:'%C(reset)%C(bold)%cd %C(reset)%C(white)%s  %C(reset)%h' --date=short --author=\"$(git config user.name)\"
+	# List of branches ordered by last change
+	lb = for-each-ref --sort=-committerdate refs/heads/ --format='%(color:bold)%(refname:short)%(color:reset)\t%(committerdate:relative)'
+	# List of files with merge conflicts
+	wtf = diff --name-only --diff-filter=U
+	# Rebase: add changes and continue
+	cont = !git add . && git rebase --continue
+	# Rebase: skip a rebase step
+	skip = rebase --skip
+	# Rebase: abort
+	abort = rebase --abort
+	# Cancel local commits in the branch: git fuck main
+	fuck = "!f() { git reset --hard origin/$1; }; f"
 
 [apply]
 
@@ -116,9 +141,20 @@
 	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
-    
+
     editor = mate -w
-	pager = less -FSRX
+	#pager = less -FSRXà
+	pager = git-pager
+
+	autocrlf = false
+	safecrlf = false
+	mergeoptions = --no-edit
+	quotepath = false
+	# Enable parallel index preload for operations like git diff
+	preloadindex = true
+
+[color]
+	ui = auto
 
 [color "branch"]
 
@@ -160,12 +196,12 @@
 [branch]
 
 	autosetupmerge = true
-	
+
 [diff]
 
 	# Detect copies as well as renames
 	renames = copies
-    colorMoved = zebra	
+    colorMoved = zebra
 
 [diff "bin"]
 
@@ -216,7 +252,9 @@
 
 [log]
 	date = relative
-		
+	# Show branch names with git log
+	decorate = short
+
 # use separate file for username / github token / etc
 [include]
 	path = ~/.gitconfig.local
@@ -255,3 +293,6 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
+[init]
+	defaultBranch = main

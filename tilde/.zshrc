@@ -7,8 +7,6 @@ for file in ~/Projects/dotfiles/zsh/{env,path,aliases,completions,key-bindings}.
 done;
 unset file;
 
-#prompt_color,functions,
-
 # Do not overwrite files when redirecting using ">". Note that you can still override this with ">|"
 set -o noclobber
 

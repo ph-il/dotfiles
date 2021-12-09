@@ -20,14 +20,21 @@ git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && source bootstr
 Just run those command one by one.
 
 ```bash
-./install.sh
-./brew_install.sh
-./php_install.sh
-./npm_install.sh
+# Base installation
+./setup/install.sh
+# Installs Homebrew, Git, git-extras, git-friendly, hub, Node.js, etc.
+./setup/stuff.sh
+# Installs PHP 7.0, 7.1, 7.2, 7.3, 7.4
+./setup/php7.sh
+# Installs PHP 8 and tools. Main PHP
+./setup/php.sh
 ./sync.py
-./exakat_install.sh
-./maxos.sh
-brew bundle -v --file=Fontfile
+./setup/exakat.sh
+# Installs quick look plugins: qlImageSize
+./setup/quicklook.sh
+./setup/maxos.sh
+
+brew bundle -v --file=./setup/Fontfile
 ```
 
 ### Update to zsh from bash
@@ -41,14 +48,14 @@ chsh -s /bin/zsh
 
 ### Specify the `$PATH`
 
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as
+If `~/dotfiles/zsh/path.zsh` exists, it will be sourced along with the other files, before any feature testing (such as
 [detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-26))
 takes place.
 
-Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
+Here’s an example `~/dotfiles/zsh/path.zsh` file that adds `/usr/local/bin` to the `$PATH`:
 
 ```bash
-export PATH="/usr/local/bin:$PATH"
+[ -d /usr/local/bin ] && _prepend_path "/usr/local/bin"
 ```
 
 ### Add custom commands without creating a new fork
@@ -81,12 +88,8 @@ Not in the repository, to prevent people from accidentally committing under my n
 You should create a .gitconfig.local to add your own local configuration and your personnal informations.
 
 ```bash
-GIT_AUTHOR_NAME="Author Name"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="author@email.com"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+git config -f ~/.gitconfig.local user.email "author@email.com"
+git config -f ~/.gitconfig.local user.name "Author Name"
 ```
 
 ### Sensible macOS defaults

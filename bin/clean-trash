@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Empty the Trash on all mounted volumes
 # Also, clear Apple’s System Logs to improve shell startup speed

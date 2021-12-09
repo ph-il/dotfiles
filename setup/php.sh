@@ -16,10 +16,10 @@ sudo pecl install ast
 sudo pecl install yaml
 
 # Configure PHP
-sudo chmod -R guo+rw  /usr/local/etc/php/8.0/conf.d
+sudo chmod -R guo+rw /usr/local/etc/php/8.0/conf.d
 cp ./php/8.0/conf.d/*.ini /usr/local/etc/php/8.0/conf.d/
 
-brew bundle -v --file=Phpfile
+brew bundle -v --file=$PRJ_DIR/dotfiles/setup/Phpfile
 
 brew cleanup -s
 

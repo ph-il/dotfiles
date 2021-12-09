@@ -1,13 +1,24 @@
-#export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/.yarn/bin::$PATH"
-export PATH="$HOME/.config/yarn/global/node_modules/.bin::$PATH"
-export PATH="$HOME/.rbenv/bin::$PATH"
-export PATH="$HOME/.composer/vendor/bin::$PATH"
-#export PATH="$(brew --prefix)/bin::$PATH"
-#export PATH="$(brew --prefix)/sbin::$PATH"
-export PATH="$HOME/bin::$PATH"
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
+# Prepend $PATH without duplicates
+function _prepend_path() {
+	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
+		PATH="$1:$PATH"
+	fi
+}
 
-# Our fpath
-fpath+=${PRJ_DIR}/dotfiles/zshfunctions
+# Construct $PATH
+# 1. Default paths
+# 2. ./node_modules/.bin - shorcut to run locally installed Node bins
+# 3. Custom bin folder for n, Ruby, CoreUtils, dotfiles, etc.
+PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:./node_modules/.bin'
+[ -d "$N_PREFIX/bin" ] && _prepend_path "$N_PREFIX/bin"
+[ -d /usr/local/opt/ruby/bin ] && _prepend_path "/usr/local/opt/ruby/bin"
+[ -d ~/.yarn/bin ] && _prepend_path "$HOME/.yarn/bin"
+[ -d ~/.config/yarn/global/node_modules/.bin ] && _prepend_path "$HOME/.config/yarn/global/node_modules/.bin"
+[ -d ~/.rbenv/bin ] && _prepend_path "$HOME/.rbenv/bin"
+[ -d ~/.composer/vendor/bin ] && _prepend_path "$HOME/.composer/vendor/bin"
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && _prepend_path "/usr/local/opt/coreutils/libexec/gnubin"
+_prepend_path "$(brew --prefix)/bin"
+_prepend_path "$(brew --prefix)/sbin"
+[ -d ~/Projects/dotfiles/bin ] && _prepend_path "$HOME/dotfiles/bin"
+[ -d ~/bin ] && _prepend_path "$HOME/bin"
+export PATH

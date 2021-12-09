@@ -11,6 +11,7 @@ alias goprj='cd "${PRJ_DIR}"'
 alias h="history"
 alias j="jobs"
 alias gogd="cd ~/Google\ Drive/"
+alias e="$EDITOR"
 
 alias where=which # sometimes i forget
 
@@ -36,6 +37,9 @@ alias apache.cfg="${EDITOR} ${apacheRoot}"
 alias apache.restart='brew services restart httpd'
 alias apache.start='brew services run httpd'
 alias apache.stop='brew services stop httpd'
+
+# Bat: https://github.com/sharkdp/bat
+command -v bat >/dev/null 2>&1 && alias cat="bat --style=numbers,changes"
 
 # BlackFire
 alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
@@ -135,6 +139,9 @@ alias push="git push"
 # Undo a git push`
 alias undopush="git push -f origin HEAD^:main"
 
+# GitHub Desktop
+alias gh="github ."
+
 # grep
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -169,9 +176,6 @@ alias jk.start='brew services run jenkins'
 alias jk.stop='brew services stop jenkins'
 
 # ls alias to help
-colorflag="-G"
-export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-
 alias ls='ls -FhG ${colorflag}'
 alias ll='ls -FhlG ${colorflag}'
 alias la='ls -FhlGaA ${colorflag}'
@@ -293,6 +297,9 @@ alias -g badge="tput bel"
 alias week='date +%V'
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
+# trash-cli: https://github.com/sindresorhus/trash-cli
+[ -d ~/dotfiles/node_modules/trash-cli ] && alias rm="~/dotfiles/node_modules/trash-cli/cli.js"
 
 # Vagrant
 alias v="vagrant global-status"
