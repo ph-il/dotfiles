@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+// Magic project opener: opens repository using fuzzy search.
+//
+// Should be used via Bash alias like this:
+//   function repo { cd "$("$HOME/dotfiles/bin/repo" $1)"; }
+//
+// Author: Artem Sapegin, sapegin.me
+// License: MIT
+// https://github.com/sapegin/dotfiles
+//
+
+const fs = require('fs');
+const path = require('path');
+
+const PROJECTS_DIR = path.join(process.env.HOME, '_');
+
+const getDirs = (d) =>
+	fs.readdirSync(d).filter((f) => fs.statSync(path.join(d, f)).isDirectory());
+
+const args = process.argv.splice(2);
+if (args.length !== 1) {
+	console.log('Usage: repo <name>');
+	process.exit(1);
+}
+
+const repo = find(getDirs(PROJECTS_DIR), args[0]);
+if (repo) {
+	console.log(path.join(PROJECTS_DIR, repo));
+}
+
+function find(repos, name) {
+	// Fuzzy search but require the first letter to match
+	const nameRegexp = new RegExp(
+		`^${name
+			.replace(/[^a-z0-9]/gi, '')
+			.split('')
+			.join('.*')}`,
+		'i'
+	);
+	repos = repos.filter((r) => nameRegexp.test(r));
+
+	// Found?
+	if (!repos.length) {
+		console.log('Repository not found');
+		process.exit(1);
+	}
+
+	// Order by repo name length, shortest names first
+	repos.sort((a, b) => (a.length > b.length ? 1 : -1));
+
+	// Return the most probable result
+	return repos[0];
+}

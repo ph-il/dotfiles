@@ -1,7 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
+# Ask for the administrator password upfront
+sudo -v
+echo
 
-if ! [ -d "${HOME}/.nvm" ] 
+if ! [ -d "${HOME}/.nvm" ]
 then
     mkdir -pv ~/.nvm
 fi;
@@ -17,7 +20,7 @@ npm install -g diff-so-fancy
 # trash as the safe `rm` alternative
 npm install -g trash-cli
 
-npm install -g sprity sprity-sass 
+npm install -g sprity sprity-sass
 
 npm install -g eslint
 

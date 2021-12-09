@@ -1,0 +1,131 @@
+#!/usr/bin/env zsh
+
+# Get macOS software updates, update Homebrew, npm, Ruby packages, dotfiles and some other software
+# Usage: update
+if [[ $(id -u) -eq 0 ]]; then
+	echo "The command \"update\" should not be executed as root or via sudo directly."
+	echo "When a service requires root access, you will be prompted for a password as needed."
+	exit 1
+fi
+
+function header() {
+	echo -e "$(tput sgr 0 1)$(tput setaf 6)$1$(tput sgr0)"
+}
+
+# Ask for the administrator password upfront
+sudo -v
+echo
+
+# Dotfiles
+header "Updating dotfiles..."
+pushd "$PRJ_DIR/dotfiles"
+git pull
+./bootstrap.sh
+popd
+badge
+echo
+
+# macOS
+header "Updating macOS..."
+sudo -v
+sudo softwareupdate -i -a
+badge
+echo
+
+# Homebrew
+header "Updating Homebrew..."
+sudo -v
+brew update
+brew upgrade
+brew cask upgrade
+brew tap Homebrew/bundle
+brew bundle -v --file=Tapfile
+brew bundle -v
+brew cleanup
+brew prune
+brew services restart memcached
+brew services restart mysql
+brew services restart redis
+badge
+echo
+
+# npm
+header "Updating npm..."
+npm install -g npm@latest
+npm-check -g -u
+npm update -g
+badge
+echo
+
+header "Updating composer global..."
+composer global update
+badge
+echo
+
+# Ruby gems
+header "Updating Ruby gems..."
+sudo -v
+sudo gem update
+sudo gem update --system
+sudo gem update --no-document
+sudo gem cleanup
+badge
+echo
+
+header "Updating Pip3..."
+pip3 install --upgrade hashpumpy pip hashpumpy setuptools six wheel detect-secrets
+badge
+echo
+
+# git-friendly
+header "Updating git-friendly..."
+sudo -v
+sudo bash < <( curl https://raw.githubusercontent.com/jamiew/git-friendly/master/install.sh)
+badge
+echo
+
+header "Updating PHP Tools..."
+
+header "PEAR"
+sudo -v
+sudo pear channel-update pear.php.net
+sudo pear upgrade PEAR
+sudo pear upgrade-all
+
+header "PECL"
+sudo -v
+sudo pear channel-update pecl.php.net
+sudo pecl upgrade-all
+
+wget -O phpcpd.phar https://phar.phpunit.de/phpcpd.phar
+chmod +x phpcpd.phar
+mv -f phpcpd.phar /usr/local/bin/phpcpd
+
+wget -O phpdox.phar https://phpdox.de/releases/phpdox.phar
+chmod +x phpdox.phar
+mv phpdox.phar /usr/local/bin/phpdox
+
+wget -O phploc.phar https://phar.phpunit.de/phploc.phar
+chmod +x phploc.phar
+mv phploc.phar /usr/local/bin/phploc
+
+wget -O phpmd.phar -c https://phpmd.org/static/latest/phpmd.phar
+chmod +x phpmd.phar
+mv phpmd.phar /usr/local/bin/phpmd
+
+wget -O phpunit-skelgen.phar https://phar.phpunit.de/phpunit-skelgen.phar
+chmod +x phpunit-skelgen.phar
+mv phpunit-skelgen.phar /usr/local/bin/phpunit-skelgen
+
+curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
+
+badge
+echo
+
+header "Updating Exakat..."
+php ${PRJ_DIR}/tools/exakat.phar upgrade -u
+badge
+echo
+
+# Nyan cat! Yay!
+nyan

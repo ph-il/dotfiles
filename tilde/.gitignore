@@ -1,0 +1,98 @@
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+.DS_Store?
+Desktop.ini
+
+# Thumbnail cache files
+._*
+ehthumbs.db
+Thumbs.db
+Icon
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.localized
+.LSOverride
+.com.apple.*
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.vagrant/
+
+# Node.js & npm.
+node_modules
+npm-debug.log
+
+# IDE
+%*
+*.sw[a-z]
+*.un~
+.netrwhist
+Session.vim
+.vim/viminfo
+.vim/swaps/*
+.vim/undo
+vim/.viminfo
+.idea
+*.tmproj
+*.tmproject
+tmtags
+
+# credential file
+.gitconfig.local
+
+# log files
+*.log
+
+# Version Control
+.svn/
+/CVS/*
+**/CVS/*
+.cvsignore
+*/.cvsignore
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Dropbox
+.dropbox
+.dropbox.attr
+.dropbox.cache
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# databases #
+######################
+*.log
+*.sql
+*.sqlite

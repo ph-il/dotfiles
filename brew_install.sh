@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+# Ask for the administrator password upfront
+sudo -v
+echo
 
 # If Homebrew is not installed
 if ! which brew > /dev/null; then
-     # Install Homebrew 
+     # Install Homebrew
      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/philippegamache/.zprofile
 	 eval "$(/opt/homebrew/bin/brew shellenv)"
 fi;
 
@@ -20,6 +23,20 @@ brew bundle -v --file=Tapfile
 brew update
 brew upgrade
 
-brew bundle -v 
-
+brew bundle -v
 brew cleanup -s
+
+# allow mtr to run without sudo
+mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//')
+sudo chmod 4755 $mtrlocation/sbin/mtr
+sudo chown root $mtrlocation/sbin/mtr
+
+## Configure MySQL
+mysql_secure_installation
+sudo mkdir /var/mysql
+sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+
+# Update global git config
+git lfs install
+# Update system git config
+sudo git lfs install --system

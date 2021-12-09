@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Quick grep: rg (ripgrep), ack or grep
+#
+# Usage: ../docs/g.md
+#
+# See more:
+# https://github.com/BurntSushi/ripgrep
+#
+# Author: Artem Sapegin, sapegin.me
+# License: MIT
+# https://github.com/sapegin/dotfiles
+#
+
+if command -v rg >/dev/null 2>&1; then
+	# See tilde/ripgreprc for default options
+	rg "$@"
+elif command -v ack >/dev/null 2>&1; then
+	ack -ri "$@"
+else
+	grep -ri "$@"
+fi

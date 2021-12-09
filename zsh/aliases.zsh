@@ -1,0 +1,316 @@
+# Enable aliases to be sudo’ed
+alias sudo="sudo "
+
+# Shortcuts
+alias d="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias doc="cd ~/Documents"
+alias dt="cd ~/Desktop"
+alias p='cd "${PRJ_DIR}"'
+alias goprj='cd "${PRJ_DIR}"'
+alias h="history"
+alias j="jobs"
+alias gogd="cd ~/Google\ Drive/"
+
+alias where=which # sometimes i forget
+
+# AFK Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# ag
+alias ag='ag -f --hidden'
+
+# alias
+alias mkalias='${EDITOR} ~/.extra'
+alias runalias='source ~/.zshrc'
+alias godf='devenv $PRJ_DIR/dotfiles'
+alias mkdf='${EDITOR} "$PRJ_DIR/dotfiles"'
+alias go='alias | grep go'
+
+# Apache
+alias apachectl='sudo apachectl'
+alias apache2ctl='sudo apachectl'
+apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
+apacheRoot=${apacheConf::${#apacheConf}-10}
+alias apache.cfg="${EDITOR} ${apacheRoot}"
+alias apache.restart='brew services restart httpd'
+alias apache.start='brew services run httpd'
+alias apache.stop='brew services stop httpd'
+
+# BlackFire
+alias blackfire.start='brew services run blackfireio/blackfire/blackfire-agent'
+alias blackfire.stop='brew services stop blackfireio/blackfire/blackfire-agent'
+
+# cd - help change directory
+# Easier navigation: ..., ...., .....
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias cdf="cdfinder"
+
+# chmod
+alias chmox='chmod -x'
+
+# clean all [filename in argument] from one directory and sub-directory
+alias clean.all='sudo find . -name $1 -print0 | xargs -0 sudo rm -rf '
+alias clean.cvs="find . -type f -name csv -ls -delete"
+alias clean.cvsi="find . -type f -name .cvsignore -ls -delete"
+alias clean.err="find . -type f -name php_errors.log -ls -delete"
+alias clean.sccs="find . -type f -name SCCS -ls -delete"
+alias clean.svn="find . -type f -name .svn -ls -delete"
+alias clean.tdb="find . -type f -name Thumbs.db -ls -delete"
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias clean.url="find . -type f -name *.url -ls -delete"
+# Empty the Trash on all mounted volumes and the main HDD.
+# Then, clear the useless sleepimage.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash=" \
+    sudo rm -rfv /Volumes/*/.Trashes; \
+    rm -rfv ~/.Trash/*; \
+    sudo rm -rfv /private/var/log/asl/*.asl; \
+    sudo rm -v /private/var/vm/sleepimage; \
+    rm -rv \"/Users/philippegamache/Library/Application Support/stremio/Cache\";  \
+    rm -rv \"/Users/philippegamache/Library/Application Support/stremio/stremio-cache\"; \
+    sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent' \
+"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Composer
+alias cup='composer update --prefer-dist'
+alias ci='composer require --prefer-dist'
+
+# df - Better display free disk space with "Human-readable" output.
+alias df="df -h"
+
+# Directory
+# Mkdir with Create intermediate directories and Verbose
+alias mkd="mkdir -pv"
+# Remove dir (like rm -rf)
+alias rmd="rmdir"
+
+# brew services run docker-machine
+#alias docker.restart='brew services restart docker-machine'
+#alias docker.start='brew services run docker-machine'
+#alias docker.stop='brew services stop docker-machine'
+
+# elasticsearch
+#alias es.restart='brew services restart elasticsearch'
+#alias es.start='brew services run elasticsearch'
+#alias es.stop='brew services stop elasticsearch'
+
+# Exakat
+alias goexakat='devenv "${PRJ_DIR}/tools/exakat"' #'; sphp 7.1'
+alias exakat='php exakat.phar -v'
+
+# Files mv, rm, cp
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias fs='filesize'
+
+# git
+alias g="git"
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit -v'
+alias gd='git diff --no-index --color-words "$@"| ${EDITOR}'
+alias gl='git pull'
+alias gp='git push'
+# git root
+alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+alias gst='git status'
+alias gsp='git submodule foreach git pull'
+alias master="git checkout master"
+alias main="git checkout main"
+alias push="git push"
+# Undo a git push`
+alias undopush="git push -f origin HEAD^:main"
+
+# grep
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Grunt
+# Make Grunt print stack traces by default
+command -v grunt > /dev/null && alias grunt="grunt --stack"
+
+# hightlight
+alias hl.php="pbpaste | highlight --syntax=php -O rtf --style candy | pbcopy"
+alias hl.html="pbpaste | highlight --syntax=html -O rtf --style candy| pbcopy"
+alias hl.apache="pbpaste | highlight --syntax=httpd -O rtf --style candy| pbcopy"
+alias hl.js="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy"
+
+# Homebrew
+alias cask='brew cask' # i <3 u cask
+alias brwe=brew  #typos
+
+# host names
+alias hosts.cfg='sudo ${EDITOR} /etc/hosts'
+
+# java
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java16='export JAVA_HOME=$JAVA_16_HOME'
+
+# jenkins
+alias jk.restart='brew services restart jenkins'
+alias jk.start='brew services run jenkins'
+alias jk.stop='brew services stop jenkins'
+
+# ls alias to help
+colorflag="-G"
+export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+
+alias ls='ls -FhG ${colorflag}'
+alias ll='ls -FhlG ${colorflag}'
+alias la='ls -FhlGaA ${colorflag}'
+alias lt='ls -FhlGtr ${colorflag}'
+alias l.='ls -FhlGtrd .* ${colorflag}'
+alias dir="lt"
+alias dot="l."
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Memcached
+alias mem.restart='brew services restart memcached'
+alias mem.start='brew services run memcached'
+alias mem.stop='brew services stop memcached'
+alias mem.reset="echo 'flush_all' | nc localhost 11211"
+alias mem.stats="echo 'stats' | nc localhost 11211"
+
+# Mysql
+alias mysql.restart='brew services restart mysql'
+alias mysql.start='brew services run  mysql'
+alias mysql.stop='brew services stop  mysql'
+alias mysql.cfg='${EDITOR} /etc/my.cnf'
+
+# Network
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "$method"="lwp-request -m '$method'"
+done
+
+# PATH
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# php
+alias php.cfg='${EDITOR} /usr/local/etc/php/'
+# Load xdebug Zend extension with php command
+# alias php='php -dzend_extension=xdebug.so'
+# PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
+#alias phpunit='php $(which phpunit)'
+
+# php Code Sniffer
+alias cs='phpcs --ignore=*/SCCS/*,*/vendor/*,*/.svn/*,*/base/*,*/templates/* --standard=PSR2'
+alias csf='php-cs-fixer fix --level=all'
+
+# PhpStorm
+alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
+
+# redis
+alias redis.restart='brew services restart redis'
+alias redis.start='brew services run redis'
+alias redis.stop='brew services stop redis'
+
+# RabbitMQ
+alias rmq.restart='brew services restart rabbitmq'
+alias rmq.start='brew services run rabbitmq'
+alias rmq.stop='brew services stop rabbitmq'
+
+# sed - Better use RegEx in sed
+alias sed='sed -E'
+
+# Services
+alias stopall='brew services stop --all'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+# Show/hide desktop icons (useful when presenting)
+alias hide.desktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias show.desktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Spotlight
+alias spot.off="sudo mdutil -a -i off"
+alias spot.on="sudo mdutil -a -i on"
+
+# svn
+alias svnup='svn up --ignore-externals'
+alias svnst='svn st --ignore-externals'
+
+# symfony 5 and 6 project command (need to use the go function before)
+alias sf='$DEVENV_PROG'
+alias sfcc='sf cache:clear --no-warmup'
+alias sfcw='sf cache:warmup'
+# Dangerous @TODO Create a function that will be more safe
+alias sfhcc='sudo rm -rf "${DEVENV_CACHE}*"'
+alias sfcl='sudo find "${DEVENV_LOG}" -type f -delete'
+alias sfcxh='sudo find "${DEVENV_LOG}xhprof/" -type f -delete'
+alias sfddd='sf doctrine:database:drop --force'
+alias sfddc='sf doctrine:database:create'
+alias sfdsc='sf doctrine:schema:create'
+alias sfdsd='sf doctrine:schema:drop --force --full-database'
+alias sfdsv='sf doctrine:schema:validate'
+alias sfdfl='sf doctrine:fixtures:load'
+alias sfdmc='sf doctrine:migrations:create'
+alias sfdmm='sf doctrine:migrations:migration'
+alias sfroute='sf debug:router'
+alias sfs='symfony serve -d'
+alias sfcontainer='sf debug:container'
+alias sfdev='sf --env=dev'
+alias sfprod='sf --env=prod'
+alias sfmb='sf make:bundle'
+alias sfmc='sf make:controller'
+alias sfmcom='sf make:command'
+
+# Terminal
+# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
+# (useful when executing time-consuming commands)
+alias -g badge="tput bel"
+
+# Timer
+# Get week number
+alias week='date +%V'
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
+# Vagrant
+alias v="vagrant global-status"
+alias vup="vagrant up"
+alias vhalt="vagrant halt"
+alias vssh="vagrant ssh"
+alias vreload="vagrant reload"
+alias vrebuild="vagrant destroy --force && vagrant up"
+
+# varnish
+alias varnish.restart='brew services restart varnish'
+alias varnish.start='brew services run varnish'
+alias varnish.stop='brew services stop varnish'
+
+# XDebug
+alias xdebug.enable="xdebug-toggle on --no-server-restart"
+alias xdebug.disable="xdebug-toggle off --no-server-restart"
+
+# Suffix Alias
+alias -s txt "mate"
+alias -s log "tail -f"

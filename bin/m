@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# `m` with no arguments opens the current directory in mate, otherwise opens the given file or directory in mate
+if [ $# -eq 0 ]; then
+	mate .
+else
+	mate "$@"
+fi

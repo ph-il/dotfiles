@@ -1,11 +1,7 @@
-# Project Oriented 
+# Project Oriented
 .extra
+.zshlocal
 *.lock.json
-*.lock.json
-
-
-# Compiled Python files
-*.pyc
 
 # Folder view configuration files
 .DS_Store

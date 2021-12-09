@@ -7,10 +7,10 @@ cask 'textmate'
 brew 'ack'
 brew 'pcre'
 brew 'unixodbc'
-brew 'ag' 
+brew 'ag'
 brew 'readline', args: ['force']
 brew 'sqlite'
-brew 'autoconf' 
+brew 'autoconf'
 brew 'brew-cask-completion'
 brew 'bash-completion'
 brew 'bash-git-prompt'
@@ -37,11 +37,12 @@ brew 'dex2jar'
 brew 'dns2tcp'
 brew 'editorconfig'
 brew 'fcrackzip'
-brew 'ffmpeg'
+brew 'ffmpeg', args: ['with-libvpx']
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew 'findutils'
 brew 'fontconfig'
 brew 'foremost'
+brew 'fd'
 brew 'fzf'
 brew 'freetype', args: ['force']
 brew 'libtiff', args: ['force']
@@ -54,7 +55,13 @@ brew 'gflags'
 brew 'git'
 brew 'git-flow'
 brew 'git-lfs'
-brew 'libgpg-error' 
+# nicer git diffs
+brew 'git-delta'
+# github util
+brew 'gh'
+# better `top`
+brew install glances
+brew 'libgpg-error'
 brew 'libgcrypt'
 brew 'libksba'
 brew 'libassuan'
@@ -62,6 +69,10 @@ brew 'pinentry'
 brew 'pth'
 brew 'libusb'
 brew 'libusb-compat'
+# Install more recent versions of some OS X tools
+brew 'vim'
+brew 'nano'
+brew 'openssh'
 brew 'gpg'
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew 'gnu-sed'
@@ -143,6 +154,7 @@ brew 'speedtest_cli'
 brew 'sqlite3', args: ['force']
 brew 'sqlmap'
 brew 'ssh-copy-id'
+brew 'starship'
 brew 'libdnet'
 brew 'tcpflow'
 brew 'tcpreplay'
@@ -164,4 +176,5 @@ brew 'brew-gem'
 brew 'zlib'
 brew 'msgpack'
 brew 'sass/sass/sass'
-
+brew 'go'
+brew 'rust'

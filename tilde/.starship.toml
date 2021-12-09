@@ -1,0 +1,17 @@
+format = """\
+  $username\
+  $hostname\
+  $directory\
+  $custom\
+  $git_state\
+  $line_break\
+  $character\
+  """
+
+[directory]
+style = "bold white"
+
+[custom.git_simple]
+command = "starship-git-simple"
+when = "true"
+style = ""
