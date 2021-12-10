@@ -28,9 +28,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
-# Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}";
-
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
@@ -122,3 +119,7 @@ export GIT_FRIENDLY_NO_BUNDLE=true
 
 # git-friendly: disable URL copying after push
 export GIT_FRIENDLY_NO_COPY_URL_AFTER_PUSH=true
+
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
+fi

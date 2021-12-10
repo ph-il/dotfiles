@@ -2,7 +2,7 @@
 # * ~/Projects/dotfiles/zsh/path can be used to extend `$PATH`.
 # * ~/.zshlocal can be used for other settings you don’t want to commit.
 
-for file in ~/Projects/dotfiles/zsh/{env,path,aliases,completions,key-bindings}.zsh; do
+for file in ~/Projects/dotfiles/zsh/{env,path,aliases,completions,key-bindings,functions}.zsh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -59,9 +59,6 @@ setopt CORRECT_ALL
 # Correction prompt
 SPROMPT="Correct %F{red}%R%f to %F{green}%r%f [(n)o,(y)es,(a)bort,(e)dit]?"
 
-# Enable zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting
-[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Enable fzf: https://github.com/junegunn/fzf
 # Use fd (https://github.com/sharkdp/fd) to respect .gitignore
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -79,6 +76,5 @@ _fzf_compgen_dir() {
 # Load extra (private) settings
 [ -f ~/.zshlocal ] && source ~/.zshlocal
 
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)";
-fi
+# Enable zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting
+[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

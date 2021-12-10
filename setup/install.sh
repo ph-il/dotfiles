@@ -50,8 +50,8 @@ then
     mkdir -pv /usr/local/bin
 fi;
 
-sudo chown :staff /usr/local
-sudo chown :staff /usr/local/bin
+sudo chown $(whoami):staff /usr/local
+sudo chown -R $(whoami):staff /usr/local/bin
 
 # Creation Projects directory
 if ! [ -d "${HOME}/Projects" ]

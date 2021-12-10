@@ -12,7 +12,7 @@ You can clone the repository wherever you want. I like to keep it in `~/Projects
 The sync script will pull in the latest version and copy the files to your home folder.
 
 ```bash
-git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && source bootstrap.sh
+git clone https://github.com/ph-il/dotfiles.git && cd dotfiles && sync.py
 ```
 
 ### Update to zsh from bash
