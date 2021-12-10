@@ -40,8 +40,6 @@ if ! xcode-select --print-path &> /dev/null; then
 
 fi
 
-cd "$(dirname "${BASH_SOURCE}")";
-
 git pull origin master;
 
 # Creation local directory
@@ -50,7 +48,6 @@ then
     mkdir -pv /usr/local/bin
 fi;
 
-sudo chown $(whoami):staff /usr/local
 sudo chown -R $(whoami):staff /usr/local/bin
 
 # Creation Projects directory
