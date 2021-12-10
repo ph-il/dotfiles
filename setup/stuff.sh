@@ -48,6 +48,8 @@ sudo chmod 4755 $mtrlocation/sbin/mtr
 sudo chown root $mtrlocation/sbin/mtr
 
 #npm
+N_PREFIX="$HOME/n"
+n latest
 npm config set loglevel warn
 npm i -g npm-upgrade
 npm i -g tldr
@@ -66,8 +68,8 @@ npm i -g eslint
 
 ## Configure MySQL
 mysql_secure_installation
-sudo mkdir /var/mysql
-sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+[[ -d "/var/mysql" ]] || mkdir -pv /var/mysql
+[[ -f "/tmp/mysql.sock" ]] && sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 # Update global git config
 git lfs install
