@@ -16,16 +16,13 @@ brew cleanup
 
 brew tap Homebrew/bundle
 
-brew bundle -v --file=Tapfile
+brew bundle -v --file=~/Projects/dotfiles/setup/Tapfile
 
 brew update
 brew upgrade
 
 # Install everything in Brewfile
-brew bundle -v
-
-# Installs quick look plugins
-brew cask install suspicious-package quicklook-json qlmarkdown qlstephen qlcolorcode
+brew bundle -v --file=~/Projects/dotfiles/setup/Brewfile
 
 # qlImageSize
 TMPDIR=`mktemp -d` && {
