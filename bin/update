@@ -20,7 +20,7 @@ echo
 header "Updating dotfiles..."
 pushd "$PRJ_DIR/dotfiles"
 git pull
-./bootstrap.sh
+./sync.py
 popd
 badge
 echo
