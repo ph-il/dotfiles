@@ -37,10 +37,9 @@ header "Updating Homebrew..."
 sudo -v
 brew update
 brew upgrade
-brew cask upgrade
 brew tap Homebrew/bundle
-brew bundle -v --file=Tapfile
-brew bundle -v
+brew bundle -v --file=~/Projects/dotfiles/setup/Tapfile
+brew bundle -v --file=~/Projects/dotfiles/setup/Brewfile
 brew cleanup
 brew prune
 brew services restart memcached
