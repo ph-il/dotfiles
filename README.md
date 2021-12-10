@@ -37,6 +37,8 @@ Just run those command one by one.
 # Installs PHP 8 and tools. Main PHP
 ./setup/php.sh
 ./sync.py
+# Needed after sync when doing a full install (stuff.sh)
+./setup/aftersync.sh
 ./setup/exakat.sh
 ./setup/maxos.sh
 

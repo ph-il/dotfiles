@@ -24,6 +24,8 @@ brew upgrade
 # Install everything in Brewfile
 brew bundle -v --file=~/Projects/dotfiles/setup/Brewfile
 
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg $(brew options homebrew-ffmpeg/ffmpeg/ffmpeg | grep -vE '\s' | grep -- '--with-' | grep -vi chromaprint | tr '\n' ' ')
+
 # qlImageSize
 TMPDIR=`mktemp -d` && {
 	cd $TMPDIR
@@ -71,12 +73,7 @@ mysql_secure_installation
 [[ -d "/var/mysql" ]] || mkdir -pv /var/mysql
 [[ -f "/tmp/mysql.sock" ]] && sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
-# Update global git config
-git lfs install
-# Update system git config
-sudo git lfs install --system
-
-sudo pip install https://github.com/google/closure-linter/zipball/master
+sudo pip3 install https://github.com/google/closure-linter/zipball/master
 sudo pip3 install detect-secrets
 
 brew cleanup -s
