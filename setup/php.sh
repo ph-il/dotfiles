@@ -4,6 +4,17 @@
 sudo -v
 echo
 
+brew install php@8.1
+brew install blackfire-php81
+sudo pecl channel-update pecl.php.net
+sudo pecl install igbinary
+sudo pecl install apcu
+sudo pecl install xdebug
+sudo pecl install redis
+sudo pecl install memcached
+sudo pecl install ast
+sudo pecl install yaml
+
 brew install php@8.0
 brew install blackfire-php80
 sudo pecl channel-update pecl.php.net
