@@ -1,6 +1,4 @@
 brew 'composer'
-brew 'blackfire-agent'
 brew 'php-code-sniffer'
 brew 'php-cs-fixer'
 brew 'phpunit'
-brew 'jenkins'
