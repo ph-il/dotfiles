@@ -39,9 +39,9 @@ Just run those command one by one.
 ./sync.py
 # Needed after sync when doing a full install (stuff.sh)
 ./setup/aftersync.sh
+source ~/.zshrc
 ./setup/exakat.sh
 ./setup/maxos.sh
-
 brew bundle -v --file=./setup/Fontfile
 ```
 

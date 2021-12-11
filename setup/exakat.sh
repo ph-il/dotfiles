@@ -4,8 +4,6 @@
 sudo -v
 echo
 
-cd "$(dirname "${BASH_SOURCE}")";
-
 # Creation Exakat Directory
 if ! [ -d "${PRJ_DIR}/tools/exakat" ]
 then
@@ -27,3 +25,5 @@ cd tinkergraph
 cd ..
 
 php exakat.phar doctor
+
+cd "${PRJ_DIR}/dotfiles"
