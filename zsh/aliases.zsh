@@ -217,7 +217,7 @@ done
 alias path='echo -e ${PATH//:/\\n}'
 
 # php
-alias php.cfg='$EDITOR /opt/homebrew/etc/php/'
+alias php.cfg='$EDITOR /opt/homebrew/etc/php'
 # Load xdebug Zend extension with php command
 # alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.

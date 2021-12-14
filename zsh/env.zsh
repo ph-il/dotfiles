@@ -32,7 +32,7 @@ export LC_ALL='en_US.UTF-8';
 export MANPAGER='less -X';
 
 # Autoconf for PHP
-export PHP_AUTOCONF=/usr/local/Cellar/autoconf/2.69/bin/autoconf
+export PHP_AUTOCONF=/opt/homebrew/Cellar/autoconf/2.71/bin/autoconf
 
 # DEV_ENV use in many script
 export DEVENV_NAME="none"

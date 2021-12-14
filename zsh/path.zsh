@@ -10,7 +10,7 @@ function _prepend_path() {
 # 2. ./node_modules/.bin - shorcut to run locally installed Node bins
 # 3. Custom bin folder for n, Ruby, CoreUtils, dotfiles, etc.
 PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:./node_modules/.bin'
-[ -d "$HOME/n/bin" ] && _prepend_path "$N_PREFIX/bin"
+[ -d "$HOME/n/bin" ] && _prepend_path "$HOME/n/bin"
 [ -d /usr/local/opt/ruby/bin ] && _prepend_path "/usr/local/opt/ruby/bin"
 [ -d ~/.yarn/bin ] && _prepend_path "$HOME/.yarn/bin"
 [ -d ~/.config/yarn/global/node_modules/.bin ] && _prepend_path "$HOME/.config/yarn/global/node_modules/.bin"
