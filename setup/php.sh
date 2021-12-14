@@ -9,6 +9,7 @@ brew install blackfire-php81
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install apcu
+sudo pecl install imagick
 sudo pecl install xdebug
 sudo pecl install redis
 sudo pecl install memcached
@@ -22,6 +23,7 @@ brew link php@8.0
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install apcu
+sudo pecl install imagick
 sudo pecl install xdebug
 sudo pecl install redis
 sudo pecl install memcached

@@ -28,22 +28,28 @@ chsh -s /bin/zsh
 Just run those command one by one.
 
 ```bash
-# Base installation
+# Base installation - Required
 ./setup/install.sh
-# Installs Homebrew, Git, git-extras, git-friendly, hub, Node.js, etc.
+# Install Homebrew, Git, git-extras, git-friendly, hub, Node.js, etc. - Required
 ./setup/stuff.sh
-# Installs PHP 7.0, 7.1, 7.2, 7.3, 7.4
+# Install PHP 7.0, 7.1, 7.2, 7.3, 7.4 - Not Required
 ./setup/php7.sh
-# Installs PHP 8, 8.1. Main PHP 8.0 for now
+# Install PHP 8, 8.1. Main PHP 8.0 for now - Required
+# Warining : When asking for libyaml write /opt/homebrew/Cellar/libyaml/0.2.5 (or version installed)
 ./setup/php.sh
+# Sync files - Required
 ./sync.py
+# Run the zshrc file - Required
 source ~/.zshrc
-# Needed after sync when doing a full install (stuff.sh)
+# Required after sync when doing a full install (stuff.sh)
 ./setup/aftersync.sh
-# Installs tools. Main PHP 8.0 for now
+# Install tools. Main PHP 8.0 for now - Required
 ./setup/phptools.sh
+# Install Exakat CE - Not required
 ./setup/exakat.sh
+# Setup Mac - Recommended
 ./setup/maxos.sh
+# Install lot of fonts. - Not required
 brew bundle -v --file=./setup/Fontfile
 ```
 
