@@ -37,9 +37,9 @@ Just run those command one by one.
 # Installs PHP 8 and tools. Main PHP
 ./setup/php.sh
 ./sync.py
+source ~/.zshrc
 # Needed after sync when doing a full install (stuff.sh)
 ./setup/aftersync.sh
-source ~/.zshrc
 ./setup/exakat.sh
 ./setup/maxos.sh
 brew bundle -v --file=./setup/Fontfile
