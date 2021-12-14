@@ -4,8 +4,11 @@
 sudo -v
 echo
 
+
 brew install php@8.1
 brew install blackfire-php81
+PHP_VERSION="`php -r \"error_reporting(0); echo phpversion();\"`"
+ln -s /opt/homebrew/Cellar/pcre2/10.39/include/pcre2.h /opt/homebrew/Cellar/php/$PHP_VERSION/include/php/ext/pcre/pcre2.h
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install apcu
@@ -18,8 +21,10 @@ sudo pecl install yaml
 
 brew unlink php@8.1
 brew install php@8.0
-brew install blackfire-php80
 brew link php@8.0
+PHP_VERSION="`php -r \"error_reporting(0); echo phpversion();\"`"
+ln -s /opt/homebrew/Cellar/pcre2/10.36/include/pcre2.h /opt/homebrew/Cellar/php/$PHP_VERSION/include/php/ext/pcre/pcre2.h
+brew install blackfire-php80
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install apcu
