@@ -33,3 +33,6 @@ sudo pecl install yaml
 # Configure PHP
 sudo chmod -R guo+rw /opt/homebrew/etc/php/8.0/conf.d
 cp ~/Projects/dotfiles/php/8.0/conf.d/*.ini /opt/homebrew/etc/php/8.0/conf.d/
+
+sudo chmod -R guo+rw /opt/homebrew/etc/php/8.1/conf.d
+cp ~/Projects/dotfiles/php/8.1/conf.d/*.ini /opt/homebrew/etc/php/8.1/conf.d/
