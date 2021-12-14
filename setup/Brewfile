@@ -37,7 +37,6 @@ brew 'dns2tcp'
 brew 'editorconfig'
 brew 'fcrackzip'
 brew 'libvpx'
-brew 'ffmpeg', args: ['with-libvpx']
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew 'findutils'
 brew 'foremost'
@@ -159,3 +158,4 @@ brew 'rust'
 brew 'zsh-syntax-highlighting'
 brew 'chromaprint'
 brew 'amiaopensource/amiaos/decklinksdk'
+brew 'tesseract-lang'

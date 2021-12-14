@@ -32,14 +32,14 @@ Just run those command one by one.
 ./setup/install.sh
 # Installs Homebrew, Git, git-extras, git-friendly, hub, Node.js, etc.
 ./setup/stuff.sh
-# Installs PHP 7.0, 7.1, 7.2, 7.3, 7.4
-./setup/php7.sh
-# Installs PHP 8 and tools. Main PHP
-./setup/php.sh
 ./sync.py
 source ~/.zshrc
 # Needed after sync when doing a full install (stuff.sh)
 ./setup/aftersync.sh
+# Installs PHP 7.0, 7.1, 7.2, 7.3, 7.4
+./setup/php7.sh
+# Installs PHP 8, 8.1 and tools. Main PHP 8.0 for now
+./setup/php.sh
 ./setup/exakat.sh
 ./setup/maxos.sh
 brew bundle -v --file=./setup/Fontfile

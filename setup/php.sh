@@ -18,6 +18,7 @@ sudo pecl install yaml
 brew unlink php@8.1
 brew install php@8.0
 brew install blackfire-php80
+brew link php@8.0
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install apcu

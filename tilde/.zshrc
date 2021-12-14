@@ -2,7 +2,7 @@
 # * ~/Projects/dotfiles/zsh/path can be used to extend `$PATH`.
 # * ~/.zshlocal can be used for other settings you don’t want to commit.
 
-for file in ~/Projects/dotfiles/zsh/{env,path,aliases,completions,key-bindings,functions}.zsh; do
+for file in ~/Projects/dotfiles/zsh/{path,env,aliases,completions,key-bindings,functions}.zsh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

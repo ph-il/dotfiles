@@ -31,9 +31,7 @@ alias go='alias | grep go'
 # Apache
 alias apachectl='sudo apachectl'
 alias apache2ctl='sudo apachectl'
-apacheConf=`httpd -V | grep -i server_config_file | cut -d '"' -f 2`
-apacheRoot=${apacheConf::${#apacheConf}-10}
-alias apache.cfg="${EDITOR} ${apacheRoot}"
+alias apache.cfg="${EDITOR} /opt/homebrew/etc/httpd/"
 alias apache.restart='brew services restart httpd'
 alias apache.start='brew services run httpd'
 alias apache.stop='brew services stop httpd'
