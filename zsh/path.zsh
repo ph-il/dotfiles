@@ -19,6 +19,6 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:./node_modules/.bin'
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && _prepend_path "/usr/local/opt/coreutils/libexec/gnubin"
 _prepend_path "/opt/homebrew/bin"
 _prepend_path "/opt/homebrew/sbin"
-[ -d ~/Projects/dotfiles/bin ] && _prepend_path "$HOME/dotfiles/bin"
+[ -d ~/Projects/dotfiles/bin ] && _prepend_path "$HOME/Projects/dotfiles/bin"
 [ -d ~/bin ] && _prepend_path "$HOME/bin"
 export PATH
