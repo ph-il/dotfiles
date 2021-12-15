@@ -35,7 +35,6 @@ Just run those command one by one.
 # Install PHP 7.0, 7.1, 7.2, 7.3, 7.4 - Not Required
 ./setup/php7.sh
 # Install PHP 8, 8.1. Main PHP 8.0 for now - Required
-# Warining : When asking for libyaml write /opt/homebrew/Cellar/libyaml/0.2.5 (or version installed)
 ./setup/php.sh
 # Sync files - Required
 ./sync.py
@@ -45,10 +44,11 @@ source ~/.zshrc
 ./setup/aftersync.sh
 # Install tools. Main PHP 8.0 for now - Required
 ./setup/phptools.sh
+# Manual : Configure Blackfire local agent with your personal server credentials, information page was opened
 # Install Exakat CE - Not required
 ./setup/exakat.sh
 # Setup Mac - Recommended
-./setup/maxos.sh
+./setup/macos.sh
 # Install lot of fonts. - Not required
 brew bundle -v --file=./setup/Fontfile
 ```
