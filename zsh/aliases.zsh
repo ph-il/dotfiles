@@ -158,10 +158,6 @@ alias hl.html="pbpaste | highlight --syntax=html -O rtf --style candy| pbcopy"
 alias hl.apache="pbpaste | highlight --syntax=httpd -O rtf --style candy| pbcopy"
 alias hl.js="pbpaste | highlight --syntax=js -O rtf --style candy| pbcopy"
 
-# Homebrew
-alias cask='brew cask' # i <3 u cask
-alias brwe=brew  #typos
-
 # host names
 alias hosts.cfg='sudo $EDITOR /etc/hosts'
 
