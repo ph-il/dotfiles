@@ -50,7 +50,7 @@ source ~/.zshrc
 # Setup Mac - Recommended
 ./setup/macos.sh
 # Install lot of fonts. - Not required
-brew bundle -v --file=./setup/Fontfile
+./setup/fonts.sh
 ```
 
 ### Specify the `$PATH`

@@ -54,6 +54,7 @@ brew 'git-delta'
 # github util
 brew 'gh'
 # better `top`
+brew 'svn'
 brew 'glances'
 brew 'libksba'
 brew 'libassuan'
