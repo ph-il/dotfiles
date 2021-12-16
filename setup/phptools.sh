@@ -34,4 +34,6 @@ sudo mv phpunit-skelgen.phar /usr/local/bin/phpunit-skelgen
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
 
 # Configure Blackfire
-open https://blackfire.io/docs/up-and-running/installation?action=install&mode=full&location=local&os=darwin&language=php&agent=&version=latest
+open "https://blackfire.io/docs/up-and-running/installation?action=install&mode=full&location=local&os=darwin&language=php&agent=&version=latest"
+
+blackfire agent:config
