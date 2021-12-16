@@ -5,11 +5,6 @@
 # Email: phil@phil-cook.com
 # Twitter: @p_cook
 # https://github.com/philcook/brew-php-switcher/
-osx_major_version=$(sw_vers -productVersion | cut -d. -f1)
-osx_minor_version=$(sw_vers -productVersion | cut -d. -f2)
-osx_patch_version=$(sw_vers -productVersion | cut -d. -f3)
-osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx_patch_version:-0}))
-
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
 brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1")
@@ -17,6 +12,7 @@ php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0"
 php_installed_array=()
 php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
+actual_version="php@`php -r \"error_reporting(0); echo substr(phpversion(), 0, 3);\"`"
 
 # Has the user submitted a version required
 if [[ -z "$1" ]]; then
@@ -25,6 +21,22 @@ if [[ -z "$1" ]]; then
 	echo "    version    one of:" ${brew_array[@]}
 	echo
 	exit
+fi
+
+display_version() {
+		echo ""
+		php -v
+		echo ""
+
+    export PHP_VERSION="`php -r \"error_reporting(0); echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
+}
+
+echo "Switching to $php_version from $actual_version";
+
+if [ "${php_version}" = "${actual_version}" ]; then
+  echo "Already at $php_version"
+  display_version
+  exit 0;
 fi
 
 # What versions of php are installed via brew
@@ -40,21 +52,17 @@ if [[ " ${php_array[*]} " == *"$php_version"* ]]; then
 	if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then
 
 		# Switch Shell
-		echo "Switching to $php_version"
-		echo "Switching your shell"
 		for i in ${php_installed_array[@]}; do
 			brew unlink $i
 		done
 		brew link --force "$php_version"
 
-		echo ""
-		php -v
-		echo ""
+    display_version
 
 		echo "All done!"
 	else
 		echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
 	fi
 else
-	echo "Unknown version of PHP. SPHP can only handle arguments of:" ${brew_array[@]}
+	echo "Unknown version of PHP. sphp can only handle arguments of:" ${brew_array[@]}
 fi
