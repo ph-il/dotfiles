@@ -10,8 +10,6 @@ unset file;
 # Do not overwrite files when redirecting using ">". Note that you can still override this with ">|"
 set -o noclobber
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Case-insensitive globbing (used in pathname expansion)
 setopt NO_CASE_GLOB;
 
