@@ -1,4 +1,4 @@
-brew install font-3270
+brew install font-3270-nerd-font
 brew install font-abeezee
 brew install font-abel
 brew install font-aboriginal-sans
@@ -12,6 +12,7 @@ brew install font-adinatha-tamil-brahmi
 brew install font-advent-pro
 brew install font-african-sans
 brew install font-african-serif
+brew install font-agave-nerd-font
 brew install font-aguafina-script
 brew install font-ahuramzda
 brew install font-aileron
@@ -41,7 +42,6 @@ brew install font-amaranth
 brew install font-amatic-sc
 brew install font-amethysta
 brew install font-amiri
-brew install font-anaheim
 brew install font-andada-sc
 brew install font-andada
 brew install font-andika
@@ -49,6 +49,7 @@ brew install font-angkor
 brew install font-anka-coder
 brew install font-annie-use-your-telescope
 brew install font-anonymice-powerline
+brew install font-anonymice-nerd-font
 brew install font-anonymous-pro
 brew install font-antic-didone
 brew install font-antic-slab
@@ -61,7 +62,7 @@ brew install font-arbutus
 brew install font-architects-daughter
 brew install font-archivo-black
 brew install font-archivo-narrow
-brew install font-arimo
+brew install font-arimo-nerd-font
 brew install font-arizonia
 brew install font-armata
 brew install font-artifika
@@ -73,6 +74,7 @@ brew install font-asul
 brew install font-atomic-age
 brew install font-aubrey
 brew install font-audiowide
+brew install font-aurulent-sans-mono-nerd-font
 brew install font-autour-one
 brew install font-average-sans
 brew install font-average
@@ -84,7 +86,6 @@ brew install font-awesome-terminal-fonts
 brew install font-bad-script
 brew install font-baloo
 brew install font-balthazar
-brew install font-bangers
 brew install font-baron
 brew install font-basic
 brew install font-battambang
@@ -97,11 +98,13 @@ brew install font-benchnine
 brew install font-bentham
 brew install font-berkshire-swash
 brew install font-bevan
+brew install font-bigblue-terminal-nerd-font
 brew install font-bigelow-rules
 brew install font-bigshot-one
 brew install font-bilbo-swash-caps
 brew install font-bilbo
 brew install font-bitstream-vera
+brew install font-bitstream-vera-sans-mono-nerd-font
 brew install font-bitter
 brew install font-black-ops-one
 brew install font-blokk-neue
@@ -140,6 +143,8 @@ brew install font-carme
 brew install font-carrois-gothic-sc
 brew install font-carrois-gothic
 brew install font-carter-one
+brew install font-cascadia-code
+brew install font-caskaydia-cove-nerd-font
 brew install font-caudex
 brew install font-cedarville-cursive
 brew install font-ceviche-one
@@ -163,6 +168,7 @@ brew install font-clicker-script
 brew install font-coda-caption
 brew install font-coda
 brew install font-code2002
+brew install font-code-new-roman-nerd-font
 brew install font-codystar
 brew install font-combo
 brew install font-comfortaa
@@ -181,7 +187,7 @@ brew install font-copse
 brew install font-corben
 brew install font-courgette
 brew install font-courier-prime
-brew install font-cousine
+brew install font-cousine-nerd-font
 brew install font-coustard
 brew install font-covered-by-your-grace
 brew install font-crafty-girls
@@ -194,12 +200,14 @@ brew install font-cuprum
 brew install font-cutive-mono
 brew install font-cutive
 brew install font-d2coding
+brew install font-daddy-time-mono-nerd-font
 brew install font-damion
 brew install font-dancing-script
 brew install font-dashicons
 brew install font-dawning-of-a-new-day
 brew install font-days-one
 brew install font-dejavu-sans-mono-for-powerline
+brew install font-dejavu-sans-mono-nerd-font
 brew install font-delius-swash-caps
 brew install font-delius-unicase
 brew install font-delius
@@ -218,6 +226,7 @@ brew install font-dorsa
 brew install font-dosis
 brew install font-dr-sugiyama
 brew install font-droid-sans-mono-for-powerline
+brew install font-droid-sans-mono-nerd-font
 brew install font-duru-sans
 brew install font-dynalight
 brew install font-eagle-lake
@@ -242,7 +251,7 @@ brew install font-ewert
 brew install font-exo
 brew install font-ezra-sil
 brew install font-fairfax
-brew install font-fantasque-sans-mono
+brew install font-fantasque-sans-mono-nerd-font
 brew install font-fanwood-text
 brew install font-fascinate-inline
 brew install font-fascinate
@@ -254,9 +263,9 @@ brew install font-federo
 brew install font-felipa
 brew install font-fenix
 brew install font-finger-paint
-brew install font-fira-code
+brew install font-fira-code-nerd-font
 brew install font-fira-mono-for-powerline
-brew install font-fira-mono
+brew install font-fira-mono-nerd-font
 brew install font-fira-sans
 brew install font-fjalla-one
 brew install font-fjord-one
@@ -271,7 +280,6 @@ brew install font-francois-one
 brew install font-freckle-face
 brew install font-fredericka-the-great
 brew install font-fredoka-one
-brew install font-freehand
 brew install font-fresca
 brew install font-frijole
 brew install font-fruktur
@@ -280,10 +288,6 @@ brew install font-gabriela
 brew install font-gafata
 brew install font-galdeano
 brew install font-galindo
-brew install font-genjyuugothic-l
-brew install font-genjyuugothic-x
-brew install font-genjyuugothic
-brew install font-genshingothic
 brew install font-gentium-basic
 brew install font-gentium-book-basic
 brew install font-gentium-plus
@@ -298,16 +302,13 @@ brew install font-gilda-display
 brew install font-give-you-glory
 brew install font-glass-antiqua
 brew install font-glegoo
-brew install font-glober
 brew install font-gloria-hallelujah
 brew install font-gnu-unifont
-brew install font-go-medium
-brew install font-go-mono
+brew install font-go-mono-nerd-font
 brew install font-go
 brew install font-goblin-one
 brew install font-gochi-hand
 brew install font-gorditas
-brew install font-goudy-bookletter1911
 brew install font-graduate
 brew install font-grand-hotel
 brew install font-gravitas-one
@@ -317,7 +318,6 @@ brew install font-gruppo
 brew install font-gudea
 brew install font-habibi
 brew install font-hack-nerd-font
-brew install font-hack
 brew install font-halant
 brew install font-hammersmith-one
 brew install font-hanamina
@@ -325,6 +325,7 @@ brew install font-handlee
 brew install font-hanuman
 brew install font-happy-monkey
 brew install font-hasklig
+brew install font-hasklug-nerd-font
 brew install font-headland-one
 brew install font-henny-penny
 brew install font-hermeneus-one
@@ -334,6 +335,7 @@ brew install font-hind
 brew install font-holtwood-one-sc
 brew install font-homemade-apple
 brew install font-homenaje
+brew install font-hurmit-nerd-font
 brew install font-hyppolit
 brew install font-iceberg
 brew install font-iceland
@@ -354,14 +356,15 @@ brew install font-inconsolata-dz-for-powerline
 brew install font-inconsolata-dz
 brew install font-inconsolata-for-powerline
 brew install font-inconsolata-g-for-powerline
-brew install font-inconsolata-lgc
-brew install font-inconsolata
+brew install font-inconsolata-lgc-nerd-font
+brew install font-inconsolata-nerd-font
+brew install font-inconsolata-go-nerd-font
 brew install font-inder
 brew install font-indie-flower
 brew install font-inika
 brew install font-input
 brew install font-ionicons
-brew install font-iosevka
+brew install font-iosevka-nerd-font
 brew install font-iranian-sans
 brew install font-iranian-serif
 brew install font-irish-grover
@@ -371,6 +374,7 @@ brew install font-italianno
 brew install font-jaapokki
 brew install font-jacques-francois-shadow
 brew install font-jacques-francois
+brew install font-jetbrains-mono-nerd-font
 brew install font-jim-nightshade
 brew install font-jockey-one
 brew install font-jolly-lodger
@@ -427,7 +431,7 @@ brew install font-league-script
 brew install font-league-spartan
 brew install font-leckerli-one
 brew install font-ledger
-brew install font-lekton
+brew install font-lekton-nerd-font
 brew install font-lemon
 brew install font-liberation-mono-for-powerline
 brew install font-liberation-sans
@@ -501,7 +505,7 @@ brew install font-merienda
 brew install font-merriweather-sans
 brew install font-merriweather
 brew install font-meslo-lg-for-powerline
-brew install font-meslo-lg
+brew install font-meslo-lg-nerd-font
 brew install font-metal-mania
 brew install font-metal
 brew install font-metamorphous
@@ -528,10 +532,10 @@ brew install font-molle
 brew install font-monda
 brew install font-monofett
 brew install font-monofur-for-powerline
-brew install font-monofur
-brew install font-monoid
+brew install font-monofur-nerd-font
+brew install font-monoid-nerd-font
 brew install font-monoisome
-brew install font-mononoki
+brew install font-mononoki-nerd-font
 brew install font-monoton
 brew install font-monsieur-la-doulaise
 brew install font-montaga
@@ -543,6 +547,7 @@ brew install font-moul
 brew install font-moulpali
 brew install font-mountains-of-christmas
 brew install font-mouse-memoirs
+brew install font-mplus-nerd-font
 brew install font-mr-bedfort
 brew install font-mr-dafoe
 brew install font-mr-de-haviland
@@ -677,6 +682,7 @@ brew install font-noto-serif-khmer
 brew install font-noto-serif-lao
 brew install font-noto-serif-thai
 brew install font-noto-serif
+brew install font-noto-nerd-font
 brew install font-nova-cut
 brew install font-nova-flat
 brew install font-nova-mono
@@ -700,7 +706,6 @@ brew install font-oleo-script
 brew install font-open-iconic
 brew install font-open-sans-condensed
 brew install font-open-sans
-brew install font-opendyslexic
 brew install font-oranienbaum
 brew install font-orbitron
 brew install font-oregano
@@ -718,7 +723,7 @@ brew install font-oswald
 brew install font-over-the-rainbow
 brew install font-overlock-sc
 brew install font-overlock
-brew install font-overpass
+brew install font-overpass-nerd-font
 brew install font-ovo
 brew install font-oxygen-mono
 brew install font-oxygen
@@ -767,6 +772,7 @@ brew install font-prime
 brew install font-prince-valiant
 brew install font-princess-sofia
 brew install font-prociono
+brew install font-profont-nerd-font
 brew install font-profontx
 brew install font-prosto-one
 brew install font-pt-mono
@@ -805,7 +811,7 @@ brew install font-righteous
 brew install font-risque
 brew install font-roboto-condensed
 brew install font-roboto-mono-for-powerline
-brew install font-roboto-mono
+brew install font-roboto-mono-nerd-font
 brew install font-roboto-slab
 brew install font-roboto
 brew install font-rochester
@@ -841,6 +847,7 @@ brew install font-sansita-one
 brew install font-sarina
 brew install font-sarpanch
 brew install font-satisfy
+brew install font-sauce-code-pro-nerd-font
 brew install font-scada
 brew install font-scheherazade
 brew install font-schoolbell
@@ -856,6 +863,7 @@ brew install font-share-tech
 brew install font-share
 brew install font-shojumaru
 brew install font-short-stack
+brew install font-shure-tech-mono-nerd-font
 brew install font-siemreap
 brew install font-sigmar-one
 brew install font-signika-negative
@@ -882,7 +890,7 @@ brew install font-source-han-code-jp
 brew install font-source-han-sans
 brew install font-source-sans-pro
 brew install font-source-serif-pro
-brew install font-space-mono
+brew install font-space-mono-nerd-font
 brew install font-special-elite
 brew install font-spicy-rice
 brew install font-spinnaker
@@ -909,6 +917,7 @@ brew install font-tauri
 brew install font-teko
 brew install font-telex
 brew install font-tenor-sans
+brew install font-terminess-nerd-font
 brew install font-terminus
 brew install font-tex-gyre-adventor
 brew install font-tex-gyre-bonum
@@ -925,7 +934,7 @@ brew install font-the-girl-next-door
 brew install font-tibetan-machine-uni
 brew install font-tienne
 brew install font-tillana
-brew install font-tinos
+brew install font-tinos-nerd-font
 brew install font-titan-one
 brew install font-titillium-web
 brew install font-trade-winds
@@ -935,8 +944,8 @@ brew install font-trykker
 brew install font-tuffy
 brew install font-tulpen-one
 brew install font-twitter-color-emoji
-brew install font-ubuntu-mono-derivative-powerline
-brew install font-ubuntu
+brew install font-ubuntu-mono-nerd-font
+brew install font-ubuntu-nerd-font
 brew install font-ultra
 brew install font-uncial-antiqua
 brew install font-underdog
@@ -953,6 +962,7 @@ brew install font-vast-shadow
 brew install font-vazir-code
 brew install font-vazir
 brew install font-vibur
+brew install font-victor-mono-nerd-font
 brew install font-vidaloka
 brew install font-viga
 brew install font-voces
