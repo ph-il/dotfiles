@@ -23,10 +23,10 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias ag='ag -f --hidden'
 
 # alias
-alias mkalias='$EDITOR ~/.zshlocal'
-alias runalias='source ~/.zshrc'
-alias godf='devenv $PRJ_DIR/dotfiles'
-alias mkdf='$EDITOR "$PRJ_DIR/dotfiles"'
+alias mkalias="$EDITOR ~/.zshlocal"
+alias runalias="source ~/.zshrc"
+alias godf="source devenv $PRJ_DIR/dotfiles"
+alias mkdf=""$EDITOR $PRJ_DIR/dotfiles
 alias go='alias | grep go'
 
 # Apache
@@ -111,7 +111,7 @@ alias rmd="rmdir"
 #alias es.stop='brew services stop elasticsearch'
 
 # Exakat
-alias goexakat='devenv "${PRJ_DIR}/tools/exakat"' #'; sphp 7.1'
+alias goexakat='source devenv "${PRJ_DIR}/tools/exakat"' #'; sphp 7.1'
 alias exakat='php exakat.phar -v'
 
 # Files mv, rm, cp
@@ -189,9 +189,9 @@ alias mem.stats="echo 'stats' | nc localhost 11211"
 
 # Mysql
 alias mysql.restart='brew services restart mysql'
-alias mysql.start='brew services run  mysql'
-alias mysql.stop='brew services stop  mysql'
-alias mysql.cfg='$EDITOR /etc/my.cnf'
+alias mysql.start='brew services run mysql'
+alias mysql.stop='brew services stop mysql'
+alias mysql.cfg="$EDITOR /etc/my.cnf"
 
 # Network
 # IP addresses
@@ -210,10 +210,10 @@ done
 
 # PATH
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
 
 # php
-alias php.cfg='$EDITOR /opt/homebrew/etc/php'
+alias php.cfg="$EDITOR /opt/homebrew/etc/php"
 # Load xdebug Zend extension with php command
 # alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
@@ -258,7 +258,7 @@ alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
 
 # symfony 5 and 6 project command (need to use the go function before)
-alias sf='$DEVENV_PROG'
+alias sf="$DEVENV_PROG"
 alias sfcc='sf cache:clear --no-warmup'
 alias sfcw='sf cache:warmup'
 # Dangerous @TODO Create a function that will be more safe

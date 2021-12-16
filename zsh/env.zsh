@@ -7,7 +7,7 @@ export PRJ_DIR="${HOME}/Projects"
 #export EDITOR='vim';
 
 # Make Textmate the default editor.
-export EDITOR='/usr/local/bin/mate -w'
+export EDITOR="mate -w"
 
 export N_PREFIX="$HOME/n"
 
