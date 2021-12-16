@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
 # Defining a default project
 # Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'java{version}'
@@ -17,7 +17,7 @@ args=$# # number of command line args
 
 DEVENV_DIR="${1}"
 export DEVENV_DIR
-cd "${DEVENV_DIR}"
+cd "$DEVENV_DIR"
 
 DEVENV_NAME="none"
 DEVENV_PROG="donotrun"
@@ -25,46 +25,50 @@ DEVENV_CACHE="none"
 DEVENV_LOG="none"
 
 for ((i = 2; i <= $args; i += 1)); do # loop from 2 to N (where N is number of args)
-	echo "SETTING ${!i}"
-	if [ "${!i}" == 'sf4' ]; then
-		echo "SET ${!i}"
+	echo "SETTING ${(P)i}"
+	if [ "${(P)i}" = 'sf4' ]; then
+		echo "SET ${(P)i}"
 		DEVENV_NAME="sf4"
 		DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
 		DEVENV_CACHE="$DEVENV_DIR/var/cache/"
-		DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+		DEVENV_LOG="$DEVENV_DIR/var/logs/"
 	fi
-	if [ "${!i}" == 'sf5' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'sf5' ]; then
+		echo "SET ${(P)i}"
 		DEVENV_NAME="sf5"
 		DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
 		DEVENV_CACHE="$DEVENV_DIR/var/cache/"
-		DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+		DEVENV_LOG="$DEVENV_DIR/var/logs/"
 	fi
-	if [ "${!i}" == 'sf6' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'sf6' ]; then
+		echo "SET ${(P)i}"
 		DEVENV_NAME="sf6"
 		DEVENV_PROG="php -d memory_limit=-1 ${DEVENV_DIR}/bin/console"
 		DEVENV_CACHE="$DEVENV_DIR/var/cache/"
-		DEVENV_LOG="$PDEVENV_DIR/var/logs/"
+		DEVENV_LOG="$DEVENV_DIR/var/logs/"
 	fi
-	if [ "${!i}" == 'php80' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'php81' ]; then
+		echo "SET ${(P)i}"
+		sphp 8.1
+	fi
+	if [ "${(P)i}" = 'php80' ]; then
+		echo "SET ${(P)i}"
 		sphp 8.0
 	fi
-	if [ "${!i}" == 'php74' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'php74' ]; then
+		echo "SET ${(P)i}"
 		sphp 7.4
 	fi
-	if [ "${!i}" == 'php73' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'php73' ]; then
+		echo "SET ${(P)i}"
 		sphp 7.3
 	fi
-	if [ "${!i}" == 'java8' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'java8' ]; then
+		echo "SET ${(P)i}"
 		java8
 	fi
-	if [ "${!i}" == 'java16' ]; then
-		echo "SET ${!i}"
+	if [ "${(P)i}" = 'java16' ]; then
+		echo "SET ${(P)i}"
 		java16
 	fi
 
