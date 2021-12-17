@@ -258,7 +258,6 @@ alias svnup='svn up --ignore-externals'
 alias svnst='svn st --ignore-externals'
 
 # symfony 5 and 6 project command (need to use the go function before)
-alias sf="$DEVENV_PROG"
 alias sfcc='sf cache:clear --no-warmup'
 alias sfcw='sf cache:warmup'
 # Dangerous @TODO Create a function that will be more safe

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Defining a default project
 # Usage: devenv 'project directory' one or many of 'php{version}' 'sf{version}' 'java{version}'

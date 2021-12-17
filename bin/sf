@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+echo "${DEVENV_PROG}"
+
+if [ "${DEVENV_PROG}" = 'donotrun' ]; then
+  echo 'Not running in a symfony environment'
+  exit 1
+fi
+
+eval $DEVENV_PROG $@
