@@ -31,6 +31,10 @@ wget -O phpunit-skelgen.phar https://phar.phpunit.de/phpunit-skelgen.phar
 chmod +x phpunit-skelgen.phar
 sudo mv phpunit-skelgen.phar /usr/local/bin/phpunit-skelgen
 
+wget -O deployer.phar https://deployer.org/deployer.phar
+chmod +x deployer.phar
+sudo mv deployer.phar /usr/local/bin/dep
+
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
 
 # Configure Blackfire
