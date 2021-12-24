@@ -96,6 +96,7 @@ sudo -v
 sudo pear channel-update pecl.php.net
 sudo pecl upgrade-all
 
+header "Tools"
 wget -O phpcpd.phar https://phar.phpunit.de/phpcpd.phar
 chmod +x phpcpd.phar
 mv -f phpcpd.phar /usr/local/bin/phpcpd
@@ -120,7 +121,10 @@ wget -O deployer.phar https://deployer.org/deployer.phar
 chmod +x deployer.phar
 sudo mv deployer.phar /usr/local/bin/dep
 
+header "Symfony"
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
+
+symfony  self:update
 
 badge
 echo

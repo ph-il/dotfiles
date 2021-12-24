@@ -38,6 +38,7 @@ sudo mv deployer.phar /usr/local/bin/dep
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
 
 curl -sS https://get.symfony.com/cli/installer | bash
+mv ~/.symfony/bin/symfony /usr/local/bin/symfony
 
 # Configure Blackfire
 open "https://blackfire.io/docs/up-and-running/installation?action=install&mode=full&location=local&os=darwin&language=php&agent=&version=latest"
