@@ -42,8 +42,6 @@ brew install font-amaranth
 brew install font-amatic-sc
 brew install font-amethysta
 brew install font-amiri
-brew install font-andada-sc
-brew install font-andada
 brew install font-andika
 brew install font-angkor
 brew install font-anka-coder

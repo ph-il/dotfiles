@@ -9,6 +9,7 @@ sudo chown root $mtrlocation/sbin/mtr
 
 #npm
 n latest
+export PATH="$HOME/n/bin:$PATH"
 npm config set loglevel warn
 npm i -g npm-upgrade
 npm i -g tldr

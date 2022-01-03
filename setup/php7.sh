@@ -4,6 +4,8 @@
 sudo -v
 echo
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 brew install shivammathur/php/php@7.0
 brew install shivammathur/php/php@7.1
 brew install shivammathur/php/php@7.2

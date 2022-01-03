@@ -4,6 +4,8 @@
 sudo -v
 echo
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 brew install php@8.1
 brew install blackfire-php81
 PHP_VERSION="`php -r \"error_reporting(0); echo phpversion();\"`"
