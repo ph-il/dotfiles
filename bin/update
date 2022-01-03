@@ -39,7 +39,6 @@ brew tap Homebrew/bundle
 brew bundle -v --file=~/Projects/dotfiles/setup/Tapfile
 brew bundle -v --file=~/Projects/dotfiles/setup/Brewfile
 brew cleanup
-brew prune
 brew services restart memcached
 brew services restart mysql
 brew services restart redis
