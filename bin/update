@@ -22,14 +22,12 @@ pushd "$PRJ_DIR/dotfiles"
 git pull
 ./sync.py
 popd
-badge
 echo
 
 # macOS
 header "Updating macOS..."
 sudo -v
 sudo softwareupdate -i -a
-badge
 echo
 
 # Homebrew
@@ -45,7 +43,6 @@ brew prune
 brew services restart memcached
 brew services restart mysql
 brew services restart redis
-badge
 echo
 
 # npm
@@ -53,12 +50,10 @@ header "Updating npm..."
 npm install -g npm@latest
 npm-check -g -u
 npm update -g
-badge
 echo
 
 header "Updating composer global..."
 composer global update
-badge
 echo
 
 # Ruby gems
@@ -68,19 +63,16 @@ sudo gem update
 sudo gem update --system
 sudo gem update --no-document
 sudo gem cleanup
-badge
 echo
 
 header "Updating Pip3..."
 pip3 install --upgrade hashpumpy pip hashpumpy setuptools six wheel detect-secrets
-badge
 echo
 
 # git-friendly
 header "Updating git-friendly..."
 sudo -v
 sudo bash < <( curl https://raw.githubusercontent.com/jamiew/git-friendly/master/install.sh)
-badge
 echo
 
 header "Updating PHP Tools..."
@@ -123,12 +115,10 @@ sudo mv deployer.phar /usr/local/bin/dep
 
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
 
-badge
 echo
 
 #header "Updating Exakat..."
 #php ${PRJ_DIR}/tools/exakat.phar upgrade -u
-#badge
 #echo
 
 # Nyan cat! Yay!
