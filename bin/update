@@ -121,18 +121,15 @@ wget -O deployer.phar https://deployer.org/deployer.phar
 chmod +x deployer.phar
 sudo mv deployer.phar /usr/local/bin/dep
 
-header "Symfony"
 curl -L https://raw.githubusercontent.com/w00fz/xdebug-osx/master/xdebug-toggle > /usr/local/bin/xdebug-toggle
 
-symfony  self:update
-
 badge
 echo
 
-header "Updating Exakat..."
-php ${PRJ_DIR}/tools/exakat.phar upgrade -u
-badge
-echo
+#header "Updating Exakat..."
+#php ${PRJ_DIR}/tools/exakat.phar upgrade -u
+#badge
+#echo
 
 # Nyan cat! Yay!
 nyan
