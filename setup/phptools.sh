@@ -11,6 +11,7 @@ brew cleanup -s
 
 composer global require pdepend/pdepend
 composer global require phing/phing
+composer global require maglnet/composer-require-checker
 
 wget -O phpcpd.phar https://phar.phpunit.de/phpcpd.phar
 chmod +x phpcpd.phar
