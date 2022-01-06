@@ -90,6 +90,7 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 # Composer
 alias cup='composer update --prefer-dist'
 alias ci='composer require --prefer-dist'
+alias crc='XDEBUG_MODE=off php ~/.composer/vendor/bin/composer-require-checker'
 
 # df - Better display free disk space with "Human-readable" output.
 alias df="df -h"
