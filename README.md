@@ -40,7 +40,7 @@ Just run those command one by one.
 ./sync.py
 # Run the zshrc file - Required
 source ~/.zshrc
-# Required after sync when doing a full install (stuff.sh)
+# Required after sync when doing a full install (stuff.sh) - Required
 ./setup/aftersync.sh
 # Install tools. Main PHP 8.0 for now - Required
 ./setup/phptools.sh
