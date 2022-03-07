@@ -27,7 +27,7 @@ alias mkalias="$EDITOR ~/.zshlocal"
 alias runalias="source ~/.zshrc"
 alias godf="source devenv $PRJ_DIR/dotfiles"
 alias mkdf=""$EDITOR $PRJ_DIR/dotfiles
-alias go='alias | grep go'
+alias goto='alias | grep go'
 
 # Apache
 alias apachectl='sudo apachectl'
