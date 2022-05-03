@@ -27,7 +27,7 @@ echo
 # macOS
 header "Updating macOS..."
 sudo -v
-sudo softwareupdate -i -a
+#sudo softwareupdate -i -a
 echo
 
 # Homebrew
