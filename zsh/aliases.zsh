@@ -95,6 +95,9 @@ alias crc='XDEBUG_MODE=off php ~/.composer/vendor/bin/composer-require-checker'
 # df - Better display free disk space with "Human-readable" output.
 alias df="df -h"
 
+# deployer
+alias dep='vendor/bin/deployer.phar'
+
 # Directory
 # Mkdir with Create intermediate directories and Verbose
 alias mkd="mkdir -pv"
