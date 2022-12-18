@@ -96,7 +96,7 @@ alias crc='XDEBUG_MODE=off php ~/.composer/vendor/bin/composer-require-checker'
 alias df="df -h"
 
 # deployer
-alias dep='vendor/bin/deployer.phar'
+alias dep='vendor/bin/dep'
 
 # Directory
 # Mkdir with Create intermediate directories and Verbose
