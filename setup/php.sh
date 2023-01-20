@@ -9,7 +9,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew install php@8.2
 brew install blackfire-php82
 PHP_VERSION="`php -r \"error_reporting(0); echo phpversion();\"`"
-ln -s /opt/homebrew/Cellar/pcre2/10.40/include/pcre2.h /opt/homebrew/Cellar/php/$PHP_VERSION/include/php/ext/pcre/pcre2.h
+ln -s /opt/homebrew/Cellar/pcre2/10.42/include/pcre2.h /opt/homebrew/Cellar/php/$PHP_VERSION/include/php/ext/pcre/pcre2.h
 sudo pecl channel-update pecl.php.net
 sudo pecl install igbinary
 sudo pecl install msgpack
