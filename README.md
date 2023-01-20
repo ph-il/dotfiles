@@ -32,9 +32,7 @@ Just run those command one by one.
 ./setup/install.sh
 # Install Homebrew, Git, git-extras, git-friendly, hub, Node.js, etc. - Required
 ./setup/stuff.sh
-# Install PHP 7.0, 7.1, 7.2, 7.3, 7.4 - Not Required
-./setup/php7.sh
-# Install PHP 8, 8.1. Main PHP 8.0 for now - Required
+# Install PHP 8.2. - Required
 ./setup/php.sh
 # Sync files - Required
 ./sync.py
