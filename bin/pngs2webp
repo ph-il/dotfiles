@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+for file in *.png; do 
+    cwebp -q 60 "$file" -o "${file%.*}.webp"; 
+done
