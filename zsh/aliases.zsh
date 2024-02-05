@@ -104,20 +104,6 @@ alias mkd="mkdir -pv"
 # Remove dir (like rm -rf)
 alias rmd="rmdir"
 
-# brew services run docker-machine
-#alias docker.restart='brew services restart docker-machine'
-#alias docker.start='brew services run docker-machine'
-#alias docker.stop='brew services stop docker-machine'
-
-# elasticsearch
-#alias es.restart='brew services restart elasticsearch'
-#alias es.start='brew services run elasticsearch'
-#alias es.stop='brew services stop elasticsearch'
-
-# Exakat
-alias goexakat='source devenv "${PRJ_DIR}/tools/exakat"' #'; sphp 7.1'
-alias exakat='php exakat.phar -v'
-
 # Files mv, rm, cp
 alias cp='cp -v'
 alias mv='mv -v'
@@ -222,10 +208,6 @@ alias php.cfg="$EDITOR /opt/homebrew/etc/php"
 # alias php='php -dzend_extension=xdebug.so'
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
 #alias phpunit='php $(which phpunit)'
-
-# php Code Sniffer
-alias cs='phpcs --ignore=*/SCCS/*,*/vendor/*,*/.svn/*,*/base/*,*/templates/* --standard=PSR2'
-alias csf='php-cs-fixer fix --level=all'
 
 # PhpStorm
 alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'

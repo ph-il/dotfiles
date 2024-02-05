@@ -1,7 +1,5 @@
 cask_args appdir: '/Applications'
 
-cask 'adoptopenjdk16'
-cask 'adoptopenjdk8'
 cask 'textmate'
 
 brew 'ack'
@@ -72,7 +70,6 @@ brew 'diff-so-fancy'
 brew 'gnu-sed'
 brew 'graphviz'
 brew 'grc'
-#brew 'homebrew/dupes/grep', args: ['with-default-names']
 brew 'htop'
 brew 'hashpump'
 brew 'boost'
@@ -92,11 +89,7 @@ brew 'libmemcached'
 brew 'libgit2'
 brew 'libxml2', args: ['force']
 brew 'libzip'
-brew 'lynx'
 brew 'mas'
-# Install maven for Exakat
-brew 'maven'
-brew 'maven-completion'
 brew 'mhash'
 brew 'mcrypt'
 # Install some other useful utilities like `sponge`.

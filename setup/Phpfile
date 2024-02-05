@@ -1,4 +1,1 @@
 brew 'composer'
-brew 'php-code-sniffer'
-brew 'php-cs-fixer'
-brew 'phpunit'

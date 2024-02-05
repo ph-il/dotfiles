@@ -1,7 +1,6 @@
 tap 'homebrew/services'
 tap 'thoughtbot/formulae'
 tap 'blackfireio/homebrew-blackfire'
-tap 'adoptopenjdk/openjdk'
 tap 'sass/sass'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'

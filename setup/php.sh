@@ -6,8 +6,8 @@ echo
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew install php@8.2
-brew install blackfire-php82
+brew install php@8.3
+brew install blackfire-php83
 PHP_VERSION="`php -r \"error_reporting(0); echo phpversion();\"`"
 ln -s /opt/homebrew/Cellar/pcre2/10.42/include/pcre2.h /opt/homebrew/Cellar/php/$PHP_VERSION/include/php/ext/pcre/pcre2.h
 sudo pecl channel-update pecl.php.net
@@ -25,9 +25,6 @@ brew install blackfire
 
 # Configure PHP
 sed -i '' '/extension=/d' /opt/homebrew/etc/php/8.2/php.ini
-
-#sudo chmod -R guo+rw /opt/homebrew/etc/php/8.0/conf.d
-#cp ~/Projects/dotfiles/php/8.0/conf.d/*.ini /opt/homebrew/etc/php/8.0/conf.d/
 
 sudo chmod -R guo+rw /opt/homebrew/etc/php/8.2/conf.d
 cp ~/Projects/dotfiles/php/8.2/conf.d/*.ini /opt/homebrew/etc/php/8.2/conf.d/

@@ -10,7 +10,6 @@ brew install symfony-cli/tap/symfony-cli
 brew cleanup -s
 
 composer global require pdepend/pdepend
-composer global require phing/phing
 composer global require maglnet/composer-require-checker
 composer global require icanhazstring/composer-unused
 
