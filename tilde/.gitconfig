@@ -142,7 +142,7 @@
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
 
-    editor = mate -w
+	editor = pstorm -n -w
 	#pager = less -FSRXà
 	pager = git-pager
 
@@ -196,6 +196,7 @@
 [branch]
 
 	autosetupmerge = true
+	sort = -committerdate
 
 [diff]
 
@@ -211,7 +212,7 @@
 [help]
 
 	# Automatically correct and execute mistyped commands
-	autocorrect = 1
+	autoCorrect = prompt
 
 [merge]
 
@@ -236,6 +237,7 @@
 	default = current
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
+	autoSetupRemote = true
 
 [pull]
 	ff = only
@@ -251,7 +253,7 @@
 	showPatch = true
 
 [log]
-	date = relative
+	date = iso
 	# Show branch names with git log
 	decorate = short
 
