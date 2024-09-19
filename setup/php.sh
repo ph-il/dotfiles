@@ -24,7 +24,7 @@ sudo PHP_YAML_DIR=$(brew --prefix libyaml) pecl install yaml
 brew install blackfire
 
 # Configure PHP
-sed -i '' '/extension=/d' /opt/homebrew/etc/php/8.2/php.ini
+sed -i '' '/extension=/d' /opt/homebrew/etc/php/8.3/php.ini
 
-sudo chmod -R guo+rw /opt/homebrew/etc/php/8.2/conf.d
-cp ~/Projects/dotfiles/php/8.2/conf.d/*.ini /opt/homebrew/etc/php/8.2/conf.d/
+sudo chmod -R guo+rw /opt/homebrew/etc/php/8.3/conf.d
+cp ~/Projects/dotfiles/php/8.3/conf.d/*.ini /opt/homebrew/etc/php/8.3/conf.d/
