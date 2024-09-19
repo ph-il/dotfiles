@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+set -o extendedglob
+for file in *.(#i)png(NDn.); do
+    magick -quality 60 "$file" "${file%.*}.webp";
+    magick -quality 60 "$file" "${file%.*}.avif";
+done
+
+for file in *.(#i)gif(NDn.); do
+    magick -quality 60 "$file" "${file%.*}.webp";
+    magick -quality 60 "$file" "${file%.*}.avif";
+done
+
+for file in *.(#i)jp(|e)g(NDn.); do
+    magick -quality 60 "$file" "${file%.*}.webp";
+    magick -quality 60 "$file" "${file%.*}.avif";
+done
+
+for file in *.(#i)tif(|f)(NDn.); do
+    magick -quality 60 "$file" "${file%.*}.webp";
+    magick -quality 60 "$file" "${file%.*}.avif";
+done

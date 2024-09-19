@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
 set -o extendedglob
-for file in *.(#i)jp(|e)g(NDn.); do
+for file in *.(#i)gif(NDn.); do
     cwebp -q 60 "$file" -o "${file%.*}.webp";
 done

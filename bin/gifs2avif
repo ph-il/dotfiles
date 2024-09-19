@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+set -o extendedglob
+for file in *.(#i)gif(NDn.); do
+    magick -quality 60 "$file" "${file%.*}.avif";
+done

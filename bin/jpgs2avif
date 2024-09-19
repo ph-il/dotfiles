@@ -2,5 +2,5 @@
 
 set -o extendedglob
 for file in *.(#i)jp(|e)g(NDn.); do
-    cwebp -q 60 "$file" -o "${file%.*}.webp";
+    magick -quality 60 "$file" "${file%.*}.avif";
 done
